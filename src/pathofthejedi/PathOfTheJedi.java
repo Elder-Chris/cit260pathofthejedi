@@ -12,6 +12,9 @@ import byui.cit260.pathOfTheJedi.model.Items;
 import byui.cit260.pathOfTheJedi.model.Location;
 import byui.cit260.pathOfTheJedi.model.Map;
 import byui.cit260.pathOfTheJedi.model.Player;
+import byui.cit260.pathOfTheJedi.model.Ship;
+import byui.cit260.pathOfTheJedi.model.TrainR4;
+import byui.cit260.pathOfTheJedi.model.Workshop;
 
 /**
  *
@@ -23,6 +26,8 @@ public class PathOfTheJedi {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
+        //Player Class
         Player playerOne = new Player();
         
         playerOne.setName("Chris Elder");
@@ -31,6 +36,7 @@ public class PathOfTheJedi {
         String playerInfo = playerOne.toString();
         System.out.println(playerInfo);
         
+        //Actor Class
         Actor actorOne = new Actor();
         
         actorOne.setName("Yoda");
@@ -42,6 +48,7 @@ public class PathOfTheJedi {
         String actorInfo = actorOne.toString();
         System.out.println(actorInfo);
         
+        //InventoryList Class
         InventoryList inventoryListOne = new InventoryList();
         inventoryListOne.setType("Cristal");
         inventoryListOne.setAmount(10);
@@ -50,6 +57,7 @@ public class PathOfTheJedi {
         String inventoryListInfo = inventoryListOne.toString();
         System.out.println(inventoryListInfo);
         
+        //Item Class
         Items itemsOne = new Items();
         
         itemsOne.setDescription("Lightsaber");
@@ -57,7 +65,8 @@ public class PathOfTheJedi {
         
         String itemsInfo = itemsOne.toString();
         System.out.println(itemsInfo);
-                
+        
+        //Game Class
         Game gameOne = new Game();
         
         gameOne.setTotalTime(10.5);
@@ -65,7 +74,7 @@ public class PathOfTheJedi {
         String timer = gameOne.toString();
         System.out.println(timer);
         
-        
+        //Map Class
         Map locationOne = new Map();
         
         locationOne.setCurrentLocation("dock one");
@@ -73,7 +82,7 @@ public class PathOfTheJedi {
         String dock = locationOne.toString();
         System.out.println(dock);
         
-        
+        //Location Class
         Location locationInvintory = new Location();
         
         locationInvintory.setActorAvailable("Bob");
@@ -82,6 +91,37 @@ public class PathOfTheJedi {
         
         String scene = locationInvintory.toString();
         System.out.println(scene);
+        
+        //Ship class
+        Ship theShip = new Ship();
+        
+        theShip.setDescription("The ship is long and round oval you could say");
+        
+        String shipInfo = theShip.toString();
+        System.out.println(shipInfo);
+        
+        //TrainR4
+        TrainR4 trainR4 = new TrainR4();
+        
+        trainR4.setLightSaberUse("Jedi silver saber");
+        trainR4.setLightSaberScore(1.00);
+        trainR4.setCombat(1.00);
+        trainR4.setPush(1.00);
+        trainR4.setDefence(1.00);
+        trainR4.setForceAffinity(1.00);
+        
+        String trainInfo = trainR4.toString();
+        System.out.println(trainInfo);
+        
+        //Workshop
+        Workshop workshop = new Workshop();
+        
+        workshop.setLightSaberCrystal("green");
+        workshop.setLightSaberShell("silver");
+        
+        String workshopInfo = workshop.toString();
+        System.out.println(workshopInfo);
+        
     }
     
 }
