@@ -7,6 +7,7 @@ package pathofthejedi;
 
 import byui.cit260.pathOfTheJedi.model.Actor;
 import byui.cit260.pathOfTheJedi.model.Game;
+import byui.cit260.pathOfTheJedi.model.InventoryList;
 import byui.cit260.pathOfTheJedi.model.Items;
 import byui.cit260.pathOfTheJedi.model.Location;
 import byui.cit260.pathOfTheJedi.model.Map;
@@ -40,6 +41,14 @@ public class PathOfTheJedi {
         
         String actorInfo = actorOne.toString();
         System.out.println(actorInfo);
+        
+        InventoryList inventoryListOne = new InventoryList();
+        inventoryListOne.setType("Cristal");
+        inventoryListOne.setAmount(10);
+        inventoryListOne.setQuantity(1);
+        
+        String inventoryListInfo = inventoryListOne.toString();
+        System.out.println(inventoryListInfo);
         
         Items itemsOne = new Items();
         
