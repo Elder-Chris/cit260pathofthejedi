@@ -5,7 +5,9 @@
  */
 package pathofthejedi;
 
+import byui.cit260.pathOfTheJedi.model.Actor;
 import byui.cit260.pathOfTheJedi.model.Game;
+import byui.cit260.pathOfTheJedi.model.Items;
 import byui.cit260.pathOfTheJedi.model.Location;
 import byui.cit260.pathOfTheJedi.model.Map;
 import byui.cit260.pathOfTheJedi.model.Player;
@@ -28,7 +30,25 @@ public class PathOfTheJedi {
         String playerInfo = playerOne.toString();
         System.out.println(playerInfo);
         
+        Actor actorOne = new Actor();
         
+        actorOne.setName("Yoda");
+        actorOne.setDescription("Jedi master who trained Count Dooku and Luke Skywalker.");
+        actorOne.setHome("Unknown");
+        actorOne.setType(1);
+        actorOne.setForceLevel(10);
+        
+        String actorInfo = actorOne.toString();
+        System.out.println(actorInfo);
+        
+        Items itemsOne = new Items();
+        
+        itemsOne.setDescription("Lightsaber");
+        itemsOne.setColor("blue");
+        
+        String itemsInfo = itemsOne.toString();
+        System.out.println(itemsInfo);
+                
         Game gameOne = new Game();
         
         gameOne.setTotalTime(10.5);
