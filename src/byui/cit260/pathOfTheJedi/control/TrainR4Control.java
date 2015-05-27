@@ -21,14 +21,30 @@ public class TrainR4Control {
         return -1;    
         }
         
-        double newLv = combatLv + 1;
-        
+        double newLv = combatLv + 1;        
         return newLv;
     }
     //push
     
     //defense
+    public double calcDefence(double defenceLv, double combatLv, double diceRoll) {
+        double defenceVar = ((defenceLv / 2) * diceRoll) - combatLv;
+        if (defenceLv >= 10) {
+            return -1;
+        }
+        
+        if (defenceLv <= (defenceVar)){
+            return -1;    
+        }
+        
+        double newLv = defenceLv + 1;        
+        return newLv;
+    }
     
     //diceroll
-    
+    public double diceRoll(){
+        double diceRoll= (int)(Math.random()*6) + 1;
+        return diceRoll;
+    }
+
 }

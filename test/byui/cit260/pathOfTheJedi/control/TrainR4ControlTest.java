@@ -32,9 +32,7 @@ public class TrainR4ControlTest {
         double expResult = 5.0;
         double result = instance.calcCombat(combatLv, diceRoll);
        
-        assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case 1 fail.");
+        assertEquals(expResult, result, 0.0);        
         
         //test case #2
         System.out.println("\tTest Case #2");
@@ -75,12 +73,69 @@ public class TrainR4ControlTest {
         result = instance.calcCombat(combatLv, diceRoll);
        
         assertEquals(expResult, result, 0.0);
+    }
+    
+    /**
+     * Test of calcDefence method, of class TrainR4Control.
+     */
+    @Test
+    public void testCalcDefence() {
+        System.out.println("calcDefence");
         
+        //test case #1
+        System.out.println("\tTest Case #1");
+        double defenceLv = 2.0;
+        double combatLv = 4.0;
+        double diceRoll = 3.0;
+        TrainR4Control instance = new TrainR4Control();
+        double expResult = 3.0;
+        double result = instance.calcDefence(defenceLv, combatLv, diceRoll);
+       
+        assertEquals(expResult, result, 0.0);
+                
+        //test case #2
+        System.out.println("\tTest Case #2");
+        defenceLv = 10;
+        combatLv = 4.0;
+        diceRoll = 6.0;
         
-    
-    
-    
-    
+        expResult = -1.0;
+        result = instance.calcDefence(defenceLv, combatLv, diceRoll);
+       
+        assertEquals(expResult, result, 0.0);
+        
+         //test case #3
+        System.out.println("\tTest Case #3");
+        defenceLv = 2.0;
+        combatLv = 4.0;
+        diceRoll = 6.0;
+        
+        expResult = -1.0;
+        result = instance.calcDefence(defenceLv, combatLv, diceRoll);
+       
+        assertEquals(expResult, result, 0.0);
+        
+         //test case #4
+        System.out.println("\tTest Case #4");
+        defenceLv = 1.0;
+        combatLv = 1.0;
+        diceRoll = 3.0;
+        
+        expResult = 2.0;
+        result = instance.calcDefence(defenceLv, combatLv, diceRoll);
+       
+        assertEquals(expResult, result, 0.0);
+        
+         //test case #5
+        System.out.println("\tTest Case #5 ");
+        defenceLv = 9.0;
+        combatLv = 10.0;
+        diceRoll = 4.0;
+        
+        expResult = 10.0;
+        result = instance.calcDefence(defenceLv, combatLv, diceRoll);
+       
+        assertEquals(expResult, result, 0.0);      
     }
     
 }
