@@ -138,4 +138,19 @@ public class TrainR4ControlTest {
         assertEquals(expResult, result, 0.0);      
     }
     
+    /**
+     * Test of diceRoll method, of class TrainR4Control.
+     */
+    @Test
+    public void testdiceRoll() {
+        System.out.println("diceRoll");
+        
+        //test case #1
+        System.out.println("\tTest Case #1");
+        TrainR4Control instance = new TrainR4Control();
+        double result = instance.diceRoll();
+        System.out.println("\tRandom Roll = " + result);
+    }
+       
+    
 }
