@@ -142,7 +142,7 @@ public class TrainR4ControlTest {
      * Test of diceRoll method, of class TrainR4Control.
      */
     @Test
-    public void testdiceRoll() {
+    public void testDiceRoll() {
         System.out.println("diceRoll");
         
         //test case #1
