@@ -67,7 +67,7 @@ public class TrainR4ControlTest {
         assertEquals(expResult, result, 0.0);
         
          //test case #5
-        System.out.println("\tTest Case #5");
+        System.out.println("\tTest Case #5 ");
         combatLv = 9.0;
         diceRoll = 6.0;
         
