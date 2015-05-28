@@ -24,20 +24,9 @@ public class TrainR4Control {
         double newLv = combatLv + 1;        
         return newLv;
     }
+    
     //push
-    public double calcPush(double pushLv, double combatLv, double diceRoll) {
-        double pushVar = ((pushLv / 2) * diceRoll) - combatLv;
-        if (pushLv >= 10) {
-            return -1;
-        }
-        
-        if (pushLv <= (pushVar)){
-            return -1;    
-        }
-        
-        double newLv = pushLv + 1;        
-        return newLv;
-    }
+    
     
     //defense
     public double calcDefence(double defenceLv, double combatLv, double diceRoll) {
