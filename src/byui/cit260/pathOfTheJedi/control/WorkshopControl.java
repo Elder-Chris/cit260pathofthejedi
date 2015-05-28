@@ -11,7 +11,7 @@ package byui.cit260.pathOfTheJedi.control;
  */
 public class WorkshopControl {
     //
-    
+
     
     //
 }
