@@ -25,6 +25,19 @@ public class TrainR4Control {
         return newLv;
     }
     //push
+    public double calcPush(double pushLv, double combatLv, double diceRoll) {
+        double pushVar = ((pushLv / 2) * diceRoll) - combatLv;
+        if (pushLv >= 10) {
+            return -1;
+        }
+        
+        if (pushLv <= (pushVar)){
+            return -1;    
+        }
+        
+        double newLv = pushLv + 1;        
+        return newLv;
+    }
     
     //defense
     public double calcDefence(double defenceLv, double combatLv, double diceRoll) {
@@ -38,6 +51,21 @@ public class TrainR4Control {
         }
         
         double newLv = defenceLv + 1;        
+        return newLv;
+    }
+    
+    //forceAffinity
+    public double calcForceAffinity(double forceAffinityLv, double combatLv, double diceRoll) {
+        double forceAffinityVar = ((forceAffinityLv / 2) * diceRoll) - combatLv;
+        if (forceAffinityLv >= 10) {
+            return -1;
+        }
+        
+        if (forceAffinityLv <= (forceAffinityVar)){
+            return -1;    
+        }
+        
+        double newLv = forceAffinityLv + 1;        
         return newLv;
     }
     
