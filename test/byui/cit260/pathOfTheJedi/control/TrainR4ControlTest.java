@@ -79,62 +79,7 @@ public class TrainR4ControlTest {
      */
     @Test
     public void testCalcPush() {
-        System.out.println("calcPush");
-        
-        //test case #1
-        System.out.println("\tTest Case #1");
-        double pushLv = 2.0;
-        double combatLv = 4.0;
-        double diceRoll = 3.0;
-        TrainR4Control instance = new TrainR4Control();
-        double expResult = 3.0;
-        double result = instance.calcPush(pushLv, combatLv, diceRoll);
-       
-        assertEquals(expResult, result, 0.0);
-                
-        //test case #2
-        System.out.println("\tTest Case #2");
-        pushLv = 10;
-        combatLv = 4.0;
-        diceRoll = 6.0;
-        
-        expResult = -1.0;
-        result = instance.calcPush(pushLv, combatLv, diceRoll);
-       
-        assertEquals(expResult, result, 0.0);
-        
-         //test case #3
-        System.out.println("\tTest Case #3");
-        pushLv = 2.0;
-        combatLv = 4.0;
-        diceRoll = 6.0;
-        
-        expResult = -1.0;
-        result = instance.calcPush(pushLv, combatLv, diceRoll);
-       
-        assertEquals(expResult, result, 0.0);
-        
-         //test case #4
-        System.out.println("\tTest Case #4");
-        pushLv = 1.0;
-        combatLv = 1.0;
-        diceRoll = 3.0;
-        
-        expResult = 2.0;
-        result = instance.calcPush(pushLv, combatLv, diceRoll);
-       
-        assertEquals(expResult, result, 0.0);
-        
-         //test case #5
-        System.out.println("\tTest Case #5 ");
-        pushLv = 9.0;
-        combatLv = 10.0;
-        diceRoll = 4.0;
-        
-        expResult = 10.0;
-        result = instance.calcPush(pushLv, combatLv, diceRoll);
-       
-        assertEquals(expResult, result, 0.0);      
+            
     }
     
     /**
