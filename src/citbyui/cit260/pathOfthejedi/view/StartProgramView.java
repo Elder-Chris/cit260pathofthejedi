@@ -56,28 +56,28 @@ public class StartProgramView {
         System.out.println("    Y88P    Y88P  888P    Y888 8888  Y8888888888888P");
 
         
-        System.out.println("\n\n=============================================");
-        System.out.println("   In a galaxy far far away....");
-        System.out.println("\n   Cale’s father Romulus, is a powerful ");
-        System.out.println("   diplomat in the new Republic who desires");
-        System.out.println("   to eliminate the corruption in the");
-        System.out.println("   leadership of the Senate.  However the");
-        System.out.println("   Sith presence in the Senate tagged him as");
-        System.out.println("   a target after discovering that he was a");
-        System.out.println("   Jedi.  Cale and his family lived on New");
-        System.out.println("   Tatooine, a farming planet.  As Cale");
-        System.out.println("   began to grow his father taught him how");
-        System.out.println("   to behave and fight like a Jedi.  He also");
-        System.out.println("   trained him in the ways of the force.");
-        System.out.println("   One fateful day the Sith led by a Sith");
-        System.out.println("   Lord named Syrena Kroan, attacked his");
-        System.out.println("   home and took his parents when Cale was");
-        System.out.println("   away with his Uncle.  After receiving");
-        System.out.println("   training and help from a droid named R4");
-        System.out.println("   his father left him, he sought to get");
-        System.out.println("   revenge on the Sith who did this to his");
-        System.out.println("   family.");
-        System.out.println("=============================================\n\n");
+        System.out.println("\n\n========================================================");
+        System.out.println("     In a galaxy far far away....");
+        System.out.println("\n     Cale’s father Romulus, is a powerful ");
+        System.out.println("     diplomat in the new Republic who desires");
+        System.out.println("     to eliminate the corruption in the");
+        System.out.println("     leadership of the Senate.  However the");
+        System.out.println("     Sith presence in the Senate tagged him as");
+        System.out.println("     a target after discovering that he was a");
+        System.out.println("     Jedi.  Cale and his family lived on New");
+        System.out.println("     Tatooine, a farming planet.  As Cale");
+        System.out.println("     began to grow his father taught him how");
+        System.out.println("     to behave and fight like a Jedi.  He also");
+        System.out.println("     trained him in the ways of the force.");
+        System.out.println("     One fateful day the Sith led by a Sith");
+        System.out.println("     Lord named Syrena Kroan, attacked his");
+        System.out.println("     home and took his parents when Cale was");
+        System.out.println("     away with his Uncle.  After receiving");
+        System.out.println("     training and help from a droid named R4");
+        System.out.println("     his father left him, he sought to get");
+        System.out.println("     revenge on the Sith who did this to his");
+        System.out.println("     family.");
+        System.out.println("========================================================\n\n");
         
     }
 
