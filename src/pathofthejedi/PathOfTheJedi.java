@@ -15,18 +15,43 @@ import byui.cit260.pathOfTheJedi.model.Player;
 import byui.cit260.pathOfTheJedi.model.Ship;
 import byui.cit260.pathOfTheJedi.model.TrainR4;
 import byui.cit260.pathOfTheJedi.model.Workshop;
+import citbyui.cit260.pathOfthejedi.view.StartProgramView;
 
 /**
  *
  * @author Kika
  */
 public class PathOfTheJedi {
+    
+    private static Game currentGame = null;
+    private static Player player = null;    
 
+    public static Game getCurrentGame() {
+        return currentGame;
+    }
+
+    public static void setCurrentGame(Game currentGame) {
+        PathOfTheJedi.currentGame = currentGame;
+    }
+
+    public static Player getPlayer() {
+        return player;
+    }
+
+    public static void setPlayer(Player player) {
+        PathOfTheJedi.player = player;
+    }   
+    
+    
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         
+        StartProgramView startProgramView = new StartProgramView();
+        startProgramView.startProgram();
+        
+        /**
         //Player Class
         Player playerOne = new Player();
         
@@ -121,7 +146,7 @@ public class PathOfTheJedi {
         
         String workshopInfo = workshop.toString();
         System.out.println(workshopInfo);
-        
+        */
     }
     
 }

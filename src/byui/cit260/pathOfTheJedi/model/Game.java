@@ -15,7 +15,7 @@ public class Game implements Serializable {
     
     private double totalTime;
 
-    public Game() {
+    public Game() {        
     }
 
     public double getTotalTime() {
