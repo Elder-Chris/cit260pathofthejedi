@@ -41,6 +41,21 @@ public class StartProgramView {
     }
 
     private void displayBanner() {
+        System.out.println("\n\n       d888888888888888888  d8888b    8888888888b");
+        System.out.println("       Y888888888888888888 d88PY88b   88888888888b");
+        System.out.println("        Y888b    88888    ,88P  Y88.  888R    X88P");
+        System.out.println("         Y888b   88888    d88'  `88b  8888bood88P");
+        System.out.println(" 8888888888888b  88888   ,8888888888. 8888PY88888888888");
+        System.out.println("  8888888888888P  88888   888P    Y888 8888  Y8888888888");
+        System.out.println("    ");
+        System.out.println(" Y88b   d88b   d88P  d8888b    8888888888b  d8888888888");
+        System.out.println(" `888b d8888b d888' d88PY88b   88888888888b Y8888888888");
+        System.out.println("  Y888V888888V888P ,88P  Y88.  888R    X88P  Y888b");
+        System.out.println("  `888888PY888888' d88'  `88b  8888bood88P    Y888b");
+        System.out.println("   Y8888P  Y8888P ,8888888888. 8888PY8SSt&cgmm88888b");
+        System.out.println("    Y88P    Y88P  888P    Y888 8888  Y8888888888888P");
+
+        
         System.out.println("\n\n=============================================");
         System.out.println("   In a galaxy far far away....");
         System.out.println("\n   Cale’s father Romulus, is a powerful ");
@@ -92,10 +107,10 @@ public class StartProgramView {
     }
 
     private void displayWelcomeMessage(Player player) {
-        System.out.println("\n\n=============================================");
+        System.out.println("\n\n°(((=((===°°°(((:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
         System.out.println("\tWelcome to the game " + player.getName());
         System.out.println("\tWe hope you have a lot of fun!");
-        System.out.println("=============================================");
+        System.out.println("°(((=((===°°°(((:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
     }
 
 

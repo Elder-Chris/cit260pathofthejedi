@@ -11,15 +11,15 @@ import java.util.Scanner;
 public class GameMenuView {
     
     private final String MENU = "\n"
-            + "\n-----------------------------"
+            + "\n(II:::::::::<[==============================================="
             + "\n Game Menu"
-            + "\n-----------------------------"
+            + "\n(II:::::::::<[==============================================="
             + "\n E - Explore"
             + "\n F - Find Someone"
             + "\n V - View Inventory"            
             + "\n S - Go to Ship"
             + "\n Q - Exit and Save"
-            + "\n-----------------------------"; 
+            + "\n(II:::::::::<[==============================================="; 
 
     void displayMenu() {
         char selection = ' ';
