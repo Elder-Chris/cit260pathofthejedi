@@ -6,6 +6,8 @@
 package citbyui.cit260.pathOfthejedi.view;
 
 import byui.cit260.pathOfTheJedi.control.GameControl;
+import byui.cit260.pathOfTheJedi.model.Actor;
+import byui.cit260.pathOfTheJedi.model.TrainR4;
 import citbyui.cit260.pathOfthejedi.view.GameMenuView;
 import java.util.Scanner;
 import pathofthejedi.PathOfTheJedi;
@@ -74,16 +76,16 @@ public class MainMenuView {
             case '1': //load a game
                 this.loadGame();
                 break;
-            case '2': //load a game
+            case '2': //New game
                 this.NewGame();
                 break;
-            case '3': //load a game
+            case '3': //How to play menu
                 this.howToPlay();
                 break;
-            case '4': //load a game
+            case '4': //options menu  
                 this.options();
                 break;
-            case '5': //load a game
+            case '5': //Quit the game
                 this.quit();
                 break;
                     
@@ -95,7 +97,9 @@ public class MainMenuView {
         System.out.println("****Load an existing game*******");
     }
 
-    private void NewGame() {
+    private void NewGame() {     
+                
+        //load the menu
         GameControl.createNewGame(PathOfTheJedi.getPlayer());
         
         //Display the game menu

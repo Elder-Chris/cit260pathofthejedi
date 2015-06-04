@@ -17,7 +17,7 @@ public class Actor implements Serializable{
     // class instance variables
     private String name;
     private String description;
-    private String home;
+    private static String home;
     private double type;
     private double forceLevel;
 

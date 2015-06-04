@@ -5,12 +5,9 @@
  */
 package citbyui.cit260.pathOfthejedi.view;
 
+import byui.cit260.pathOfTheJedi.model.Actor;
 import java.util.Scanner;
 
-/**
- *
- * @author Technology Handyman
- */
 public class GameMenuView {
     
     private final String MENU = "\n"
@@ -56,7 +53,7 @@ public class GameMenuView {
                 System.out.println("valid value has not been entered");
                 continue; // and repeat agian
             }
-            break; // outof the (exit) the repetition
+            break; // out of the (exit) the repetition
         }
         
         return playersInput; // return the name
@@ -65,22 +62,19 @@ public class GameMenuView {
     private void doAction(char choice) {
         
         switch (choice){
-            case 'e': //load a game
+            case 'E': case 'e': //Explore planet
                 this.explore();
-                break;
-            case 'E': //load a game
-                this.explore();
-                break;
-            case 'F': //load a game
+                break;            
+            case 'F': case 'f': //Find Someone
                 this.findSomeone();
                 break;
-            case 'V': //load a game
+            case 'V': case 'v': //View Inventory
                 this.viewInventory();
                 break;
-            case 'S': //load a game
+            case 'S': case 's': //Got to ship menu
                 this.ship();
                 break;
-            case 'Q': //load a game
+            case 'Q': case 'q': //Save then goto main menu
                 this.mainMenu();
                 break;
                     
@@ -89,7 +83,9 @@ public class GameMenuView {
     }
 
     private void explore() {
-        System.out.println("explore");
+        Actor actorOne = new Actor(); //need to call getHome        
+        System.out.println("\n\nYou have just explored " + actorOne.getHome());
+        System.out.println("and found ");
     }
 
     private void findSomeone() {
@@ -105,6 +101,8 @@ public class GameMenuView {
     } 
 
     private void mainMenu() {
+        
+        // test script needs to be written for save game then main menu
         MainMenuView mainMenu = new MainMenuView();
         mainMenu.displayMenu();
     }
