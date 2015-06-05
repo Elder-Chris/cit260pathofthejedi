@@ -20,11 +20,11 @@ public class MainMenuView {
     
     private final String MENU = "\n"
             + "\n(II:::::::::<[==============================================="
-            + "\n Main Menu"
+            + "\n                        Main Menu"
             + "\n(II:::::::::<[==============================================="
             + "\n 1 - Load Game"
             + "\n 2 - New Game"
-            + "\n 3 - How to Play the Game"
+            + "\n 3 - Help"
             + "\n 4 - Options"
             + "\n 5 - Quit"
             + "\n(II:::::::::<[===============================================";            
@@ -80,7 +80,7 @@ public class MainMenuView {
                 this.NewGame();
                 break;
             case '3': //How to play menu
-                this.howToPlay();
+                this.help();
                 break;
             case '4': //options menu  
                 this.options();
@@ -108,8 +108,10 @@ public class MainMenuView {
         
     }
 
-    private void howToPlay() {
-        System.out.println("****How to Play game*******");
+    private void help() {
+        //Display the help menu
+        HelpMenuView helpMenu = new HelpMenuView();
+        helpMenu.displayMenu();
     }
 
     private void options() {

@@ -15,11 +15,11 @@ public class HelpMenuView {
     
  private final String MENU = "\n"
             + "\n(II:::::::::<[==============================================="
-            + "\n Help Menu"
+            + "\n                        Help Menu"
             + "\n(II:::::::::<[==============================================="
             + "\n 1 - How to Play"
             + "\n 2 - Credits"
-            + "\n 3 - Quit"
+            + "\n 3 - Main Menu"
             + "\n(II:::::::::<[===============================================";            
                     
 
@@ -54,7 +54,7 @@ public class HelpMenuView {
             
             //if the value is invalid (less than one char in length)
             if (playersInput.length()<1) {
-                System.out.println("valid value has not been entered");
+                System.out.println("a valid value has not been entered");
                 continue; // and repeat agian
             }
             break; // outof the (exit) the repetition
@@ -73,7 +73,7 @@ public class HelpMenuView {
                 this.credits();
                 break;
             case '3': //Quit the game
-                this.quit();
+                this.mainMenu();
                 break;
         }
         
@@ -84,11 +84,15 @@ public class HelpMenuView {
     }
 
     private void credits() {
-        System.out.println("****Credits*******");
+        System.out.println("\n\nThis game was created at ");
+        System.out.println("BYU Idaho in the CIT260 class.");
+        System.out.println("By Chris Elder, David and Erica");
+        System.out.println("May the force be with you. ");
     }
 
-    private void quit() {
-        System.out.println("****Exiting Game*******");
+    private void mainMenu() {
+        MainMenuView mainMenu = new MainMenuView();
+        mainMenu.displayMenu();
     }
 
 }

@@ -12,7 +12,7 @@ public class GameMenuView {
     
     private final String MENU = "\n"
             + "\n(II:::::::::<[==============================================="
-            + "\n Game Menu"
+            + "\n                        Game Menu"
             + "\n(II:::::::::<[==============================================="
             + "\n E - Explore"
             + "\n F - Find Someone"
@@ -50,7 +50,7 @@ public class GameMenuView {
             
             //if the value is invalid (less than one char in length)
             if (playersInput.length()<1) {
-                System.out.println("valid value has not been entered");
+                System.out.println("a valid value has not been entered");
                 continue; // and repeat agian
             }
             break; // out of the (exit) the repetition
