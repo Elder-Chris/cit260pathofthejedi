@@ -23,12 +23,12 @@ public class TrainR4MenuView {
             + "\n 2 - Force Push"
             + "\n 3 - Defensive Actions"
             + "\n 4 - Force Affinity"
-            + "\n Q - Exit Ship"           
+            + "\n Q - Exit Training Room"           
             + "\n(II:::::::::<[==============================================="; 
 
     void displayMenu() {
         char selection = ' ';
-        do {
+        do {            
             System.out.println(MENU); // display the main menu
             
             String input = this.getInput(); // get the user's selection
@@ -91,11 +91,12 @@ public class TrainR4MenuView {
         TrainR4Control instance = new TrainR4Control();
         double diceRoll = instance.diceRoll();
         TrainR4 trainR4combat = new TrainR4(); 
-        System.out.println("\n" + trainR4combat.getCombat());
         double result = instance.calcCombat(trainR4combat.getCombat(), diceRoll);
-        System.out.println("\n" + result);
         if (result < 0 ){
-            System.out.println("\nYou lost try agian");
+            if (trainR4combat.getCombat()== 10){
+            System.out.println("\nYou are at max level");
+            }else{
+            System.out.println("\nYou Lost");}
         }else{
             trainR4combat.setCombat(result);
             System.out.println("\nYou increased your combat level to " + result);
@@ -111,15 +112,72 @@ public class TrainR4MenuView {
     }
 
     private void push() {
-        System.out.println("push");
+        TrainR4Control instance = new TrainR4Control();
+        double diceRoll = instance.diceRoll();
+        TrainR4 trainR4push = new TrainR4(); 
+        double result = instance.calcPush(trainR4push.getCombat(), trainR4push.getPush(), diceRoll);
+        if (result < 0 ){
+            if (trainR4push.getCombat()== 10){
+            System.out.println("\nYou are at max level");
+            }else{
+            System.out.println("\nYou Lost");}
+        }else{
+            trainR4push.setPush(result);
+            System.out.println("\nYou increased your push level to " + result);
+        }
+        double updateForceLevel = trainR4push.getLightSaberScore()
+               + trainR4push.getCombat()
+               + trainR4push.getPush()
+               + trainR4push.getDefence()
+               + trainR4push.getForceAffinity();
+        Actor actorOne = new Actor();
+        actorOne.setForceLevel(updateForceLevel);
     }
 
     private void defence() {
-        System.out.println("defence");
+        TrainR4Control instance = new TrainR4Control();
+        double diceRoll = instance.diceRoll();
+        TrainR4 trainR4push = new TrainR4(); 
+        double result = instance.calcDefence(trainR4push.getDefence(), trainR4push.getCombat(), diceRoll);
+        if (result < 0 ){
+            if (trainR4push.getCombat()== 10){
+            System.out.println("\nYou are at max level");
+            }else{
+            System.out.println("\nYou Lost");}
+        }else{
+            trainR4push.setDefence(result);
+            System.out.println("\nYou increased your push level to " + result);
+        }
+        double updateForceLevel = trainR4push.getLightSaberScore()
+               + trainR4push.getCombat()
+               + trainR4push.getPush()
+               + trainR4push.getDefence()
+               + trainR4push.getForceAffinity();
+        Actor actorOne = new Actor();
+        actorOne.setForceLevel(updateForceLevel);
     }
 
     private void affinity() {
-        System.out.println("affinity");
+        TrainR4Control instance = new TrainR4Control();
+        double diceRoll = instance.diceRoll();
+        TrainR4 trainR4forceAffinity = new TrainR4(); 
+        double result = instance.calcForceAffinity(trainR4forceAffinity.getForceAffinity(), trainR4forceAffinity.getCombat(), diceRoll);
+        if (result < 0 ){
+            if (trainR4forceAffinity.getCombat()== 10){
+            System.out.println("\nYou are at max level");
+            }else{
+            System.out.println("\nYou Lost");}
+        }else{
+            trainR4forceAffinity.setForceAffinity(result);
+            System.out.println("\nYou increased your forceAffinity level to " + result);
+        }
+        double updateForceLevel = trainR4forceAffinity.getLightSaberScore()
+               + trainR4forceAffinity.getCombat()
+               + trainR4forceAffinity.getPush()
+               + trainR4forceAffinity.getDefence()
+               + trainR4forceAffinity.getForceAffinity();
+        Actor actorOne = new Actor();
+        actorOne.setForceLevel(updateForceLevel);
     } 
 
     private void ship() {

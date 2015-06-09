@@ -29,15 +29,13 @@ public class GameControl {
                + trainR4.getDefence()
                + trainR4.getForceAffinity();
                 
-        
         Actor actorOne = new Actor();
-        actorOne.setName(player.getName());
         actorOne.setHome("Kashyyk");
         actorOne.setForceLevel(updateForceLevel);
         
         //intro text
         System.out.println("\n\nYou have just arrived on Kashyyk");
-        System.out.println("Your current force level is " + updateForceLevel);
+        System.out.println("Your current force level is " + actorOne.getForceLevel());
         System.out.println("What you you like to do?");
         System.out.println("\n");
     }

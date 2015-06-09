@@ -77,6 +77,31 @@ public class ShipMenuView {
     }
 
     private void trainR4Menu() {
+                    System.out.println("\n\n             ______             ");
+            System.out.println("          ,-'//__\\`-.          ");
+            System.out.println("        ,'  ____      `.        ");
+            System.out.println("       /   / ,-.-.      |       ");
+            System.out.println("      (/# /__`-'_| || || )      ");
+            System.out.println("      ||# []/()] O || || |      ");
+            System.out.println("    __`------------------'__    ");
+            System.out.println("   |--| |<=={_______}=|| |--|   ");
+            System.out.println("   |  | |-------------|| |  |   ");
+            System.out.println("   |  | |={_______}==>|| |  |   ");
+            System.out.println("   |  | |   |: _ :|   || |  |   ");
+            System.out.println("   > _| |___|:===:|   || |__<   ");
+            System.out.println("   :| | __| |: - :|   || | |:   ");
+            System.out.println("   :| | ==| |: _ :|   || | |:   ");
+            System.out.println("   :| | ==|_|:===:|___||_| |:   ");
+            System.out.println("   :| |___|_|:___:|___||_| |:   ");
+            System.out.println("   :| |||   ||/_||| ||| -| |:   ");
+            System.out.println("   ;I_|||[]_|||_||| ||| -|_I;   ");
+            System.out.println("   |_ |__________________| _|   ");
+            System.out.println("   | `|||___|____|____/_//' |   ");
+            System.out.println("   J : |     |____/     | : L   ");
+            System.out.println("  _|_: |      |__|      | :_|_  ");
+            System.out.println("-/ _-_.'    -/    |-    `.-_- |-");
+            System.out.println("/______|    /______|    /______|");
+            System.out.println("\n");
         TrainR4MenuView trainR4 = new TrainR4MenuView();
         trainR4.displayMenu();
     }

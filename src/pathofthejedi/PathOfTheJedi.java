@@ -5,16 +5,8 @@
  */
 package pathofthejedi;
 
-import byui.cit260.pathOfTheJedi.model.Actor;
 import byui.cit260.pathOfTheJedi.model.Game;
-import byui.cit260.pathOfTheJedi.model.InventoryList;
-import byui.cit260.pathOfTheJedi.model.Items;
-import byui.cit260.pathOfTheJedi.model.Location;
-import byui.cit260.pathOfTheJedi.model.Map;
 import byui.cit260.pathOfTheJedi.model.Player;
-import byui.cit260.pathOfTheJedi.model.Ship;
-import byui.cit260.pathOfTheJedi.model.TrainR4;
-import byui.cit260.pathOfTheJedi.model.Workshop;
 import citbyui.cit260.pathOfthejedi.view.StartProgramView;
 
 /**

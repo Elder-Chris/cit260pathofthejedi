@@ -16,8 +16,9 @@ public class GameMenuView {
             + "\n(II:::::::::<[==============================================="
             + "\n E - Explore"
             + "\n F - Find Someone"
+            + "\n S - Status"
             + "\n V - View Inventory"            
-            + "\n S - Go to Ship"
+            + "\n G - Go to Ship"
             + "\n Q - Exit and Save"
             + "\n(II:::::::::<[==============================================="; 
 
@@ -68,10 +69,13 @@ public class GameMenuView {
             case 'F': case 'f': //Find Someone
                 this.findSomeone();
                 break;
+            case 'S': case 's': //Get staus
+                this.viewStatus();
+                break;
             case 'V': case 'v': //View Inventory
                 this.viewInventory();
                 break;
-            case 'S': case 's': //Got to ship menu
+            case 'G': case 'g': //Go to ship menu
                 this.ship();
                 break;
             case 'Q': case 'q': //Save then goto main menu
@@ -90,6 +94,13 @@ public class GameMenuView {
 
     private void findSomeone() {
         System.out.println("find someone");
+    }
+    
+    private void viewStatus() {
+        Actor actorOne = new Actor();
+        System.out.println("\n\nYou currently on Kashyyk");
+        System.out.println("Your current force level is " + actorOne.getForceLevel());        
+        System.out.println("\n");
     }
 
     private void viewInventory() {

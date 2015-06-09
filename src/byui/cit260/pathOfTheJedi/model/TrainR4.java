@@ -15,12 +15,12 @@ import java.util.Objects;
 public class TrainR4 implements Serializable{
     
     //class instance variables
-    private String lightSaberUse;
-    private double lightSaberScore;
-    private double combat;
-    private double push;
-    private double defence;
-    private double forceAffinity;
+    private static String lightSaberUse;
+    private static double lightSaberScore;
+    private static double combat;
+    private static double push;
+    private static double defence;
+    private static double forceAffinity;
 
     public TrainR4() {
     }

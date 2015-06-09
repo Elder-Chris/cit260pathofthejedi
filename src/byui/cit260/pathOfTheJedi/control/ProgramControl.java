@@ -5,6 +5,7 @@
  */
 package byui.cit260.pathOfTheJedi.control;
 
+import byui.cit260.pathOfTheJedi.model.Actor;
 import byui.cit260.pathOfTheJedi.model.Player;
 import pathofthejedi.PathOfTheJedi;
 
@@ -22,6 +23,9 @@ public class ProgramControl {
         
         Player player = new Player();
         player.setName(name);
+        
+        Actor actorOne = new Actor();
+        actorOne.setName(name);
         
         PathOfTheJedi.setPlayer(player); // save the palyer
         
