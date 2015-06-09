@@ -5,20 +5,20 @@
  */
 package citbyui.cit260.pathOfthejedi.view;
 
-import byui.cit260.pathOfTheJedi.model.Actor;
 import java.util.Scanner;
 
-public class GameMenuView {
-    
+/**
+ *
+ * @author Technology Handyman
+ */
+public class ShipMenuView {
     private final String MENU = "\n"
             + "\n(II:::::::::<[==============================================="
-            + "\n                        Game Menu"
+            + "\n                        Ship Menu"
             + "\n(II:::::::::<[==============================================="
-            + "\n E - Explore"
-            + "\n F - Find Someone"
-            + "\n V - View Inventory"            
-            + "\n S - Go to Ship"
-            + "\n Q - Exit and Save"
+            + "\n T - Train With R4"            
+            + "\n W - Workshop"
+            + "\n E - Exit Ship"
             + "\n(II:::::::::<[==============================================="; 
 
     void displayMenu() {
@@ -62,51 +62,31 @@ public class GameMenuView {
     private void doAction(char choice) {
         
         switch (choice){
-            case 'E': case 'e': //Explore planet
-                this.explore();
+            case 'T': case 't': //Goto Train R4 Menu
+                this.trainR4Menu();
                 break;            
-            case 'F': case 'f': //Find Someone
-                this.findSomeone();
+            case 'W': case 'w': //Woekshop Menu
+                this.workshop();
                 break;
-            case 'V': case 'v': //View Inventory
-                this.viewInventory();
-                break;
-            case 'S': case 's': //Got to ship menu
-                this.ship();
-                break;
-            case 'Q': case 'q': //Save then goto main menu
-                this.mainMenu();
-                break;
+            case 'E': case 'e': //Exit ship goto current Planet
+                this.exitShip();
+                break;         
                     
         }
         
     }
 
-    private void explore() {
-        Actor actorOne = new Actor(); //need to call getHome        
-        System.out.println("\n\nYou have just explored " + actorOne.getHome());
-        System.out.println("and found ");
+    private void trainR4Menu() {
+        TrainR4MenuView trainR4 = new TrainR4MenuView();
+        trainR4.displayMenu();
     }
 
-    private void findSomeone() {
-        System.out.println("find someone");
+    private void workshop() {
+        System.out.println("goto workshop");
     }
 
-    private void viewInventory() {
-        System.out.println("view inventory");
+    private void exitShip() {
+        GameMenuView gameMenu = new GameMenuView();
+        gameMenu.displayMenu();
     }
-
-    private void ship() {
-        ShipMenuView shipMenu = new ShipMenuView();
-        shipMenu.displayMenu();
-    } 
-
-    private void mainMenu() {
-        
-        // test script needs to be written for save game then main menu
-        MainMenuView mainMenu = new MainMenuView();
-        mainMenu.displayMenu();
-    }
-
-    
 }

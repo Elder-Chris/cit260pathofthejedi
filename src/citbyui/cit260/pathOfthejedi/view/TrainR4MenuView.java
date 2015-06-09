@@ -5,20 +5,25 @@
  */
 package citbyui.cit260.pathOfthejedi.view;
 
+import byui.cit260.pathOfTheJedi.control.TrainR4Control;
 import byui.cit260.pathOfTheJedi.model.Actor;
+import byui.cit260.pathOfTheJedi.model.TrainR4;
 import java.util.Scanner;
 
-public class GameMenuView {
-    
+/**
+ *
+ * @author Technology Handyman
+ */
+public class TrainR4MenuView {
     private final String MENU = "\n"
             + "\n(II:::::::::<[==============================================="
-            + "\n                        Game Menu"
+            + "\n                        Train With R4 Menu"
             + "\n(II:::::::::<[==============================================="
-            + "\n E - Explore"
-            + "\n F - Find Someone"
-            + "\n V - View Inventory"            
-            + "\n S - Go to Ship"
-            + "\n Q - Exit and Save"
+            + "\n 1 - Phisical Combat"            
+            + "\n 2 - Force Push"
+            + "\n 3 - Defensive Actions"
+            + "\n 4 - Force Affinity"
+            + "\n Q - Exit Ship"           
             + "\n(II:::::::::<[==============================================="; 
 
     void displayMenu() {
@@ -62,51 +67,65 @@ public class GameMenuView {
     private void doAction(char choice) {
         
         switch (choice){
-            case 'E': case 'e': //Explore planet
-                this.explore();
+            case '1':  //Phisical combat train
+                this.combat();
                 break;            
-            case 'F': case 'f': //Find Someone
-                this.findSomeone();
+            case '2':  //Jedi Force push Train
+                this.push();
                 break;
-            case 'V': case 'v': //View Inventory
-                this.viewInventory();
+            case '3':  //Defence train
+                this.defence();
                 break;
-            case 'S': case 's': //Got to ship menu
+            case '4':  //Jedi Force affinity train
+                this.affinity();
+                break;
+            case 'Q': case 'q':  //goto ship menu
                 this.ship();
-                break;
-            case 'Q': case 'q': //Save then goto main menu
-                this.mainMenu();
                 break;
                     
         }
         
     }
 
-    private void explore() {
-        Actor actorOne = new Actor(); //need to call getHome        
-        System.out.println("\n\nYou have just explored " + actorOne.getHome());
-        System.out.println("and found ");
+    private void combat() {
+        TrainR4Control instance = new TrainR4Control();
+        double diceRoll = instance.diceRoll();
+        TrainR4 trainR4combat = new TrainR4(); 
+        System.out.println("\n" + trainR4combat.getCombat());
+        double result = instance.calcCombat(trainR4combat.getCombat(), diceRoll);
+        System.out.println("\n" + result);
+        if (result < 0 ){
+            System.out.println("\nYou lost try agian");
+        }else{
+            trainR4combat.setCombat(result);
+            System.out.println("\nYou increased your combat level to " + result);
+        }
+        double updateForceLevel = trainR4combat.getLightSaberScore()
+               + trainR4combat.getCombat()
+               + trainR4combat.getPush()
+               + trainR4combat.getDefence()
+               + trainR4combat.getForceAffinity();
+        Actor actorOne = new Actor();
+        actorOne.setForceLevel(updateForceLevel);
+        
     }
 
-    private void findSomeone() {
-        System.out.println("find someone");
+    private void push() {
+        System.out.println("push");
     }
 
-    private void viewInventory() {
-        System.out.println("view inventory");
+    private void defence() {
+        System.out.println("defence");
     }
 
-    private void ship() {
-        ShipMenuView shipMenu = new ShipMenuView();
-        shipMenu.displayMenu();
+    private void affinity() {
+        System.out.println("affinity");
     } 
 
-    private void mainMenu() {
+    private void ship() {
         
         // test script needs to be written for save game then main menu
-        MainMenuView mainMenu = new MainMenuView();
-        mainMenu.displayMenu();
+        ShipMenuView shipMenu = new ShipMenuView();
+        shipMenu.displayMenu();
     }
-
-    
 }
