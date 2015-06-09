@@ -5,6 +5,7 @@
  */
 package citbyui.cit260.pathOfthejedi.view;
 
+import byui.cit260.pathOfTheJedi.model.Actor;
 import java.util.Scanner;
 
 /**
@@ -18,6 +19,7 @@ public class ShipMenuView {
             + "\n(II:::::::::<[==============================================="
             + "\n T - Train With R4"            
             + "\n W - Workshop"
+            + "\n N - Next Planet"
             + "\n E - Exit Ship"
             + "\n(II:::::::::<[==============================================="; 
 
@@ -68,6 +70,9 @@ public class ShipMenuView {
             case 'W': case 'w': //Woekshop Menu
                 this.workshop();
                 break;
+            case 'N': case 'n': //Woekshop Menu
+                this.nextPlanet();
+                break;
             case 'E': case 'e': //Exit ship goto current Planet
                 this.exitShip();
                 break;         
@@ -108,6 +113,30 @@ public class ShipMenuView {
 
     private void workshop() {
         System.out.println("goto workshop");
+    }
+    
+    private void nextPlanet() {
+        System.out.println("travel");
+        Actor actorOne = new Actor();
+        System.out.println("\n\nYou currently on " + actorOne.getHome() );
+        
+        switch (actorOne.getHome()){
+            case "Kashyyk":  
+                actorOne.setHome("Mandalore");
+                break;            
+            case "Mandalore":  
+                actorOne.setHome("New Tatooine");
+                break;
+            case "New Tatooine":  
+                actorOne.setHome("Rantine Space Station");
+                break;
+            case "Rantine Space Station":  
+                actorOne.setHome("New Super Star Destroyer");
+                break;
+            case "New Super Star Destroyer":  
+                break;
+        }
+        System.out.println("You have traveled to " + actorOne.getHome());
     }
 
     private void exitShip() {

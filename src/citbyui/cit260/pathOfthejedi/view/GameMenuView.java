@@ -98,7 +98,7 @@ public class GameMenuView {
     
     private void viewStatus() {
         Actor actorOne = new Actor();
-        System.out.println("\n\nYou currently on Kashyyk");
+        System.out.println("\n\nYou currently on " + actorOne.getHome() );
         System.out.println("Your current force level is " + actorOne.getForceLevel());        
         System.out.println("\n");
     }
