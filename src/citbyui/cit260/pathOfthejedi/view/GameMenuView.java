@@ -17,7 +17,7 @@ public class GameMenuView {
             + "\n E - Explore"
             + "\n F - Find Someone"
             + "\n S - Status"
-            + "\n V - View Inventory"            
+            + "\n V - Inventory"            
             + "\n G - Go to Ship"
             + "\n Q - Exit and Save"
             + "\n(II:::::::::<[==============================================="; 

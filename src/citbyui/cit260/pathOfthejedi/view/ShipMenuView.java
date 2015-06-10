@@ -112,7 +112,8 @@ public class ShipMenuView {
     }
 
     private void workshop() {
-        System.out.println("goto workshop");
+        WorkShopView myWorkShop = new WorkShopView();
+        myWorkShop.displayMenu();
     }
     
     private void nextPlanet() {
