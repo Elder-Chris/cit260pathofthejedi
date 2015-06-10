@@ -120,7 +120,10 @@ public class ShipMenuView {
         Actor actorOne = new Actor();
         System.out.println("\n\nYou currently on " + actorOne.getHome() );
         
-        switch (actorOne.getHome()){
+        if (actorOne.getHome() == "New Super Star Destroyer"){
+            System.out.println("\n\nYou are at you final destination");
+        }else{
+              switch (actorOne.getHome()){
             case "Kashyyk":  
                 actorOne.setHome("Mandalore");
                 break;            
@@ -137,6 +140,7 @@ public class ShipMenuView {
                 break;
         }
         System.out.println("You have traveled to " + actorOne.getHome());
+        }
     }
 
     private void exitShip() {
