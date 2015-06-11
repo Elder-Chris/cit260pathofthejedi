@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package citbyui.cit260.pathOfthejedi.view;
+package byui.cit260.pathOfTheJedi.view;
 
 import byui.cit260.pathOfTheJedi.control.GameControl;
 import byui.cit260.pathOfTheJedi.model.Actor;
 import byui.cit260.pathOfTheJedi.model.TrainR4;
-import citbyui.cit260.pathOfthejedi.view.GameMenuView;
+import byui.cit260.pathOfTheJedi.view.GameMenuView;
 import java.util.Scanner;
 import pathofthejedi.PathOfTheJedi;
 

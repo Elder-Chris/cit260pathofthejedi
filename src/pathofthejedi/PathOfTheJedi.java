@@ -7,7 +7,7 @@ package pathofthejedi;
 
 import byui.cit260.pathOfTheJedi.model.Game;
 import byui.cit260.pathOfTheJedi.model.Player;
-import citbyui.cit260.pathOfthejedi.view.StartProgramView;
+import byui.cit260.pathOfTheJedi.view.StartProgramView;
 
 /**
  *
