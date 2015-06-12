@@ -14,8 +14,8 @@ import java.util.Objects;
 public class InventoryList implements Serializable{
     
     //class instance variables
-    private String type;
-    private double quantity;
+    private static String type;
+    private static double quantity;
     private double amount;
 
     public InventoryList() {

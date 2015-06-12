@@ -7,6 +7,7 @@ package byui.cit260.pathOfTheJedi.view;
 
 import byui.cit260.pathOfTheJedi.control.TrainR4Control;
 import byui.cit260.pathOfTheJedi.model.Actor;
+import byui.cit260.pathOfTheJedi.model.InventoryList;
 import byui.cit260.pathOfTheJedi.model.TrainR4;
 import java.util.Scanner;
 
@@ -74,17 +75,16 @@ public class TrainR4MenuView {
                 this.push();
                 break;
             case '3':  //Defence train
-                this.defence();
+                this.defenceQuestion();
                 break;
             case '4':  //Jedi Force affinity train
-                this.affinity();
+                this.affinityQuestion();
                 break;
             case 'Q': case 'q':  //goto ship menu
                 this.ship();
                 break;
                     
-        }
-        
+        }        
     }
 
     private void combat() {
@@ -107,8 +107,7 @@ public class TrainR4MenuView {
                + trainR4combat.getDefence()
                + trainR4combat.getForceAffinity();
         Actor actorOne = new Actor();
-        actorOne.setForceLevel(updateForceLevel);
-        
+        actorOne.setForceLevel(updateForceLevel);        
     }
 
     private void push() {
@@ -134,50 +133,102 @@ public class TrainR4MenuView {
         actorOne.setForceLevel(updateForceLevel);
     }
 
-    private void defence() {
-        TrainR4Control instance = new TrainR4Control();
-        double diceRoll = instance.diceRoll();
-        TrainR4 trainR4push = new TrainR4(); 
-        double result = instance.calcDefence(trainR4push.getDefence(), trainR4push.getCombat(), diceRoll);
-        if (result < 0 ){
-            if (trainR4push.getCombat()== 10){
-            System.out.println("\nYou are at max level");
-            }else{
-            System.out.println("\nYou Lost");}
-        }else{
-            trainR4push.setDefence(result);
-            System.out.println("\nYou increased your push level to " + result);
+    private void defenceQuestion() {
+        InventoryList items1 = new InventoryList();
+        
+        char selection = ' ';
+        do {            
+            System.out.println("\n\nTraning costs 1 Force Hologram you currently have " + items1.getQuantity() 
+                    + ". \nAre you sure you want to continue? \nEnter Y or N"); // display the main menu
+            
+            String input = this.getInput(); // get the user's selection
+            selection = input.charAt(0); // get first char of string
+            
+            this.defence(selection);        
+            break; // do action based on selection
+        } while (selection != 'Q'); // an selection is not "Exit"
+    }
+        
+    private void defence(char choice) {
+        InventoryList items1 = new InventoryList();
+        
+        if (choice == 'Y' || choice == 'y'){                         
+                if (items1.getQuantity()>0){                
+                    TrainR4Control instance = new TrainR4Control();
+                    double diceRoll = instance.diceRoll();
+                    TrainR4 trainR4defence = new TrainR4(); 
+                    double result = instance.calcDefence(trainR4defence.getDefence(), trainR4defence.getCombat(), diceRoll);
+                    if (result < 0 ){
+                        if (trainR4defence.getCombat()== 10){
+
+                        }else{
+                        System.out.println("\nYou Lost");}
+                    }else{
+                        trainR4defence.setDefence(result);
+                        System.out.println("\nYou increased your push level to " + result);
+                    }
+                    double updateForceLevel = trainR4defence.getLightSaberScore()
+                           + trainR4defence.getCombat()
+                           + trainR4defence.getPush()
+                           + trainR4defence.getDefence()
+                           + trainR4defence.getForceAffinity();
+                    Actor actorOne = new Actor();
+                    actorOne.setForceLevel(updateForceLevel);
+                    items1.setQuantity(items1.getQuantity() - 1);
+                    System.out.println("You have " + items1.getQuantity() + " Force Holograms left");
+                }else{
+                    System.out.println("You are out of Force Holograms");
+                }
         }
-        double updateForceLevel = trainR4push.getLightSaberScore()
-               + trainR4push.getCombat()
-               + trainR4push.getPush()
-               + trainR4push.getDefence()
-               + trainR4push.getForceAffinity();
-        Actor actorOne = new Actor();
-        actorOne.setForceLevel(updateForceLevel);
+    }
+    
+    private void affinityQuestion() {
+        InventoryList items1 = new InventoryList();
+        
+        char selection = ' ';
+        do {            
+            System.out.println("\n\nTraning costs 1 Force Hologram you currently have " + items1.getQuantity() 
+                    + ". \nAre you sure you want to continue? \nEnter Y or N"); // display the main menu
+            
+            String input = this.getInput(); // get the user's selection
+            selection = input.charAt(0); // get first char of string
+            
+            this.affinity(selection);        
+            break; // do action based on selection
+        } while (selection != 'Q'); // an selection is not "Exit"
     }
 
-    private void affinity() {
-        TrainR4Control instance = new TrainR4Control();
-        double diceRoll = instance.diceRoll();
-        TrainR4 trainR4forceAffinity = new TrainR4(); 
-        double result = instance.calcForceAffinity(trainR4forceAffinity.getForceAffinity(), trainR4forceAffinity.getCombat(), diceRoll);
-        if (result < 0 ){
-            if (trainR4forceAffinity.getCombat()== 10){
-            System.out.println("\nYou are at max level");
+    private void affinity(char choice) {
+        InventoryList items1 = new InventoryList();
+        
+        if (choice == 'Y' || choice == 'y'){
+                if (items1.getQuantity()>0){ 
+                TrainR4Control instance = new TrainR4Control();
+                double diceRoll = instance.diceRoll();
+                TrainR4 trainR4forceAffinity = new TrainR4(); 
+                double result = instance.calcForceAffinity(trainR4forceAffinity.getForceAffinity(), trainR4forceAffinity.getCombat(), diceRoll);
+                if (result < 0 ){
+                    if (trainR4forceAffinity.getCombat()== 10){
+                    System.out.println("\nYou are at max level");
+                    }else{
+                    System.out.println("\nYou Lost");}
+                }else{
+                    trainR4forceAffinity.setForceAffinity(result);
+                    System.out.println("\nYou increased your forceAffinity level to " + result);
+                }
+                double updateForceLevel = trainR4forceAffinity.getLightSaberScore()
+                       + trainR4forceAffinity.getCombat()
+                       + trainR4forceAffinity.getPush()
+                       + trainR4forceAffinity.getDefence()
+                       + trainR4forceAffinity.getForceAffinity();
+                Actor actorOne = new Actor();
+                actorOne.setForceLevel(updateForceLevel);
+                items1.setQuantity(items1.getQuantity() - 1);
+                System.out.println("You have " + items1.getQuantity() + " Force Holograms left");
             }else{
-            System.out.println("\nYou Lost");}
-        }else{
-            trainR4forceAffinity.setForceAffinity(result);
-            System.out.println("\nYou increased your forceAffinity level to " + result);
+                System.out.println("You are out of Force Holograms");
+            }
         }
-        double updateForceLevel = trainR4forceAffinity.getLightSaberScore()
-               + trainR4forceAffinity.getCombat()
-               + trainR4forceAffinity.getPush()
-               + trainR4forceAffinity.getDefence()
-               + trainR4forceAffinity.getForceAffinity();
-        Actor actorOne = new Actor();
-        actorOne.setForceLevel(updateForceLevel);
     } 
 
     private void ship() {

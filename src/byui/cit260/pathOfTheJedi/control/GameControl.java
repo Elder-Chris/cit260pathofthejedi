@@ -6,6 +6,7 @@
 package byui.cit260.pathOfTheJedi.control;
 
 import byui.cit260.pathOfTheJedi.model.Actor;
+import byui.cit260.pathOfTheJedi.model.InventoryList;
 import byui.cit260.pathOfTheJedi.model.Player;
 import byui.cit260.pathOfTheJedi.model.TrainR4;
 
@@ -22,6 +23,10 @@ public class GameControl {
         trainR4.setPush(1.00);
         trainR4.setDefence(1.00);
         trainR4.setForceAffinity(1.00);
+        
+        InventoryList items1 = new InventoryList();
+        items1.setType("Force Holograms");
+        items1.setQuantity(10);
         
        double updateForceLevel = trainR4.getLightSaberScore()
                + trainR4.getCombat()

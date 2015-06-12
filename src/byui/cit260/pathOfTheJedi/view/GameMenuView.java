@@ -6,6 +6,7 @@
 package byui.cit260.pathOfTheJedi.view;
 
 import byui.cit260.pathOfTheJedi.model.Actor;
+import byui.cit260.pathOfTheJedi.model.InventoryList;
 import java.util.Scanner;
 
 public class GameMenuView {
@@ -98,8 +99,10 @@ public class GameMenuView {
     
     private void viewStatus() {
         Actor actorOne = new Actor();
+        InventoryList items1 = new InventoryList();
         System.out.println("\n\nYou currently on " + actorOne.getHome() );
-        System.out.println("Your current force level is " + actorOne.getForceLevel());        
+        System.out.println("Your current force level is " + actorOne.getForceLevel());
+        System.out.println("You have " + items1.getQuantity() + " Force Holograms");
         System.out.println("\n");
     }
 
