@@ -35,7 +35,7 @@ public class TrainR4MenuView {
             selection = input.charAt(0); // get first char of string
             
             this.doAction(selection); // do action based on selection
-        } while (selection != '5'); // an selection is not "Exit"
+        } while (selection != 'Q'); // an selection is not "Exit"
     }
     
     private String getInput() {

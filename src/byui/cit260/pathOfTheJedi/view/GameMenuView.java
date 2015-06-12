@@ -31,7 +31,7 @@ public class GameMenuView {
             selection = input.charAt(0); // get first char of string
             
             this.doAction(selection); // do action based on selection
-        } while (selection != '5'); // an selection is not "Exit"
+        } while (selection != 'Q'); // an selection is not "Exit"
     }
     
     private String getInput() {
@@ -104,7 +104,8 @@ public class GameMenuView {
     }
 
     private void viewInventory() {
-        System.out.println("view inventory");
+        InventoryMenuView inventoryMenu = new InventoryMenuView();
+        inventoryMenu.displayMenu();
     }
 
     private void ship() {
