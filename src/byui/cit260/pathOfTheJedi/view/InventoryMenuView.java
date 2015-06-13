@@ -6,6 +6,7 @@
 package byui.cit260.pathOfTheJedi.view;
 
 import java.util.Scanner;
+import byui.cit260.pathOfTheJedi.control.InventoryListControl;
 
 /**
  *
@@ -18,6 +19,7 @@ public class InventoryMenuView {
             + "\n(II:::::::::<[==============================================="
             + "\n I - Veiw Inventory"
             + "\n R - Remove From Inventory"
+            + "\n C - Calculate Crystal Power"
             + "\n Q - Quit"
             + "\n(II:::::::::<[===============================================";            
                      
@@ -71,6 +73,9 @@ public class InventoryMenuView {
             case 'R': case 'r': //Remove From Inventory
                 this.removeFromInventory();
                 break;
+            case 'C': case 'c': //Exit
+                this.calculateCrystalPower();
+                break;       
             case 'Q': case 'q': //Exit
                 this.quit();
                 break;         
@@ -80,6 +85,17 @@ public class InventoryMenuView {
     public void viewInventory(){
         //TODO; create view crystals method
         System.out.println("View Inventory");
+    }
+    public void calculateCrystalPower(){
+        //TODO; create view crystal method
+        InventoryListControl control = new InventoryListControl();
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the diameter.");
+        double diameter = scanner.nextDouble();
+        System.out.println("Enter the crystal level.");
+        double crystalLv = scanner.nextDouble();
+        double totalPower = control.calcCrystalPower(diameter, crystalLv);
+        System.out.println(totalPower);
     }
     public void removeFromInventory(){
         //TODO; create view crystal method
