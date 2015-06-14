@@ -90,12 +90,12 @@ public class InventoryMenuView {
         //TODO; create view crystal method
         InventoryListControl control = new InventoryListControl();
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter the diameter.");
+        System.out.println("Enter the diameter.(0-10)");
         double diameter = scanner.nextDouble();
-        System.out.println("Enter the crystal level.");
+        System.out.println("Enter the crystal level.(0-3)");
         double crystalLv = scanner.nextDouble();
         double totalPower = control.calcCrystalPower(diameter, crystalLv);
-        System.out.println(totalPower);
+        System.out.println("The power level of this crystal is " + totalPower);
     }
     public void removeFromInventory(){
         //TODO; create view crystal method
