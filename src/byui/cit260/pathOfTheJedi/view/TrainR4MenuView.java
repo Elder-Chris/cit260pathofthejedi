@@ -9,6 +9,7 @@ import byui.cit260.pathOfTheJedi.control.TrainR4Control;
 import byui.cit260.pathOfTheJedi.model.Actor;
 import byui.cit260.pathOfTheJedi.model.InventoryList;
 import byui.cit260.pathOfTheJedi.model.TrainR4;
+import java.util.Scanner;
 
 /**
  *
@@ -83,7 +84,7 @@ public class TrainR4MenuView extends View {
         TrainR4 trainR4push = new TrainR4(); 
         double result = instance.calcPush(trainR4push.getCombat(), trainR4push.getPush(), diceRoll);
         if (result < 0 ){
-            if (trainR4push.getCombat()== 10){
+            if (trainR4push.getPush()== 10){
             System.out.println("\nYou are at max level");
             }else{
             System.out.println("\nYou Lost");}
@@ -101,11 +102,11 @@ public class TrainR4MenuView extends View {
     }
 
     private void defenceQuestion() {
-        InventoryList items1 = new InventoryList();
-        
-        char selection = ' ';
+        InventoryList items1 = new InventoryList();        
+        char selection;
         do {            
-            System.out.println("\n\nTraning costs 1 Force Hologram you currently have " + items1.getQuantity() 
+            System.out.println("\n\nTraning costs 1 Force Hologram you currently have " 
+                    + items1.getQuantity() 
                     + ". \nAre you sure you want to continue? \nEnter Y or N"); // display the main menu
             
             String input = this.getInput(); // get the user's selection
@@ -117,8 +118,7 @@ public class TrainR4MenuView extends View {
     }
         
     private void defence(char choice) {
-        InventoryList items1 = new InventoryList();
-        
+        InventoryList items1 = new InventoryList();        
         if (choice == 'Y' || choice == 'y'){                         
                 if (items1.getQuantity()>0){                
                     TrainR4Control instance = new TrainR4Control();
@@ -126,7 +126,7 @@ public class TrainR4MenuView extends View {
                     TrainR4 trainR4defence = new TrainR4(); 
                     double result = instance.calcDefence(trainR4defence.getDefence(), trainR4defence.getCombat(), diceRoll);
                     if (result < 0 ){
-                        if (trainR4defence.getCombat()== 10){
+                        if (trainR4defence.getDefence()== 10){
 
                         }else{
                         System.out.println("\nYou Lost");}
@@ -150,8 +150,7 @@ public class TrainR4MenuView extends View {
     }
     
     private void affinityQuestion() {
-        InventoryList items1 = new InventoryList();
-        
+        InventoryList items1 = new InventoryList();        
         char selection = ' ';
         do {            
             System.out.println("\n\nTraning costs 1 Force Hologram you currently have " + items1.getQuantity() 
@@ -166,13 +165,13 @@ public class TrainR4MenuView extends View {
     }
 
     private void affinity(char choice) {
-        InventoryList items1 = new InventoryList();
-        
+        InventoryList items1 = new InventoryList();        
         if (choice == 'Y' || choice == 'y'){
                 if (items1.getQuantity()>0){ 
                 TrainR4Control instance = new TrainR4Control();
+                double diceRoll = instance.diceRoll();
                 TrainR4 trainR4forceAffinity = new TrainR4(); 
-                double result = instance.calcForceAffinity(trainR4forceAffinity.getForceAffinity(), trainR4forceAffinity.getCombat());
+                double result = instance.calcForceAffinity(trainR4forceAffinity.getForceAffinity(), trainR4forceAffinity.getCombat(), diceRoll);
                 if (result < 0 ){
                     if (trainR4forceAffinity.getCombat()== 10){
                     System.out.println("\nYou are at max level");
@@ -197,8 +196,7 @@ public class TrainR4MenuView extends View {
         }
     } 
 
-    private void ship() {
-        
+    private void ship() {        
         // test script needs to be written for save game then main menu
         ShipMenuView shipMenu = new ShipMenuView();
         shipMenu.display();
