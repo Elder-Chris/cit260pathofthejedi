@@ -55,8 +55,8 @@ public class TrainR4Control {
     }
     
     //forceAffinity
-    public double calcForceAffinity(double forceAffinityLv, double combatLv, double diceRoll) {
-        double forceAffinityVar = ((forceAffinityLv / 2) * diceRoll) - combatLv;
+    public double calcForceAffinity(double forceAffinityLv, double combatLv) {
+        double forceAffinityVar = ((forceAffinityLv / 2) * this.diceRoll()) - combatLv;
         if (forceAffinityLv >= 10) {
             return -1;
         }

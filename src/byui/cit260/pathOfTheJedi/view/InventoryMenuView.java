@@ -97,7 +97,7 @@ public class InventoryMenuView {
         double totalPower = control.calcCrystalPower(diameter, crystalLv);
         System.out.println("The power level of this crystal is " + totalPower);
     }
-    public void removeFromInventory(){
+    public void removeFromInveRemoventory(){
         //TODO; create view crystal method
         System.out.println("Remove From Inventory");
     }

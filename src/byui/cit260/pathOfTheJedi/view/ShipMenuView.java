@@ -6,62 +6,29 @@
 package byui.cit260.pathOfTheJedi.view;
 
 import byui.cit260.pathOfTheJedi.model.Actor;
-import java.util.Scanner;
 
 /**
  *
  * @author Technology Handyman
  */
-public class ShipMenuView {
-    private final String MENU = "\n"
-            + "\n(II:::::::::<[==============================================="
-            + "\n                        Ship Menu"
-            + "\n(II:::::::::<[==============================================="
-            + "\n T - Train With R4"            
-            + "\n W - Workshop"
-            + "\n N - Next Planet"
-            + "\n E - Exit Ship"
-            + "\n(II:::::::::<[==============================================="; 
-
-    void displayMenu() {
-        char selection = ' ';
-        do {
-            System.out.println(MENU); // display the main menu
-            
-            String input = this.getInput(); // get the user's selection
-            selection = input.charAt(0); // get first char of string
-            
-            this.doAction(selection); // do action based on selection
-        } while (selection != 'E'); // an selection is not "Exit"
-    }
+public class ShipMenuView extends View {
     
-    private String getInput() {
-        boolean valid = false; // idicates if the name has been retrieved
-        String playersInput = null;
-        Scanner keyboard = new Scanner(System.in); //keyboard input stream
-        
-        while(!valid){ //while a valid name has not been retrieved
-            
-            // prompt for the players name
-            System.out.println("Make Selection:");
-            
-            // get the name from the keyboard and trim off the blanks
-            playersInput = keyboard.nextLine();
-            playersInput = playersInput.trim();            
-        
-            
-            //if the value is invalid (less than one char in length)
-            if (playersInput.length()<1) {
-                System.out.println("a valid value has not been entered");
-                continue; // and repeat agian
+            public ShipMenuView() {                
+                super("\n"
+                + "\n(II:::::::::<[==============================================="
+                + "\n                        Ship Menu"
+                + "\n(II:::::::::<[==============================================="
+                + "\n T - Train With R4"            
+                + "\n W - Workshop"
+                + "\n N - Next Planet"
+                + "\n E - Exit Ship"
+                + "\n(II:::::::::<[===============================================");
             }
-            break; // out of the (exit) the repetition
-        }
-        
-        return playersInput; // return the name
-    }
-    
-    private void doAction(char choice) {
+   
+    public boolean doAction(Object obj) {
+        String value = (String) obj;
+        value = value.toUpperCase(); // convert to all upper case
+        char choice = value.charAt(0); // get first character entered
         
         switch (choice){
             case 'T': case 't': //Goto Train R4 Menu
@@ -75,14 +42,13 @@ public class ShipMenuView {
                 break;
             case 'E': case 'e': //Exit ship goto current Planet
                 this.exitShip();
-                break;         
-                    
+                break;       
         }
-        
+        return false;
     }
 
     private void trainR4Menu() {
-                    System.out.println("\n\n             ______             ");
+            System.out.println("\n\n             ______             ");
             System.out.println("          ,-'//__\\`-.          ");
             System.out.println("        ,'  ____      `.        ");
             System.out.println("       /   / ,-.-.      |       ");
@@ -108,7 +74,7 @@ public class ShipMenuView {
             System.out.println("/______|    /______|    /______|");
             System.out.println("\n");
         TrainR4MenuView trainR4 = new TrainR4MenuView();
-        trainR4.displayMenu();
+        trainR4.display();
     }
 
     private void workshop() {

@@ -9,63 +9,30 @@ import byui.cit260.pathOfTheJedi.control.TrainR4Control;
 import byui.cit260.pathOfTheJedi.model.Actor;
 import byui.cit260.pathOfTheJedi.model.InventoryList;
 import byui.cit260.pathOfTheJedi.model.TrainR4;
-import java.util.Scanner;
 
 /**
  *
  * @author Technology Handyman
  */
-public class TrainR4MenuView {
-    private final String MENU = "\n"
-            + "\n(II:::::::::<[==============================================="
-            + "\n                        Train With R4 Menu"
-            + "\n(II:::::::::<[==============================================="
-            + "\n 1 - Phisical Combat"            
-            + "\n 2 - Force Push"
-            + "\n 3 - Defensive Actions"
-            + "\n 4 - Force Affinity"
-            + "\n Q - Exit Training Room"           
-            + "\n(II:::::::::<[==============================================="; 
-
-    void displayMenu() {
-        char selection = ' ';
-        do {            
-            System.out.println(MENU); // display the main menu
-            
-            String input = this.getInput(); // get the user's selection
-            selection = input.charAt(0); // get first char of string
-            
-            this.doAction(selection); // do action based on selection
-        } while (selection != 'Q'); // an selection is not "Exit"
-    }
+public class TrainR4MenuView extends View {
     
-    private String getInput() {
-        boolean valid = false; // idicates if the name has been retrieved
-        String playersInput = null;
-        Scanner keyboard = new Scanner(System.in); //keyboard input stream
-        
-        while(!valid){ //while a valid name has not been retrieved
-            
-            // prompt for the players name
-            System.out.println("Make Selection:");
-            
-            // get the name from the keyboard and trim off the blanks
-            playersInput = keyboard.nextLine();
-            playersInput = playersInput.trim();            
-        
-            
-            //if the value is invalid (less than one char in length)
-            if (playersInput.length()<1) {
-                System.out.println("a valid value has not been entered");
-                continue; // and repeat agian
+            public TrainR4MenuView() {                
+                super("\n"
+                + "\n(II:::::::::<[==============================================="
+                + "\n                        Train With R4 Menu"
+                + "\n(II:::::::::<[==============================================="
+                + "\n 1 - Phisical Combat"            
+                + "\n 2 - Force Push"
+                + "\n 3 - Defensive Actions"
+                + "\n 4 - Force Affinity"
+                + "\n Q - Exit Training Room"           
+                + "\n(II:::::::::<[==============================================="); 
             }
-            break; // out of the (exit) the repetition
-        }
         
-        return playersInput; // return the name
-    }
-    
-    private void doAction(char choice) {
+    public boolean doAction(Object obj) {
+        String value = (String) obj;
+        value = value.toUpperCase(); // convert to all upper case
+        char choice = value.charAt(0); // get first character entered
         
         switch (choice){
             case '1':  //Phisical combat train
@@ -82,9 +49,9 @@ public class TrainR4MenuView {
                 break;
             case 'Q': case 'q':  //goto ship menu
                 this.ship();
-                break;
-                    
-        }        
+                break;                    
+        }
+        return false;
     }
 
     private void combat() {
@@ -204,9 +171,8 @@ public class TrainR4MenuView {
         if (choice == 'Y' || choice == 'y'){
                 if (items1.getQuantity()>0){ 
                 TrainR4Control instance = new TrainR4Control();
-                double diceRoll = instance.diceRoll();
                 TrainR4 trainR4forceAffinity = new TrainR4(); 
-                double result = instance.calcForceAffinity(trainR4forceAffinity.getForceAffinity(), trainR4forceAffinity.getCombat(), diceRoll);
+                double result = instance.calcForceAffinity(trainR4forceAffinity.getForceAffinity(), trainR4forceAffinity.getCombat());
                 if (result < 0 ){
                     if (trainR4forceAffinity.getCombat()== 10){
                     System.out.println("\nYou are at max level");
@@ -235,6 +201,6 @@ public class TrainR4MenuView {
         
         // test script needs to be written for save game then main menu
         ShipMenuView shipMenu = new ShipMenuView();
-        shipMenu.displayMenu();
+        shipMenu.display();
     }
 }
