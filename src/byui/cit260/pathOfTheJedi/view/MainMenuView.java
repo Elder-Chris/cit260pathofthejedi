@@ -9,6 +9,7 @@ import byui.cit260.pathOfTheJedi.control.GameControl;
 import byui.cit260.pathOfTheJedi.model.Actor;
 import byui.cit260.pathOfTheJedi.model.TrainR4;
 import byui.cit260.pathOfTheJedi.view.GameMenuView;
+import byui.cit260.pathOfTheJedi.view.View;
 import java.util.Scanner;
 import pathofthejedi.PathOfTheJedi;
 
@@ -16,9 +17,11 @@ import pathofthejedi.PathOfTheJedi;
  *
  * @author Technology Handyman
  */
-public class MainMenuView {
+public class MainMenuView extends View {
     
-    private final String MENU = "\n"
+            public MainMenuView() {
+                
+            super("\n" 
             + "\n(II:::::::::<[==============================================="
             + "\n                        Main Menu"
             + "\n(II:::::::::<[==============================================="
@@ -27,50 +30,12 @@ public class MainMenuView {
             + "\n 3 - Help"
             + "\n 4 - Options"
             + "\n 5 - Quit"
-            + "\n(II:::::::::<[===============================================";            
-                     
-            
-
-    public void displayMenu() {
-        
-        char selection = ' ';
-        do {
-            System.out.println(MENU); // display the main menu
-            
-            String input = this.getInput(); // get the user's selection
-            selection = input.charAt(0); // get first char of string
-            
-            this.doAction(selection); // do action based on selection
-        } while (selection != '5'); // an selection is not "Exit"
-    }
-
-    private String getInput() {
-        boolean valid = false; // idicates if the name has been retrieved
-        String playersInput = null;
-        Scanner keyboard = new Scanner(System.in); //keyboard input stream
-        
-        while(!valid){ //while a valid name has not been retrieved
-            
-            // prompt for the players name
-            System.out.println("Make Selection:");
-            
-            // get the name from the keyboard and trim off the blanks
-            playersInput = keyboard.nextLine();
-            playersInput = playersInput.trim();            
-        
-            
-            //if the value is invalid (less than one char in length)
-            if (playersInput.length()<1) {
-                System.out.println("valid value has not been entered");
-                continue; // and repeat agian
+            + "\n(II:::::::::<[===============================================");            
             }
-            break; // outof the (exit) the repetition
-        }
-        
-        return playersInput; // return the name
-    }
-
-    private void doAction(char choice) {
+    public boolean doAction(Object obj) {
+        String value = (String) obj;
+        value = value.toUpperCase(); // convert to all upper case
+        char choice = value.charAt(0); // get first character entered
         
         switch (choice){
             case '1': //load a game
@@ -90,6 +55,7 @@ public class MainMenuView {
                 break;
                     
         }
+                return false;
         
     }
 

@@ -36,8 +36,8 @@ public class StartProgramView {
     this.displayWelcomeMessage(player);
 
     // Display the Main menu
-    MainMenuView mainMenu = new MainMenuView();
-    mainMenu.displayMenu();
+    MainMenuView mainMenuView = new MainMenuView();
+    mainMenuView.display();
     
     // Display the Help menu
     HelpMenuView helpMenu = new HelpMenuView();
