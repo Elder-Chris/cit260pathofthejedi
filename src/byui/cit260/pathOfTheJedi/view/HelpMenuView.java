@@ -92,7 +92,7 @@ public class HelpMenuView {
 
     private void mainMenu() {
         MainMenuView mainMenu = new MainMenuView();
-        mainMenu.displayMenu();
+        mainMenu.display();
     }
 
 }

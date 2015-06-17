@@ -79,7 +79,7 @@ public class ShipMenuView extends View {
 
     private void workshop() {
         WorkShopView myWorkShop = new WorkShopView();
-        myWorkShop.displayMenu();
+        myWorkShop.display();
     }
     
     private void nextPlanet() {

@@ -13,8 +13,11 @@ import pathofthejedi.PathOfTheJedi;
  *
  * @author David
  */
-public class WorkShopView {
-    private final String MENU = "\n"
+public class WorkShopView extends View {
+    
+    public WorkShopView(){
+    
+            super("\n"
             + "\n(II:::::::::<[==============================================="
             + "\n                        Work Shop"
             + "\n(II:::::::::<[==============================================="
@@ -22,50 +25,16 @@ public class WorkShopView {
             + "\n 2 - Veiw Shell"
             + "\n 3 - Build Light Sabre"
             + "\n 4 - Quit"
-            + "\n(II:::::::::<[===============================================";            
-                     
+            + "\n(II:::::::::<[===============================================");            
+        }          
             
 
-    public void displayMenu() {
-        
-        char selection = ' ';
-        do {
-            System.out.println(MENU); // display the main menu
-            
-            String input = this.getInput(); // get the user's selection
-            selection = input.charAt(0); // get first char of string
-            
-            this.doAction(selection); // do action based on selection
-        } while (selection != '4'); // an selection is not "Exit"
-    }
+    
 
-    private String getInput() {
-        boolean valid = false; // idicates if the name has been retrieved
-        String playersInput = null;
-        Scanner keyboard = new Scanner(System.in); //keyboard input stream
-        
-        while(!valid){ //while a valid name has not been retrieved
-            
-            // prompt for the players name
-            System.out.println("Make Selection:");
-            
-            // get the name from the keyboard and trim off the blanks
-            playersInput = keyboard.nextLine();
-            playersInput = playersInput.trim();            
-        
-            
-            //if the value is invalid (less than one char in length)
-            if (playersInput.length()<1) {
-                System.out.println("valid value has not been entered");
-                continue; // and repeat agian
-            }
-            break; // outof the (exit) the repetition
-        }
-        
-        return playersInput; // return the name
-    }
-
-    private void doAction(char choice) {
+        public boolean doAction(Object obj) {
+        String value = (String) obj;
+        value = value.toUpperCase(); // convert to all upper case
+        char choice = value.charAt(0); // get first character entered {
         
         switch (choice){
             case '1': //load a game
@@ -80,6 +49,7 @@ public class WorkShopView {
             
                     
         }
+        return false;
         
     }
     public void viewCrystals(){

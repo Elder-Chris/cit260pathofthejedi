@@ -108,19 +108,19 @@ public class GameMenuView {
 
     private void viewInventory() {
         InventoryMenuView inventoryMenu = new InventoryMenuView();
-        inventoryMenu.displayMenu();
+        inventoryMenu.display();
     }
 
     private void ship() {
         ShipMenuView shipMenu = new ShipMenuView();
-        shipMenu.displayMenu();
+        shipMenu.display();
     } 
 
     private void mainMenu() {
         
         // test script needs to be written for save game then main menu
         MainMenuView mainMenu = new MainMenuView();
-        mainMenu.displayMenu();
+        mainMenu.display();
     }
 
     
