@@ -41,7 +41,7 @@ public class StartProgramView {
     
     // Display the Help menu
     HelpMenuView helpMenu = new HelpMenuView();
-    helpMenu.displayMenu();
+    helpMenu.display();
     }
 
     private void displayBanner() {

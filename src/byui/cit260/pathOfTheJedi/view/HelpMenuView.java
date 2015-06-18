@@ -11,60 +11,28 @@ import java.util.Scanner;
  *
  * @author Kika
  */
-public class HelpMenuView {
+
+public class HelpMenuView extends View {
+
+    public HelpMenuView() {
     
- private final String MENU = "\n"
+            super("\n"
             + "\n(II:::::::::<[==============================================="
             + "\n                        Help Menu"
             + "\n(II:::::::::<[==============================================="
             + "\n 1 - How to Play"
             + "\n 2 - Credits"
             + "\n 3 - Main Menu"
-            + "\n(II:::::::::<[===============================================";            
-                    
-
-    public void displayMenu() {
-        
-        char selection = ' ';
-        do {
-            System.out.println(MENU); // display the help menu
-            
-            String input = this.getInput(); // get the user's selection
-            selection = input.charAt(0); // get first char of string
-            
-            this.doAction(selection); // do action based on selection
-            
-        } while (selection != '3'); // an selection is not "Exit"
+            + "\n(II:::::::::<[===============================================");            
     }
 
-    private String getInput() {
-        boolean valid = false; // idicates if the name has been retrieved
-        String playersInput = null;
-        Scanner keyboard = new Scanner(System.in); //keyboard input stream
+        public boolean doAction(Object obj) {
         
-        while(!valid){ //while a valid number has not been retrieved
-            
-            // prompt for the players name
-            System.out.println("Make Selection:");
-            
-            // get the name from the keyboard and trim off the blanks
-            playersInput = keyboard.nextLine();
-            playersInput = playersInput.trim();            
+        String value = (String) obj;
         
-            
-            //if the value is invalid (less than one char in length)
-            if (playersInput.length()<1) {
-                System.out.println("a valid value has not been entered");
-                continue; // and repeat agian
-            }
-            break; // outof the (exit) the repetition
-        }
-        
-        return playersInput; // return the name of the help menu
-    }
-
-    private void doAction(char choice) {
-        
+        value: value.toUpperCase(); // convert to all upper case
+        char choice = value.charAt(0); // get firs character entered
+    
         switch (choice){
             case '1': //How To Play
                 this.howToPlay();
@@ -76,6 +44,7 @@ public class HelpMenuView {
                 this.mainMenu();
                 break;
         }
+        return false;
         
     }
 

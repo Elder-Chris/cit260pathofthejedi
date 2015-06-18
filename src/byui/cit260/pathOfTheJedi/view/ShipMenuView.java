@@ -112,6 +112,6 @@ public class ShipMenuView extends View {
 
     private void exitShip() {
         GameMenuView gameMenu = new GameMenuView();
-        gameMenu.displayMenu();
+        gameMenu.display();
     }
 }

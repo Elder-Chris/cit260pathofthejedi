@@ -7,11 +7,12 @@ package byui.cit260.pathOfTheJedi.view;
 
 import byui.cit260.pathOfTheJedi.model.Actor;
 import byui.cit260.pathOfTheJedi.model.InventoryList;
-import java.util.Scanner;
 
-public class GameMenuView {
+public class GameMenuView extends View {
     
-    private final String MENU = "\n"
+        public GameMenuView() {
+    
+            super("\n"
             + "\n(II:::::::::<[==============================================="
             + "\n                        Game Menu"
             + "\n(II:::::::::<[==============================================="
@@ -21,47 +22,15 @@ public class GameMenuView {
             + "\n V - Inventory"            
             + "\n G - Go to Ship"
             + "\n Q - Exit and Save"
-            + "\n(II:::::::::<[==============================================="; 
-
-    void displayMenu() {
-        char selection = ' ';
-        do {
-            System.out.println(MENU); // display the main menu
-            
-            String input = this.getInput(); // get the user's selection
-            selection = input.charAt(0); // get first char of string
-            
-            this.doAction(selection); // do action based on selection
-        } while (selection != 'Q'); // an selection is not "Exit"
-    }
-    
-    private String getInput() {
-        boolean valid = false; // idicates if the name has been retrieved
-        String playersInput = null;
-        Scanner keyboard = new Scanner(System.in); //keyboard input stream
-        
-        while(!valid){ //while a valid name has not been retrieved
-            
-            // prompt for the players name
-            System.out.println("Make Selection:");
-            
-            // get the name from the keyboard and trim off the blanks
-            playersInput = keyboard.nextLine();
-            playersInput = playersInput.trim();            
-        
-            
-            //if the value is invalid (less than one char in length)
-            if (playersInput.length()<1) {
-                System.out.println("a valid value has not been entered");
-                continue; // and repeat agian
-            }
-            break; // out of the (exit) the repetition
+            + "\n(II:::::::::<[==============================================="); 
         }
         
-        return playersInput; // return the name
-    }
-    
-    private void doAction(char choice) {
+        public boolean doAction(Object obj) {
+        
+        String value = (String) obj;
+        
+        value: value.toUpperCase(); // convert to all upper case
+        char choice = value.charAt(0); // get firs character entered
         
         switch (choice){
             case 'E': case 'e': //Explore planet
@@ -84,7 +53,7 @@ public class GameMenuView {
                 break;
                     
         }
-        
+            return false;
     }
 
     private void explore() {
@@ -122,6 +91,4 @@ public class GameMenuView {
         MainMenuView mainMenu = new MainMenuView();
         mainMenu.display();
     }
-
-    
 }

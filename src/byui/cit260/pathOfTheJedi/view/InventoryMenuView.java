@@ -80,7 +80,7 @@ public class InventoryMenuView extends View {
   
     private void quit() {
         GameMenuView gameMenu = new GameMenuView();
-        gameMenu.displayMenu();
+        gameMenu.display();
     }
 
     private void removeFromInventory() {

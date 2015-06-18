@@ -32,6 +32,7 @@ public class MainMenuView extends View {
             + "\n 5 - Quit"
             + "\n(II:::::::::<[===============================================");            
             }
+            
     public boolean doAction(Object obj) {
         String value = (String) obj;
         value = value.toUpperCase(); // convert to all upper case
@@ -70,14 +71,14 @@ public class MainMenuView extends View {
         
         //Display the game menu
         GameMenuView gameMenu = new GameMenuView();
-        gameMenu.displayMenu();
+        gameMenu.display();
         
     }
 
     private void help() {
         //Display the help menu
         HelpMenuView helpMenu = new HelpMenuView();
-        helpMenu.displayMenu();
+        helpMenu.display();
     }
 
     private void options() {
