@@ -3,6 +3,7 @@
  */
 package byui.cit260.pathOfTheJedi.view;
 
+import byui.cit260.pathOfTheJedi.control.GameControl;
 import byui.cit260.pathOfTheJedi.model.Actor;
 import byui.cit260.pathOfTheJedi.model.InventoryList;
 import byui.cit260.pathOfTheJedi.model.Player;
@@ -57,7 +58,12 @@ public class GameMenuView extends View {
     }
 
     private void explore() {
-        Player actorOne = new Player(); //need to call getHome        
+        Player actorOne = new Player(); //need to call getHome 
+        
+        
+        
+        
+        
         System.out.println("\n\nYou have just explored " + actorOne.getHome());
         System.out.println("and found ");
     }
@@ -73,7 +79,9 @@ public class GameMenuView extends View {
  
         System.out.println("\n\nYou currently on " + actorOne.getHome() );
         System.out.println("Your current force level is " + actorOne.getForceLevel());
-        System.out.println("You have " + inventory[0].getQuantity() + " Force Holograms");
+        System.out.println("You have " 
+                + inventory[GameControl.Item.Force_Hologram.ordinal()].getQuantity() 
+                + " Force Holograms");
         //System.out.println("You have " + items1.getQuantity() + " Force Holograms");
         System.out.println("\n");
     }

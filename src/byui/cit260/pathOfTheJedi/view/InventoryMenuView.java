@@ -68,8 +68,8 @@ public class InventoryMenuView extends View {
                             "In Stock");        
         
         for (InventoryList inventoryList : inventory){
-            System.out.println(inventoryList.getAmount() + "\t   " +
-                    inventoryList.getAmount());
+            System.out.println(inventoryList.getQuantity() + "\t   " +
+                    inventoryList.getQuantity());
         }
     }
     public void calculateCrystalPower(){
