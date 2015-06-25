@@ -42,12 +42,13 @@ public class GameControl {
             InventoryList[] inventoryLista = originalInventoryList.clone();       
 
             InventoryList tempInventoryList;
-            For (int i = 0; i < inventoryList.length-1; i++){
-                For (int j = 0; j < inventoryList.length-1-i; j++){ 
-                    if (inventoryLista[j].getAmount().compareToIgnoreCase(inventoryLista[j + 1].getAmount()) > 0) {
+            for (int i = 0; i < inventoryLista.length-1; i++){
+                for (int j = 0; j < inventoryLista.length-1-i; j++){ 
+                    if (inventoryLista[j].getDescription()
+                            .compareToIgnoreCase(inventoryLista[j + 1].getDescription()) > 0) {
                         tempInventoryList = inventoryLista[j];
                         inventoryLista[j] =  inventoryLista[j+1];
-                        inventoryLista[j+1] = tempInventoryItem;
+                        inventoryLista[j+1] = tempInventoryList;
                     }
                 }
             }
