@@ -1,15 +1,12 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+
  */
 package byui.cit260.pathOfTheJedi.model;
 
 import java.io.Serializable;
 import java.util.Objects;
 /**
- *
- * @author Kika
+
  */
 public class InventoryList implements Serializable{
        
@@ -18,7 +15,6 @@ public class InventoryList implements Serializable{
     //class instance variables
     private static String type;
     private static double quantity;
-    private double amount;
 
     public InventoryList() {
     }
@@ -39,17 +35,9 @@ public class InventoryList implements Serializable{
         this.quantity = quantity;
     }
 
-    public double getAmount() {
-        return amount;
-    }
-
-    public void setAmount(double amount) {
-        this.amount = amount;
-    }
-
     @Override
     public String toString() {
-        return "InventoryList{" + "type=" + type + ", quantity=" + quantity + ", amount=" + amount + '}';
+        return "InventoryList{" + "type=" + type + ", quantity=" + quantity + '}';
     }
 
     @Override
@@ -57,7 +45,6 @@ public class InventoryList implements Serializable{
         int hash = 7;
         hash = 89 * hash + Objects.hashCode(this.type);
         hash = 89 * hash + (int) (Double.doubleToLongBits(this.quantity) ^ (Double.doubleToLongBits(this.quantity) >>> 32));
-        hash = 89 * hash + (int) (Double.doubleToLongBits(this.amount) ^ (Double.doubleToLongBits(this.amount) >>> 32));
         return hash;
     }
 
@@ -76,11 +63,6 @@ public class InventoryList implements Serializable{
         if (Double.doubleToLongBits(this.quantity) != Double.doubleToLongBits(other.quantity)) {
             return false;
         }
-        if (Double.doubleToLongBits(this.amount) != Double.doubleToLongBits(other.amount)) {
-            return false;
-        }
         return true;
-    }
-    
-    
+    }    
 }

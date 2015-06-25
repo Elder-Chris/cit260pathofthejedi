@@ -1,21 +1,17 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+
  */
 package byui.cit260.pathOfTheJedi.model;
 
 import java.io.Serializable;
 import java.util.Objects;
 
-/**
- *
- * @author Technology Handyman
- */
 public class Ship implements Serializable{
     
     //class instance variables
     private String description;
+    private TrainR4 trainR4;
+    private Workshop workshop;
 
     public Ship() {
         this.description = "the ship";
@@ -56,6 +52,23 @@ public class Ship implements Serializable{
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public TrainR4 getTrainR4() {
+        return trainR4;
+    }
+
+    public void setTrainR4(TrainR4 trainR4) {
+        this.trainR4 = trainR4;
+    }
+
+    public Workshop getWorkshop() {
+        return workshop;
+    }
+
+    public void setWorkshop(Workshop workshop) {
+        this.workshop = workshop;
+    }
+    
     
     
 }

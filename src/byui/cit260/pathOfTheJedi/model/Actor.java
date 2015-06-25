@@ -20,14 +20,12 @@ public enum Actor implements Serializable{
     // class instance variables
    
     private final String description;
-    //private final static String home;
-    private final Double type;
-    //private final static double forceLevel;
+    //private final Double type;
     //private final Point coordinates;
 
     Actor(String description) {
         this.description = description;
-        type = 2.00;        
+        //type = 2.00;        
     }
 
     public String getDescription() {

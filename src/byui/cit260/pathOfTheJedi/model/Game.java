@@ -18,9 +18,7 @@ public class Game implements Serializable {
     private InventoryList[] inventory;
     private Player player;
     private String[] actors;
-    private Map map;
-
-    
+    private Map map;    
 
     public Game() {        
     }
@@ -70,8 +68,7 @@ public class Game implements Serializable {
 
     public void setMap(Map map) {
         this.map = map;
-    }
-    
+    }    
     
     
     @Override

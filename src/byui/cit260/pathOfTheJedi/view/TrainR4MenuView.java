@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+
  */
 package byui.cit260.pathOfTheJedi.view;
 
@@ -9,10 +7,10 @@ import byui.cit260.pathOfTheJedi.control.TrainR4Control;
 import byui.cit260.pathOfTheJedi.model.InventoryList;
 import byui.cit260.pathOfTheJedi.model.Player;
 import byui.cit260.pathOfTheJedi.model.TrainR4;
+import pathofthejedi.PathOfTheJedi;
 
 /**
- *
- * @author Technology Handyman
+
  */
 public class TrainR4MenuView extends View {
     
@@ -101,11 +99,11 @@ public class TrainR4MenuView extends View {
     }
 
     private void defenceQuestion() {
-        InventoryList items1 = new InventoryList();        
+        InventoryList[] inventory = PathOfTheJedi.getCurrentGame().getInventory();        
         char selection;
         do {            
             System.out.println("\n\nTraning costs 1 Force Hologram you currently have " 
-                    + items1.getQuantity() 
+                    + inventory[0].getQuantity() 
                     + ". \nAre you sure you want to continue? \nEnter Y or N"); // display the main menu
             
             String input = this.getInput(); // get the user's selection
@@ -117,9 +115,9 @@ public class TrainR4MenuView extends View {
     }
         
     private void defence(char choice) {
-        InventoryList items1 = new InventoryList();        
+        InventoryList[] inventory = PathOfTheJedi.getCurrentGame().getInventory();        
         if (choice == 'Y' || choice == 'y'){                         
-                if (items1.getQuantity()>0){                
+                if (inventory[0].getQuantity()>0){                
                     TrainR4Control instance = new TrainR4Control();
                     double diceRoll = instance.diceRoll();
                     TrainR4 trainR4defence = new TrainR4(); 
@@ -140,8 +138,8 @@ public class TrainR4MenuView extends View {
                            + trainR4defence.getForceAffinity();
                     Player actorOne = new Player();
                     actorOne.setForceLevel(updateForceLevel);
-                    items1.setQuantity(items1.getQuantity() - 1);
-                    System.out.println("You have " + items1.getQuantity() + " Force Holograms left");
+                    inventory[0].setQuantity(inventory[0].getQuantity() - 1.00);
+                    System.out.println("You have " + inventory[0].getQuantity() + " Force Holograms left");
                 }else{
                     System.out.println("You are out of Force Holograms");
                 }
@@ -149,10 +147,10 @@ public class TrainR4MenuView extends View {
     }
     
     private void affinityQuestion() {
-        InventoryList items1 = new InventoryList();        
+        InventoryList[] inventory = PathOfTheJedi.getCurrentGame().getInventory();        
         char selection = ' ';
         do {            
-            System.out.println("\n\nTraning costs 1 Force Hologram you currently have " + items1.getQuantity() 
+            System.out.println("\n\nTraning costs 1 Force Hologram you currently have " + inventory[0].getQuantity() 
                     + ". \nAre you sure you want to continue? \nEnter Y or N"); // display the main menu
             
             String input = this.getInput(); // get the user's selection
@@ -164,9 +162,9 @@ public class TrainR4MenuView extends View {
     }
 
     private void affinity(char choice) {
-        InventoryList items1 = new InventoryList();        
+        InventoryList[] inventory = PathOfTheJedi.getCurrentGame().getInventory();        
         if (choice == 'Y' || choice == 'y'){
-                if (items1.getQuantity()>0){ 
+                if (inventory[0].getQuantity()>0){ 
                 TrainR4Control instance = new TrainR4Control();
                 double diceRoll = instance.diceRoll();
                 TrainR4 trainR4forceAffinity = new TrainR4(); 
@@ -187,8 +185,8 @@ public class TrainR4MenuView extends View {
                        + trainR4forceAffinity.getForceAffinity();
                 Player actorOne = new Player();
                 actorOne.setForceLevel(updateForceLevel);
-                items1.setQuantity(items1.getQuantity() - 1);
-                System.out.println("You have " + items1.getQuantity() + " Force Holograms left");
+                inventory[0].setQuantity(inventory[0].getQuantity() - 1);
+                System.out.println("You have " + inventory[0].getQuantity() + " Force Holograms left");
             }else{
                 System.out.println("You are out of Force Holograms");
             }
