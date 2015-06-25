@@ -6,7 +6,6 @@
 package byui.cit260.pathOfTheJedi.model;
 
 import java.io.Serializable;
-import java.util.Objects;
 
 /**
  *
@@ -28,45 +27,11 @@ public enum Actor implements Serializable{
 
     Actor(String description) {
         this.description = description;
-       type = 2.00;
-        
+        type = 2.00;        
     }
-        
-        
-        //coordinates = new Point(1,1);
-    
-    
-    
 
     public String getDescription() {
         return description;
     }
-
-    
-
-    //public String getHome() {
-    //    return home;
-    //}
-
-   
-
-    //public double getType() {
-    //    return type;
-    //}
-
-   
-
-    //public double getForceLevel() {
-     //   return forceLevel;
-    //}
-
-    
-
-    
-
-    
-
-    
-    
     
 }

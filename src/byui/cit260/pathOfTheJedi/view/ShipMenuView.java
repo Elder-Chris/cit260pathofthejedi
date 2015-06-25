@@ -6,6 +6,7 @@
 package byui.cit260.pathOfTheJedi.view;
 
 import byui.cit260.pathOfTheJedi.model.Actor;
+import byui.cit260.pathOfTheJedi.model.Player;
 
 /**
  *
@@ -84,7 +85,7 @@ public class ShipMenuView extends View {
     
     private void nextPlanet() {
         System.out.println("travel");
-        Actor actorOne = new Actor();
+        Player actorOne = new Player();
         System.out.println("\n\nYou currently on " + actorOne.getHome() );
         
         if (actorOne.getHome() == "New Super Star Destroyer"){

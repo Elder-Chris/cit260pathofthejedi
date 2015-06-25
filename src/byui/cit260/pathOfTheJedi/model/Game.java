@@ -15,7 +15,7 @@ public class Game implements Serializable {
     
     private double totalTime;
     private Ship ship;
-    private Items[] inventory;
+    private InventoryList[] inventory;
     private Player player;
     private String[] actors;
     private Map map;
@@ -40,11 +40,11 @@ public class Game implements Serializable {
         this.ship = ship;
     }
 
-    public Items[] getInventory() {
+    public InventoryList[] getInventory() {
         return inventory;
     }
 
-    public void setInventory(Items[] inventory) {
+    public void setInventory(InventoryList[] inventory) {
         this.inventory = inventory;
     }
 
@@ -101,7 +101,7 @@ public class Game implements Serializable {
         return "Game{" + "totalTime=" + totalTime + '}';
     }
 
-    public void setInventory(Items[] inventoryList) {
+    public void setInventory(InventoryList inventoryList) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

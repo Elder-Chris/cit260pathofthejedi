@@ -24,9 +24,6 @@ public class ProgramControl {
         Player player = new Player();
         player.setName(name);
         
-        Actor actorOne = new Actor();
-        actorOne.setName(name);
-        
         PathOfTheJedi.setPlayer(player); // save the palyer
         
         return player;

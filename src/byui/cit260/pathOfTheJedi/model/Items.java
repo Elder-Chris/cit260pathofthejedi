@@ -12,11 +12,7 @@ import java.util.Objects;
  *
  * @author Kika
  */
-public class Items implements Serializable{
-    
-    public enum item{
-        hologram;
-    }
+public class Items implements Serializable{      
     
     //class instance variables
     private String description;

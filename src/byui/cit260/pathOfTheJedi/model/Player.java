@@ -16,11 +16,23 @@ public class Player implements Serializable{
     
     //class instance variables
     private String name;
-    private double forceLevel;
+    //private double forceLevel;
+    private static String home;
+    private static double forceLevel;
+    
 
     public Player() {
     }
 
+    public static String getHome() {
+        return home;
+    }
+
+    public static void setHome(String home) {
+        Player.home = home;
+    }
+    
+    
     @Override
     public String toString() {
         return "Player{" + "name=" + name + ", forceLevel=" + forceLevel + '}';

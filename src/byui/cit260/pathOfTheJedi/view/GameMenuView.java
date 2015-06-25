@@ -7,6 +7,7 @@ package byui.cit260.pathOfTheJedi.view;
 
 import byui.cit260.pathOfTheJedi.model.Actor;
 import byui.cit260.pathOfTheJedi.model.InventoryList;
+import byui.cit260.pathOfTheJedi.model.Player;
 
 public class GameMenuView extends View {
     
@@ -57,7 +58,7 @@ public class GameMenuView extends View {
     }
 
     private void explore() {
-        Actor actorOne = new Actor(); //need to call getHome        
+        Player actorOne = new Player(); //need to call getHome        
         System.out.println("\n\nYou have just explored " + actorOne.getHome());
         System.out.println("and found ");
     }
@@ -67,7 +68,7 @@ public class GameMenuView extends View {
     }
     
     private void viewStatus() {
-        Actor actorOne = new Actor();
+        Player actorOne = new Player();
         InventoryList items1 = new InventoryList();
         System.out.println("\n\nYou currently on " + actorOne.getHome() );
         System.out.println("Your current force level is " + actorOne.getForceLevel());

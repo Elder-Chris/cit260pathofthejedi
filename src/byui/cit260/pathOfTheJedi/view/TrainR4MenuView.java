@@ -6,10 +6,9 @@
 package byui.cit260.pathOfTheJedi.view;
 
 import byui.cit260.pathOfTheJedi.control.TrainR4Control;
-import byui.cit260.pathOfTheJedi.model.Actor;
 import byui.cit260.pathOfTheJedi.model.InventoryList;
+import byui.cit260.pathOfTheJedi.model.Player;
 import byui.cit260.pathOfTheJedi.model.TrainR4;
-import java.util.Scanner;
 
 /**
  *
@@ -74,7 +73,7 @@ public class TrainR4MenuView extends View {
                + trainR4combat.getPush()
                + trainR4combat.getDefence()
                + trainR4combat.getForceAffinity();
-        Actor actorOne = new Actor();
+        Player actorOne = new Player();
         actorOne.setForceLevel(updateForceLevel);        
     }
 
@@ -97,7 +96,7 @@ public class TrainR4MenuView extends View {
                + trainR4push.getPush()
                + trainR4push.getDefence()
                + trainR4push.getForceAffinity();
-        Actor actorOne = new Actor();
+        Player actorOne = new Player();
         actorOne.setForceLevel(updateForceLevel);
     }
 
@@ -139,7 +138,7 @@ public class TrainR4MenuView extends View {
                            + trainR4defence.getPush()
                            + trainR4defence.getDefence()
                            + trainR4defence.getForceAffinity();
-                    Actor actorOne = new Actor();
+                    Player actorOne = new Player();
                     actorOne.setForceLevel(updateForceLevel);
                     items1.setQuantity(items1.getQuantity() - 1);
                     System.out.println("You have " + items1.getQuantity() + " Force Holograms left");
@@ -186,7 +185,7 @@ public class TrainR4MenuView extends View {
                        + trainR4forceAffinity.getPush()
                        + trainR4forceAffinity.getDefence()
                        + trainR4forceAffinity.getForceAffinity();
-                Actor actorOne = new Actor();
+                Player actorOne = new Player();
                 actorOne.setForceLevel(updateForceLevel);
                 items1.setQuantity(items1.getQuantity() - 1);
                 System.out.println("You have " + items1.getQuantity() + " Force Holograms left");

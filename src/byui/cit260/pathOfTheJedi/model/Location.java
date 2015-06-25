@@ -7,6 +7,7 @@
 package byui.cit260.pathOfTheJedi.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Objects;
 
 /**
@@ -19,7 +20,7 @@ public class Location implements Serializable {
     private String itemAvailable;
     private String itemRemaining;
     
-    private CurrenLocation currentLocation;
+    //private Location currentLocation;
     private ArrayList<Actor> actors;
 
     public Location() {
