@@ -8,12 +8,11 @@ import java.util.Objects;
 /**
 
  */
-public class InventoryList implements Serializable{   
-    
+public class InventoryList implements Serializable{       
     
     //class instance variables
-    private static String type;
-    private static double quantity;
+    private String type;
+    private double quantity;
 
     public InventoryList() {
     }
@@ -42,8 +41,8 @@ public class InventoryList implements Serializable{
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 89 * hash + Objects.hashCode(this.type);
-        hash = 89 * hash + (int) (Double.doubleToLongBits(this.quantity) ^ (Double.doubleToLongBits(this.quantity) >>> 32));
+        hash = 79 * hash + Objects.hashCode(this.type);
+        hash = 79 * hash + (int) (Double.doubleToLongBits(this.quantity) ^ (Double.doubleToLongBits(this.quantity) >>> 32));
         return hash;
     }
 
@@ -63,5 +62,7 @@ public class InventoryList implements Serializable{
             return false;
         }
         return true;
-    }    
+    }
+
+   
 }

@@ -5,6 +5,8 @@ package byui.cit260.pathOfTheJedi.control;
 
 import byui.cit260.pathOfTheJedi.model.Game;
 import byui.cit260.pathOfTheJedi.model.InventoryList;
+import byui.cit260.pathOfTheJedi.model.ItemsAvailable;
+import byui.cit260.pathOfTheJedi.model.OnHand;
 import byui.cit260.pathOfTheJedi.model.Player;
 import byui.cit260.pathOfTheJedi.model.Ship;
 import byui.cit260.pathOfTheJedi.model.TrainR4;
@@ -20,11 +22,9 @@ public class GameControl {
         }
     
     public static InventoryList[] createInventoryList(){
-            InventoryList[] inventory =
-                    new InventoryList[4];
+            InventoryList[] inventory = new InventoryList[4];
             
             InventoryList Force_Hologram = new InventoryList();
-            //hologram.setDescription("Force Hologram");
             Force_Hologram.setType("Force Holograms");
             Force_Hologram.setQuantity(0.00);
             inventory[Item.Force_Hologram.ordinal()] = Force_Hologram;
@@ -40,13 +40,49 @@ public class GameControl {
             inventory[Item.Lightsaber_Crystal.ordinal()] = Lightsaber_Crystal;
             
             InventoryList Trash = new InventoryList();
-            //hologram.setDescription("Force Hologram");
             Trash.setType("Trash");
             Trash.setQuantity(0.00);
             inventory[Item.Trash.ordinal()] = Trash;
             
             return inventory;
         }
+    
+    public static ItemsAvailable[] createItemsAvailable(){
+            ItemsAvailable[] itemsAvailable = new ItemsAvailable[8];
+            
+            int i = 0;
+            
+            for ( i = i ; i < 7; i++){                
+                ItemsAvailable Force_Hologram = new ItemsAvailable();
+                    Force_Hologram.setType("Force Holograms");
+                    Force_Hologram.setPlanet("Kashyyk");
+                    Force_Hologram.setPower(0.00);            
+                    itemsAvailable[i] = Force_Hologram;
+            }
+            
+            i = i++;
+            ItemsAvailable Lightsber_Shell = new ItemsAvailable();
+                Lightsber_Shell.setType("Lightsber_Shell");
+                Lightsber_Shell.setPlanet("Kashyyk");
+                Lightsber_Shell.setPower(0.00);            
+                itemsAvailable[i] = Lightsber_Shell;
+                
+            i = i++;
+            ItemsAvailable Lightsaber_Crystal = new ItemsAvailable();
+                Lightsaber_Crystal.setType("Raw Lightsber Crystal");
+                Lightsaber_Crystal.setPlanet("Kashyyk");
+                Lightsaber_Crystal.setPower(0.00);            
+                itemsAvailable[i] = Lightsaber_Crystal;          
+
+            
+            return itemsAvailable;
+        }
+    
+    public static OnHand[] createOnHand(){
+            OnHand[] onHand = new OnHand[5];
+            
+            return onHand;
+    }
     
     public static InventoryList[] getSortedInventoryList(){
             
@@ -77,8 +113,14 @@ public class GameControl {
         
         game.setPlayer(player);
         
-        InventoryList[] inventoryLista = GameControl.createInventoryList();
-        game.setInventory(inventoryLista);
+        InventoryList[] listA = GameControl.createInventoryList();
+        game.setInventory(listA);
+        
+        ItemsAvailable[] listB = GameControl.createItemsAvailable();
+        game.setItemsAvailable(listB);
+        
+        OnHand[] listC = GameControl.createOnHand();
+        game.setOnHand(listC);
         
         Ship ship = new Ship();
         game.setShip(ship);

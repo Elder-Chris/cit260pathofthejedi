@@ -6,6 +6,8 @@
 package byui.cit260.pathOfTheJedi.model;
 
 import java.io.Serializable;
+import java.util.Arrays;
+import java.util.Objects;
 
 /**
  *
@@ -18,7 +20,9 @@ public class Game implements Serializable {
     private InventoryList[] inventory;
     private Player player;
     private String[] actors;
-    private Map map;    
+    private Map map;
+    private OnHand[] onHand;
+    private ItemsAvailable[] itemsAvailable;
 
     public Game() {        
     }
@@ -69,12 +73,39 @@ public class Game implements Serializable {
     public void setMap(Map map) {
         this.map = map;
     }    
-    
-    
+
+    public OnHand[] getOnHand() {
+        return onHand;
+    }
+
+    public void setOnHand(OnHand[] onHand) {
+        this.onHand = onHand;
+    }
+
+    public ItemsAvailable[] getItemsAvailable() {
+        return itemsAvailable;
+    }
+
+    public void setItemsAvailable(ItemsAvailable[] itemsAvailable) {
+        this.itemsAvailable = itemsAvailable;
+    }
+
+    @Override
+    public String toString() {
+        return "Game{" + "totalTime=" + totalTime + ", ship=" + ship + ", inventory=" + inventory + ", player=" + player + ", actors=" + actors + ", map=" + map + ", onHand=" + onHand + ", itemsAvailable=" + itemsAvailable + '}';
+    }
+
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 41 * hash + (int) (Double.doubleToLongBits(this.totalTime) ^ (Double.doubleToLongBits(this.totalTime) >>> 32));
+        int hash = 3;
+        hash = 97 * hash + (int) (Double.doubleToLongBits(this.totalTime) ^ (Double.doubleToLongBits(this.totalTime) >>> 32));
+        hash = 97 * hash + Objects.hashCode(this.ship);
+        hash = 97 * hash + Arrays.deepHashCode(this.inventory);
+        hash = 97 * hash + Objects.hashCode(this.player);
+        hash = 97 * hash + Arrays.deepHashCode(this.actors);
+        hash = 97 * hash + Objects.hashCode(this.map);
+        hash = 97 * hash + Arrays.deepHashCode(this.onHand);
+        hash = 97 * hash + Arrays.deepHashCode(this.itemsAvailable);
         return hash;
     }
 
@@ -90,18 +121,31 @@ public class Game implements Serializable {
         if (Double.doubleToLongBits(this.totalTime) != Double.doubleToLongBits(other.totalTime)) {
             return false;
         }
+        if (!Objects.equals(this.ship, other.ship)) {
+            return false;
+        }
+        if (!Arrays.deepEquals(this.inventory, other.inventory)) {
+            return false;
+        }
+        if (!Objects.equals(this.player, other.player)) {
+            return false;
+        }
+        if (!Arrays.deepEquals(this.actors, other.actors)) {
+            return false;
+        }
+        if (!Objects.equals(this.map, other.map)) {
+            return false;
+        }
+        if (!Arrays.deepEquals(this.onHand, other.onHand)) {
+            return false;
+        }
+        if (!Arrays.deepEquals(this.itemsAvailable, other.itemsAvailable)) {
+            return false;
+        }
         return true;
     }
+    
+    
+    
 
-    @Override
-    public String toString() {
-        return "Game{" + "totalTime=" + totalTime + '}';
-    }
-
-    public void setInventory(InventoryList inventoryList) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    
-    
 }
