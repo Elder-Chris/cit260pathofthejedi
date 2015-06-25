@@ -92,7 +92,7 @@ public class GameControl {
         
         //intro text
         System.out.println("\n\nYou have just arrived on Kashyyk");
-        //System.out.println("Your current force level is " + actorOne.getForceLevel());
+        System.out.println("Your current force level is " + actorOne.getForceLevel());
         System.out.println("What you you like to do?");
         System.out.println("\n");
     }
