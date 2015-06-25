@@ -14,6 +14,10 @@ import java.util.Objects;
  */
 public class Items implements Serializable{
     
+    public enum item{
+        hologram;
+    }
+    
     //class instance variables
     private String description;
     private String color;

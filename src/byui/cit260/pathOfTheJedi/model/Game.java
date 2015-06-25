@@ -14,6 +14,13 @@ import java.io.Serializable;
 public class Game implements Serializable {
     
     private double totalTime;
+    private Ship ship;
+    private Items[] inventory;
+    private Player player;
+    private String[] actors;
+    private Map map;
+
+    
 
     public Game() {        
     }
@@ -25,7 +32,48 @@ public class Game implements Serializable {
     public void setTotalTime(double totalTime) {
         this.totalTime = totalTime;
     }
+    public Ship getShip() {
+        return ship;
+    }
 
+    public void setShip(Ship ship) {
+        this.ship = ship;
+    }
+
+    public Items[] getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(Items[] inventory) {
+        this.inventory = inventory;
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+    public String[] getActors() {
+        return actors;
+    }
+
+    public void setActors(String[] actors) {
+        this.actors = actors;
+    }
+
+    public Map getMap() {
+        return map;
+    }
+
+    public void setMap(Map map) {
+        this.map = map;
+    }
+    
+    
+    
     @Override
     public int hashCode() {
         int hash = 5;
@@ -51,6 +99,10 @@ public class Game implements Serializable {
     @Override
     public String toString() {
         return "Game{" + "totalTime=" + totalTime + '}';
+    }
+
+    public void setInventory(Items[] inventoryList) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     

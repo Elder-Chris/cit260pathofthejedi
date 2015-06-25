@@ -18,6 +18,9 @@ public class Location implements Serializable {
     private String actorAvailable;
     private String itemAvailable;
     private String itemRemaining;
+    
+    private CurrenLocation currentLocation;
+    private ArrayList<Actor> actors;
 
     public Location() {
     }

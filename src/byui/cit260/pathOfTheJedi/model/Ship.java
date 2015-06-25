@@ -18,6 +18,7 @@ public class Ship implements Serializable{
     private String description;
 
     public Ship() {
+        this.description = "the ship";
     }
 
     @Override

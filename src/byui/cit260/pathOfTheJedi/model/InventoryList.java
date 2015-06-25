@@ -13,6 +13,8 @@ import java.util.Objects;
  */
 public class InventoryList implements Serializable{
     
+    
+    
     //class instance variables
     private static String type;
     private static double quantity;
