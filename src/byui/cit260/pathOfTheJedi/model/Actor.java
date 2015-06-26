@@ -13,9 +13,21 @@ import java.io.Serializable;
  */
 public enum Actor implements Serializable{
     
-    person1("tall"),
-    person2("short"),
-    person3("fat");
+    //Kashyyk
+    lando("Lando Carlissian"),
+    zannah("Darth Zannah"),//first sith
+    //Mandalore
+    mace("Mace Windu"),
+    plagueis("Darth Plagueis"),//second sith
+    //New Tatooine
+    bail("Bail Organa"),
+    sidious("Darth Sidious"),//third sith
+    //Rantine Space Station
+    wedge("Wedge Antilles"),
+    bane("Darth Bane"),//fourth sith
+    //New Super Star Destroyer
+    typho("Captain Typho"),
+    lumiya("Darth Lumiya");//final sith
     
     // class instance variables
    
