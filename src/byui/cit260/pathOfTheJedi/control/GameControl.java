@@ -6,13 +6,13 @@ package byui.cit260.pathOfTheJedi.control;
 import byui.cit260.pathOfTheJedi.model.Game;
 import byui.cit260.pathOfTheJedi.model.InventoryList;
 import byui.cit260.pathOfTheJedi.model.ItemsAvailable;
-import byui.cit260.pathOfTheJedi.model.OnHand;
 import byui.cit260.pathOfTheJedi.model.Player;
 import byui.cit260.pathOfTheJedi.model.Ship;
 import byui.cit260.pathOfTheJedi.model.TrainR4;
+import java.util.ArrayList;
 import pathofthejedi.PathOfTheJedi;
 
-public class GameControl {
+public class GameControl {    
     
     public enum Item{
         Force_Hologram,
@@ -48,48 +48,15 @@ public class GameControl {
         }
     
     public static ItemsAvailable[] createItemsAvailable(){
-            ItemsAvailable[] itemsAvailable = new ItemsAvailable[8];
+            ItemsAvailable[] itemsAvailable = new ItemsAvailable[1];
             
-            int i = 0;
-            
-            for ( i = i ; i < 7; i++){                
-                ItemsAvailable Force_Hologram = new ItemsAvailable();
-                    Force_Hologram.setType("Force Holograms");
-                    Force_Hologram.setPlanet("Kashyyk");
-                    Force_Hologram.setPower(0.00);            
-                    itemsAvailable[i] = Force_Hologram;
-            }
-            
-            i = i++;
-            ItemsAvailable Lightsber_Shell = new ItemsAvailable();
-                Lightsber_Shell.setType("Lightsber_Shell");
-                Lightsber_Shell.setPlanet("Kashyyk");
-                Lightsber_Shell.setPower(0.00);            
-                itemsAvailable[i] = Lightsber_Shell;
-                
-            i = i++;
-            ItemsAvailable Lightsaber_Crystal = new ItemsAvailable();
-                Lightsaber_Crystal.setType("Raw Lightsber Crystal");
-                Lightsaber_Crystal.setPlanet("Kashyyk");
-                Lightsaber_Crystal.setPower(0.00);            
-                itemsAvailable[i] = Lightsaber_Crystal;          
+                    
 
             
             return itemsAvailable;
         }
     
-    public static OnHand[] createOnHand(){
-            OnHand[] onHand = new OnHand[5];
-            
-            OnHand trash = new OnHand();
-                trash.setType("Trash");
-                trash.setPlanet("Kashyyk");
-                trash.setPower(0.00);            
-                onHand[0] = trash;
-                
-            return onHand;
-    }
-    
+   
     public static InventoryList[] getSortedInventoryList(){
             
             InventoryList[] originalInventoryList = 
@@ -111,9 +78,9 @@ public class GameControl {
             }
             return inventoryLista;
         }
-
+   
     public static void createNewGame(Player player) {   
-
+        
         Game game = new Game();
         PathOfTheJedi.setCurrentGame(game);
         
@@ -124,9 +91,12 @@ public class GameControl {
         
         ItemsAvailable[] listB = GameControl.createItemsAvailable();
         game.setItemsAvailable(listB);
-        
-        OnHand[] listC = GameControl.createOnHand();
-        game.setOnHand(listC);
+              
+        ItemsAvailable.ItemsAvail.add(new ItemsAvailable("Force Holograms", "Kashyyk", 0.00));
+        ItemsAvailable.ItemsAvail.add(new ItemsAvailable("Force Holograms", "Kashyyk", 0.00));
+        ItemsAvailable.ItemsAvail.add(new ItemsAvailable("Force Holograms", "Kashyyk", 0.00));
+        ItemsAvailable.ItemsAvail.add(new ItemsAvailable("Force Holograms", "Kashyyk", 0.00));
+
         
         Ship ship = new Ship();
         game.setShip(ship);

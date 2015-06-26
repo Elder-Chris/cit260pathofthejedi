@@ -21,7 +21,6 @@ public class Game implements Serializable {
     private Player player;
     private String[] actors;
     private Map map;
-    private OnHand[] onHand;
     private ItemsAvailable[] itemsAvailable;
 
     public Game() {        
@@ -74,14 +73,6 @@ public class Game implements Serializable {
         this.map = map;
     }    
 
-    public OnHand[] getOnHand() {
-        return onHand;
-    }
-
-    public void setOnHand(OnHand[] onHand) {
-        this.onHand = onHand;
-    }
-
     public ItemsAvailable[] getItemsAvailable() {
         return itemsAvailable;
     }
@@ -92,20 +83,19 @@ public class Game implements Serializable {
 
     @Override
     public String toString() {
-        return "Game{" + "totalTime=" + totalTime + ", ship=" + ship + ", inventory=" + inventory + ", player=" + player + ", actors=" + actors + ", map=" + map + ", onHand=" + onHand + ", itemsAvailable=" + itemsAvailable + '}';
+        return "Game{" + "totalTime=" + totalTime + ", ship=" + ship + ", inventory=" + inventory + ", player=" + player + ", actors=" + actors + ", map=" + map + ", itemsAvailable=" + itemsAvailable + '}';
     }
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 97 * hash + (int) (Double.doubleToLongBits(this.totalTime) ^ (Double.doubleToLongBits(this.totalTime) >>> 32));
-        hash = 97 * hash + Objects.hashCode(this.ship);
-        hash = 97 * hash + Arrays.deepHashCode(this.inventory);
-        hash = 97 * hash + Objects.hashCode(this.player);
-        hash = 97 * hash + Arrays.deepHashCode(this.actors);
-        hash = 97 * hash + Objects.hashCode(this.map);
-        hash = 97 * hash + Arrays.deepHashCode(this.onHand);
-        hash = 97 * hash + Arrays.deepHashCode(this.itemsAvailable);
+        int hash = 5;
+        hash = 71 * hash + (int) (Double.doubleToLongBits(this.totalTime) ^ (Double.doubleToLongBits(this.totalTime) >>> 32));
+        hash = 71 * hash + Objects.hashCode(this.ship);
+        hash = 71 * hash + Arrays.deepHashCode(this.inventory);
+        hash = 71 * hash + Objects.hashCode(this.player);
+        hash = 71 * hash + Arrays.deepHashCode(this.actors);
+        hash = 71 * hash + Objects.hashCode(this.map);
+        hash = 71 * hash + Arrays.deepHashCode(this.itemsAvailable);
         return hash;
     }
 
@@ -136,14 +126,17 @@ public class Game implements Serializable {
         if (!Objects.equals(this.map, other.map)) {
             return false;
         }
-        if (!Arrays.deepEquals(this.onHand, other.onHand)) {
-            return false;
-        }
         if (!Arrays.deepEquals(this.itemsAvailable, other.itemsAvailable)) {
             return false;
         }
         return true;
     }
+
+
+
+
+
+
     
     
     

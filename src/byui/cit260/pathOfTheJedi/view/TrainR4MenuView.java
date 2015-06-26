@@ -6,8 +6,10 @@ package byui.cit260.pathOfTheJedi.view;
 import byui.cit260.pathOfTheJedi.control.GameControl;
 import byui.cit260.pathOfTheJedi.control.TrainR4Control;
 import byui.cit260.pathOfTheJedi.model.InventoryList;
+import byui.cit260.pathOfTheJedi.model.ItemsAvailable;
 import byui.cit260.pathOfTheJedi.model.Player;
 import byui.cit260.pathOfTheJedi.model.TrainR4;
+import java.util.ArrayList;
 import pathofthejedi.PathOfTheJedi;
 
 /**
@@ -139,6 +141,16 @@ public class TrainR4MenuView extends View {
                            + trainR4defence.getForceAffinity();
                     Player actorOne = new Player();
                     actorOne.setForceLevel(updateForceLevel);
+                    //removes hologram from inventory and form quanity
+                    ArrayList<ItemsAvailable> onhnd = ItemsAvailable.OnHand;
+                    int i = 0;
+                    for (ItemsAvailable itemsAvailable : onhnd){
+                        if(itemsAvailable.getType() == "Force Holograms"){
+                           onhnd.remove(i);
+                           break;
+                        }
+                    i++;
+                    }
                     inventory[GameControl.Item.Force_Hologram.ordinal()].setQuantity(inventory[GameControl.Item.Force_Hologram.ordinal()].getQuantity() - 1.00);
                     System.out.println("You have " + inventory[GameControl.Item.Force_Hologram.ordinal()].getQuantity() + " Force Holograms left");
                 }else{
@@ -187,6 +199,16 @@ public class TrainR4MenuView extends View {
                        + trainR4forceAffinity.getForceAffinity();
                 Player actorOne = new Player();
                 actorOne.setForceLevel(updateForceLevel);
+                //removes hologram from inventory and form quanity
+                    ArrayList<ItemsAvailable> onhnd = ItemsAvailable.OnHand;
+                    int i = 0;
+                    for (ItemsAvailable itemsAvailable : onhnd){
+                        if(itemsAvailable.getType() == "Force Holograms"){
+                           onhnd.remove(i);
+                           break;
+                        }
+                    i++;
+                    }
                 inventory[GameControl.Item.Force_Hologram.ordinal()].setQuantity(inventory[GameControl.Item.Force_Hologram.ordinal()].getQuantity() - 1);
                 System.out.println("You have " + inventory[GameControl.Item.Force_Hologram.ordinal()].getQuantity() + " Force Holograms left");
             }else{

@@ -5,11 +5,10 @@ package byui.cit260.pathOfTheJedi.view;
 
 import byui.cit260.pathOfTheJedi.control.GameControl;
 import byui.cit260.pathOfTheJedi.control.TrainR4Control;
-import byui.cit260.pathOfTheJedi.model.Actor;
 import byui.cit260.pathOfTheJedi.model.InventoryList;
 import byui.cit260.pathOfTheJedi.model.ItemsAvailable;
-import byui.cit260.pathOfTheJedi.model.OnHand;
 import byui.cit260.pathOfTheJedi.model.Player;
+import java.util.ArrayList;
 import pathofthejedi.PathOfTheJedi;
 
 public class GameMenuView extends View {
@@ -66,28 +65,45 @@ public class GameMenuView extends View {
         System.out.println("\n\nYou have just explored " + actorOne.getHome());
         
         TrainR4Control instance = new TrainR4Control();
+        double diceRoll = instance.diceRoll();        
         
-        double diceRoll = instance.diceRoll();
-        ItemsAvailable[] itemsAvail = PathOfTheJedi.getCurrentGame().getItemsAvailable();   
-        //OnHand[] onHand = PathOfTheJedi.getCurrentGame().getOnHand();
+        ArrayList<ItemsAvailable> itemavail = ItemsAvailable.ItemsAvail;        
+        ArrayList<ItemsAvailable> onhnd = ItemsAvailable.OnHand;
         
-        
+        int i = 0;
         if (diceRoll == 2){ 
-            OnHand[] onHand = new OnHand[5];
-            int i = 0;
-                OnHand Lightsaber_Crystal = new OnHand();
-                Lightsaber_Crystal.setType("Trash");
-                Lightsaber_Crystal.setPlanet("Kashyyk");
-                Lightsaber_Crystal.setPower(0.00);            
-                onHand[i] = Lightsaber_Crystal;
+            onhnd.add(new ItemsAvailable("Trash", actorOne.getHome(), 0.00));         
             System.out.println("and found some Trash." );    
         }
-            
-            
-        //for (ItemsAvailable itemsAvailable : itemsAvail){
-        //    if (itemsAvailable.getPlanet();
-        //} 
-
+        else if (diceRoll == 4){ 
+            onhnd.add(new ItemsAvailable("Trash", actorOne.getHome(), 0.00));         
+            System.out.println("and found some Trash." );    
+        }else{
+            for (ItemsAvailable itemsAvailable : itemavail){
+                if(itemsAvailable.getPlanet() == actorOne.getHome()){
+                    String type = itemsAvailable.getType();
+                    String planet = itemsAvailable.getPlanet();
+                    double power = itemsAvailable.getPower();                    
+                    onhnd.add(new ItemsAvailable(type, planet, power)); 
+                    itemavail.remove(i);
+                    System.out.println("and found a " + type);
+                    break;
+                }
+                i = i++;
+            }
+            if (i == itemavail.size()){
+                System.out.println("Nothing more to explore");
+            }
+            }
+        
+        double fh = 0.00;
+        for (ItemsAvailable itemsAvailable : onhnd){
+            if(itemsAvailable.getType() == "Force Holograms"){
+                fh = fh + 1;
+            }                
+        }
+        InventoryList[] inventory = PathOfTheJedi.getCurrentGame().getInventory();
+        inventory[GameControl.Item.Force_Hologram.ordinal()].setQuantity(fh);
     }
 
     private void findSomeone() {
