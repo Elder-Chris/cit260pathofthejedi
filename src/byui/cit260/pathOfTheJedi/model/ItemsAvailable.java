@@ -4,18 +4,32 @@
 package byui.cit260.pathOfTheJedi.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Objects;
 
 /**
  
  */
 public class ItemsAvailable implements Serializable{
+    
+    public static ArrayList<ItemsAvailable> ItemsAvail = new ArrayList<>();
+    public static ArrayList<ItemsAvailable> OnHand = new ArrayList<>();
+    
     private String type;
     private String planet;
     private double power;
+    
+
 
     public ItemsAvailable() {
-    }    
+    }
+    
+    public ItemsAvailable(String type, String planet, double power) {
+        this.type = type;
+        this.planet = planet;
+        this.power = power;
+                
+    } 
 
     public String getType() {
         return type;
@@ -45,8 +59,6 @@ public class ItemsAvailable implements Serializable{
     public String toString() {
         return "ItemsAvailable{" + "type=" + type + ", planet=" + planet + ", power=" + power + '}';
     }   
-    
-
 
     @Override
     public int hashCode() {
@@ -72,15 +84,6 @@ public class ItemsAvailable implements Serializable{
         if (!Objects.equals(this.planet, other.planet)) {
             return false;
         }
-        if (Double.doubleToLongBits(this.power) != Double.doubleToLongBits(other.power)) {
-            return false;
-        }
-        return true;
-    }
-
-    
-    
-
-    
-    
+        return Double.doubleToLongBits(this.power) == Double.doubleToLongBits(other.power);
+    }     
 }

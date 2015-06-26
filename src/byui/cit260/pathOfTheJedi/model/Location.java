@@ -74,10 +74,7 @@ public class Location implements Serializable {
         if (!Objects.equals(this.itemAvailable, other.itemAvailable)) {
             return false;
         }
-        if (!Objects.equals(this.itemRemaining, other.itemRemaining)) {
-            return false;
-        }
-        return true;
+        return Objects.equals(this.itemRemaining, other.itemRemaining);
     }
 
     @Override

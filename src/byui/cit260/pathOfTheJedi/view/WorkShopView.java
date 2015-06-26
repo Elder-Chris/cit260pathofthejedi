@@ -5,10 +5,6 @@
  */
 package byui.cit260.pathOfTheJedi.view;
 
-import byui.cit260.pathOfTheJedi.control.GameControl;
-import java.util.Scanner;
-import pathofthejedi.PathOfTheJedi;
-
 /**
  *
  * @author David
@@ -31,6 +27,7 @@ public class WorkShopView extends View {
 
     
 
+    @Override
         public boolean doAction(Object obj) {
         String value = (String) obj;
         value = value.toUpperCase(); // convert to all upper case

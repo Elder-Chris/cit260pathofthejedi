@@ -9,6 +9,8 @@ import byui.cit260.pathOfTheJedi.control.GameControl;
 import java.util.Scanner;
 import byui.cit260.pathOfTheJedi.control.InventoryListControl;
 import byui.cit260.pathOfTheJedi.model.InventoryList;
+import byui.cit260.pathOfTheJedi.model.ItemsAvailable;
+import java.util.ArrayList;
 
 /**
  *
@@ -64,17 +66,15 @@ public class InventoryMenuView extends View {
         
     }
     public void viewInventory(){
-        InventoryList[] inventory = GameControl.getSortedInventoryList();
-        
         System.out.println("\nList of Inventory Items");
-        System.out.println("Description" + "\t" + 
-                            "color" + "\t" + 
-                            "In Stock");        
-        
-        for (InventoryList inventoryList : inventory){
-            System.out.println(inventoryList.getQuantity() + "\t   " +
-                    inventoryList.getQuantity());
-        }
+                
+        ArrayList<ItemsAvailable> onhnd = ItemsAvailable.OnHand;
+        for (ItemsAvailable itemsAvailable : onhnd){
+            String type = itemsAvailable.getType();
+            String planet = itemsAvailable.getPlanet();
+            double power = itemsAvailable.getPower();
+            System.out.println(type + "\t");
+        }        
     }
     public void calculateCrystalPower(){
         //TODO; create view crystal method

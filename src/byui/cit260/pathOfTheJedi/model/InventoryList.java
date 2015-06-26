@@ -63,10 +63,7 @@ public class InventoryList implements Serializable{
         if (!Objects.equals(this.type, other.type)) {
             return false;
         }
-        if (Double.doubleToLongBits(this.quantity) != Double.doubleToLongBits(other.quantity)) {
-            return false;
-        }
-        return true;
+        return Double.doubleToLongBits(this.quantity) == Double.doubleToLongBits(other.quantity);
     }
 
     public Object getDescription() {

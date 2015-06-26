@@ -46,10 +46,7 @@ public class Workshop implements Serializable{
         if (!Objects.equals(this.lightSaberCrystal, other.lightSaberCrystal)) {
             return false;
         }
-        if (!Objects.equals(this.lightSaberShell, other.lightSaberShell)) {
-            return false;
-        }
-        return true;
+        return Objects.equals(this.lightSaberShell, other.lightSaberShell);
     }
     
     

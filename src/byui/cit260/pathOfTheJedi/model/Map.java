@@ -47,10 +47,7 @@ public class Map implements Serializable {
             return false;
         }
         final Map other = (Map) obj;
-        if (!Objects.equals(this.currentLocation, other.currentLocation)) {
-            return false;
-        }
-        return true;
+        return Objects.equals(this.currentLocation, other.currentLocation);
     }
 
     @Override

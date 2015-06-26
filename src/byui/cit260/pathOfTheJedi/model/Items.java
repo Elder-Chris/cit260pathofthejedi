@@ -62,10 +62,7 @@ public class Items implements Serializable{
         if (!Objects.equals(this.description, other.description)) {
             return false;
         }
-        if (!Objects.equals(this.color, other.color)) {
-            return false;
-        }
-        return true;
+        return Objects.equals(this.color, other.color);
     }
     
 }

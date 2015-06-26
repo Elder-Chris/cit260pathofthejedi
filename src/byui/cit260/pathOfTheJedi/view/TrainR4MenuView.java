@@ -6,8 +6,10 @@ package byui.cit260.pathOfTheJedi.view;
 import byui.cit260.pathOfTheJedi.control.GameControl;
 import byui.cit260.pathOfTheJedi.control.TrainR4Control;
 import byui.cit260.pathOfTheJedi.model.InventoryList;
+import byui.cit260.pathOfTheJedi.model.ItemsAvailable;
 import byui.cit260.pathOfTheJedi.model.Player;
 import byui.cit260.pathOfTheJedi.model.TrainR4;
+import java.util.ArrayList;
 import pathofthejedi.PathOfTheJedi;
 
 /**
@@ -55,48 +57,47 @@ public class TrainR4MenuView extends View {
 
     private void combat() {
         TrainR4Control instance = new TrainR4Control();
-        double diceRoll = instance.diceRoll();
-        TrainR4 trainR4combat = new TrainR4(); 
-        double result = instance.calcCombat(trainR4combat.getCombat(), diceRoll);
+        double diceRoll = instance.diceRoll();        
+        double result = instance.calcCombat(TrainR4.getCombat(), diceRoll);
         if (result < 0 ){
-            if (trainR4combat.getCombat()== 10){
+            if (TrainR4.getCombat()== 10){
             System.out.println("\nYou are at max level");
             }else{
             System.out.println("\nYou Lost");}
         }else{
-            trainR4combat.setCombat(result);
+            TrainR4.setCombat(result);
             System.out.println("\nYou increased your combat level to " + result);
         }
-        double updateForceLevel = trainR4combat.getLightSaberScore()
-               + trainR4combat.getCombat()
-               + trainR4combat.getPush()
-               + trainR4combat.getDefence()
-               + trainR4combat.getForceAffinity();
+        double updateForceLevel = TrainR4.getLightSaberScore()
+               + TrainR4.getCombat()
+               + TrainR4.getPush()
+               + TrainR4.getDefence()
+               + TrainR4.getForceAffinity();
         Player actorOne = new Player();
-        actorOne.setForceLevel(updateForceLevel);        
+        Player.setForceLevel(updateForceLevel);        
     }
 
     private void push() {
         TrainR4Control instance = new TrainR4Control();
         double diceRoll = instance.diceRoll();
         TrainR4 trainR4push = new TrainR4(); 
-        double result = instance.calcPush(trainR4push.getCombat(), trainR4push.getPush(), diceRoll);
+        double result = instance.calcPush(TrainR4.getCombat(), TrainR4.getPush(), diceRoll);
         if (result < 0 ){
-            if (trainR4push.getPush()== 10){
+            if (TrainR4.getPush()== 10){
             System.out.println("\nYou are at max level");
             }else{
             System.out.println("\nYou Lost");}
         }else{
-            trainR4push.setPush(result);
+            TrainR4.setPush(result);
             System.out.println("\nYou increased your push level to " + result);
         }
-        double updateForceLevel = trainR4push.getLightSaberScore()
-               + trainR4push.getCombat()
-               + trainR4push.getPush()
-               + trainR4push.getDefence()
-               + trainR4push.getForceAffinity();
-        Player actorOne = new Player();
-        actorOne.setForceLevel(updateForceLevel);
+        double updateForceLevel = TrainR4.getLightSaberScore()
+               + TrainR4.getCombat()
+               + TrainR4.getPush()
+               + TrainR4.getDefence()
+               + TrainR4.getForceAffinity();
+        
+        Player.setForceLevel(updateForceLevel);
     }
 
     private void defenceQuestion() {
@@ -122,23 +123,33 @@ public class TrainR4MenuView extends View {
                     TrainR4Control instance = new TrainR4Control();
                     double diceRoll = instance.diceRoll();
                     TrainR4 trainR4defence = new TrainR4(); 
-                    double result = instance.calcDefence(trainR4defence.getDefence(), trainR4defence.getCombat(), diceRoll);
+                    double result = instance.calcDefence(TrainR4.getDefence(), TrainR4.getCombat(), diceRoll);
                     if (result < 0 ){
-                        if (trainR4defence.getDefence()== 10){
+                        if (TrainR4.getDefence()== 10){
 
                         }else{
                         System.out.println("\nYou Lost");}
                     }else{
-                        trainR4defence.setDefence(result);
+                        TrainR4.setDefence(result);
                         System.out.println("\nYou increased your push level to " + result);
                     }
-                    double updateForceLevel = trainR4defence.getLightSaberScore()
-                           + trainR4defence.getCombat()
-                           + trainR4defence.getPush()
-                           + trainR4defence.getDefence()
-                           + trainR4defence.getForceAffinity();
+                    double updateForceLevel = TrainR4.getLightSaberScore()
+                           + TrainR4.getCombat()
+                           + TrainR4.getPush()
+                           + TrainR4.getDefence()
+                           + TrainR4.getForceAffinity();
                     Player actorOne = new Player();
-                    actorOne.setForceLevel(updateForceLevel);
+                    Player.setForceLevel(updateForceLevel);
+                    //removes hologram from inventory and form quanity
+                    ArrayList<ItemsAvailable> onhnd = ItemsAvailable.OnHand;
+                    int i = 0;
+                    for (ItemsAvailable itemsAvailable : onhnd){
+                        if("Force Holograms".equals(itemsAvailable.getType())){
+                           onhnd.remove(i);
+                           break;
+                        }
+                    i++;
+                    }
                     inventory[GameControl.Item.Force_Hologram.ordinal()].setQuantity(inventory[GameControl.Item.Force_Hologram.ordinal()].getQuantity() - 1.00);
                     System.out.println("You have " + inventory[GameControl.Item.Force_Hologram.ordinal()].getQuantity() + " Force Holograms left");
                 }else{
@@ -170,23 +181,33 @@ public class TrainR4MenuView extends View {
                 TrainR4Control instance = new TrainR4Control();
                 double diceRoll = instance.diceRoll();
                 TrainR4 trainR4forceAffinity = new TrainR4(); 
-                double result = instance.calcForceAffinity(trainR4forceAffinity.getForceAffinity(), trainR4forceAffinity.getCombat(), diceRoll);
+                double result = instance.calcForceAffinity(TrainR4.getForceAffinity(), TrainR4.getCombat(), diceRoll);
                 if (result < 0 ){
-                    if (trainR4forceAffinity.getCombat()== 10){
+                    if (TrainR4.getCombat()== 10){
                     System.out.println("\nYou are at max level");
                     }else{
                     System.out.println("\nYou Lost");}
                 }else{
-                    trainR4forceAffinity.setForceAffinity(result);
+                    TrainR4.setForceAffinity(result);
                     System.out.println("\nYou increased your forceAffinity level to " + result);
                 }
-                double updateForceLevel = trainR4forceAffinity.getLightSaberScore()
-                       + trainR4forceAffinity.getCombat()
-                       + trainR4forceAffinity.getPush()
-                       + trainR4forceAffinity.getDefence()
-                       + trainR4forceAffinity.getForceAffinity();
+                double updateForceLevel = TrainR4.getLightSaberScore()
+                       + TrainR4.getCombat()
+                       + TrainR4.getPush()
+                       + TrainR4.getDefence()
+                       + TrainR4.getForceAffinity();
                 Player actorOne = new Player();
-                actorOne.setForceLevel(updateForceLevel);
+                Player.setForceLevel(updateForceLevel);
+                //removes hologram from inventory and form quanity
+                    ArrayList<ItemsAvailable> onhnd = ItemsAvailable.OnHand;
+                    int i = 0;
+                    for (ItemsAvailable itemsAvailable : onhnd){
+                        if("Force Holograms".equals(itemsAvailable.getType())){
+                           onhnd.remove(i);
+                           break;
+                        }
+                    i++;
+                    }
                 inventory[GameControl.Item.Force_Hologram.ordinal()].setQuantity(inventory[GameControl.Item.Force_Hologram.ordinal()].getQuantity() - 1);
                 System.out.println("You have " + inventory[GameControl.Item.Force_Hologram.ordinal()].getQuantity() + " Force Holograms left");
             }else{
