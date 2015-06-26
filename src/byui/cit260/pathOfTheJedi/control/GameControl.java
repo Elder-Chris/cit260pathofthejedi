@@ -95,12 +95,12 @@ public class GameControl {
             for (int i = 0; i < inventoryLista.length-1; i++){
                 for (int j = 0; j < inventoryLista.length-1-i; j++){ 
                     //Not sure how to fix this - Chris
-                    //if (inventoryLista[j].getDescription().
-                    //        compareToIgnoreCase(inventoryLista[j + 1].getDescription()) > 0){
-                    //    tempInventoryList = inventoryLista[j];
-                    //    inventoryLista[j] =  inventoryLista[j+1];
-                    //    inventoryLista[j+1] = tempInventoryList;
-                    //}
+                    if (inventoryLista[j].getType().
+                           compareToIgnoreCase(inventoryLista[j + 1].getType()) > 0){
+                        tempInventoryList = inventoryLista[j];
+                        inventoryLista[j] =  inventoryLista[j+1];
+                       inventoryLista[j+1] = tempInventoryList;
+                    }
                 }
             }
             return inventoryLista;
