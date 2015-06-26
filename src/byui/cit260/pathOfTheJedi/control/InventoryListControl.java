@@ -5,6 +5,8 @@
  */
 package byui.cit260.pathOfTheJedi.control;
 
+import byui.cit260.pathOfTheJedi.model.InventoryList;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -34,5 +36,20 @@ public class InventoryListControl {
         
     }
     
-    
+    public static void findMax() {
+        ArrayList<InventoryList> al = new ArrayList<InventoryList>();
+        al.add(new InventoryList("blue", 4));
+        al.add(new InventoryList("green", 3));
+        al.add(new InventoryList("yellow", 1));
+        al.add(new InventoryList("black", 2));
+        
+        double max = 0;
+        
+        for (InventoryList inventoryList : al){
+            if(max < inventoryList.getQuantity()){
+                max = inventoryList.getQuantity();
+            }
+        }
+        System.out.println("Max quantity is " + max);
+}
 }

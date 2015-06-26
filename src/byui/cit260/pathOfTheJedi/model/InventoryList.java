@@ -16,6 +16,11 @@ public class InventoryList implements Serializable{
 
     public InventoryList() {
     }
+    
+    public InventoryList(String type, double quantity) {
+        this.type = type;
+        this.quantity = quantity;
+    }
    
     public String getType() {
         return type;
