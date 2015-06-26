@@ -59,10 +59,8 @@ public class GameMenuView extends View {
             return false;
     }
 
-    private void explore() {
-        Player actorOne = new Player(); //need to call getHome 
-        
-        System.out.println("\n\nYou have just explored " + actorOne.getHome());
+    private void explore() {               
+        System.out.println("\n\nYou have just explored " + Player.getHome());
         
         TrainR4Control instance = new TrainR4Control();
         double diceRoll = instance.diceRoll();        
@@ -72,15 +70,15 @@ public class GameMenuView extends View {
         
         int i = 0;
         if (diceRoll == 2){ 
-            onhnd.add(new ItemsAvailable("Trash", actorOne.getHome(), 0.00));         
+            onhnd.add(new ItemsAvailable("Trash", Player.getHome(), 0.00));         
             System.out.println("and found some Trash." );    
         }
         else if (diceRoll == 4){ 
-            onhnd.add(new ItemsAvailable("Trash", actorOne.getHome(), 0.00));         
+            onhnd.add(new ItemsAvailable("Trash", Player.getHome(), 0.00));         
             System.out.println("and found some Trash." );    
         }else{
             for (ItemsAvailable itemsAvailable : itemavail){
-                if(itemsAvailable.getPlanet() == actorOne.getHome()){
+                if(itemsAvailable.getPlanet() == Player.getHome()){
                     String type = itemsAvailable.getType();
                     String planet = itemsAvailable.getPlanet();
                     double power = itemsAvailable.getPower();                    
@@ -98,7 +96,7 @@ public class GameMenuView extends View {
         
         double fh = 0.00;
         for (ItemsAvailable itemsAvailable : onhnd){
-            if(itemsAvailable.getType() == "Force Holograms"){
+            if("Force Holograms".equals(itemsAvailable.getType())){
                 fh = fh + 1;
             }                
         }
