@@ -81,6 +81,12 @@ public class GameControl {
     public static OnHand[] createOnHand(){
             OnHand[] onHand = new OnHand[5];
             
+            OnHand trash = new OnHand();
+                trash.setType("Trash");
+                trash.setPlanet("Kashyyk");
+                trash.setPower(0.00);            
+                onHand[0] = trash;
+                
             return onHand;
     }
     

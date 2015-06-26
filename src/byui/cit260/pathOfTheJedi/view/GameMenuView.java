@@ -4,8 +4,11 @@
 package byui.cit260.pathOfTheJedi.view;
 
 import byui.cit260.pathOfTheJedi.control.GameControl;
+import byui.cit260.pathOfTheJedi.control.TrainR4Control;
 import byui.cit260.pathOfTheJedi.model.Actor;
 import byui.cit260.pathOfTheJedi.model.InventoryList;
+import byui.cit260.pathOfTheJedi.model.ItemsAvailable;
+import byui.cit260.pathOfTheJedi.model.OnHand;
 import byui.cit260.pathOfTheJedi.model.Player;
 import pathofthejedi.PathOfTheJedi;
 
@@ -60,12 +63,31 @@ public class GameMenuView extends View {
     private void explore() {
         Player actorOne = new Player(); //need to call getHome 
         
-        
-        
-        
-        
         System.out.println("\n\nYou have just explored " + actorOne.getHome());
-        System.out.println("and found ");
+        
+        TrainR4Control instance = new TrainR4Control();
+        
+        double diceRoll = instance.diceRoll();
+        ItemsAvailable[] itemsAvail = PathOfTheJedi.getCurrentGame().getItemsAvailable();   
+        //OnHand[] onHand = PathOfTheJedi.getCurrentGame().getOnHand();
+        
+        
+        if (diceRoll == 2){ 
+            OnHand[] onHand = new OnHand[5];
+            int i = 0;
+                OnHand Lightsaber_Crystal = new OnHand();
+                Lightsaber_Crystal.setType("Trash");
+                Lightsaber_Crystal.setPlanet("Kashyyk");
+                Lightsaber_Crystal.setPower(0.00);            
+                onHand[i] = Lightsaber_Crystal;
+            System.out.println("and found some Trash." );    
+        }
+            
+            
+        //for (ItemsAvailable itemsAvailable : itemsAvail){
+        //    if (itemsAvailable.getPlanet();
+        //} 
+
     }
 
     private void findSomeone() {
