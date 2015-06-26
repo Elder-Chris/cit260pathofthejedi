@@ -5,7 +5,6 @@
  */
 package byui.cit260.pathOfTheJedi.control;
 
-import byui.cit260.pathOfTheJedi.model.Actor;
 import byui.cit260.pathOfTheJedi.model.Player;
 import pathofthejedi.PathOfTheJedi;
 

@@ -9,7 +9,6 @@ import byui.cit260.pathOfTheJedi.model.ItemsAvailable;
 import byui.cit260.pathOfTheJedi.model.Player;
 import byui.cit260.pathOfTheJedi.model.Ship;
 import byui.cit260.pathOfTheJedi.model.TrainR4;
-import java.util.ArrayList;
 import pathofthejedi.PathOfTheJedi;
 
 public class GameControl {    
@@ -45,17 +44,7 @@ public class GameControl {
             inventory[Item.Trash.ordinal()] = Trash;
             
             return inventory;
-        }
-    
-    public static ItemsAvailable[] createItemsAvailable(){
-            ItemsAvailable[] itemsAvailable = new ItemsAvailable[1];
-            
-                    
-
-            
-            return itemsAvailable;
-        }
-    
+        }    
    
     public static InventoryList[] getSortedInventoryList(){
             
@@ -67,13 +56,12 @@ public class GameControl {
             InventoryList tempInventoryList;
             for (int i = 0; i < inventoryLista.length-1; i++){
                 for (int j = 0; j < inventoryLista.length-1-i; j++){ 
-                    //Not sure how to fix this - Chris
-                    //if (inventoryLista[j].getDescription().
-                    //        compareToIgnoreCase(inventoryLista[j + 1].getDescription()) > 0){
-                    //    tempInventoryList = inventoryLista[j];
-                    //    inventoryLista[j] =  inventoryLista[j+1];
-                    //    inventoryLista[j+1] = tempInventoryList;
-                    //}
+                    if (inventoryLista[j].getType().
+                            compareToIgnoreCase(inventoryLista[j + 1].getType()) > 0){
+                        tempInventoryList = inventoryLista[j];
+                        inventoryLista[j] =  inventoryLista[j+1];
+                        inventoryLista[j+1] = tempInventoryList;
+                    }
                 }
             }
             return inventoryLista;
@@ -87,11 +75,8 @@ public class GameControl {
         game.setPlayer(player);
         
         InventoryList[] listA = GameControl.createInventoryList();
-        game.setInventory(listA);
-        
-        ItemsAvailable[] listB = GameControl.createItemsAvailable();
-        game.setItemsAvailable(listB);
-              
+        game.setInventory(listA);     
+
         ItemsAvailable.ItemsAvail.add(new ItemsAvailable("Force Holograms", "Kashyyk", 0.00));
         ItemsAvailable.ItemsAvail.add(new ItemsAvailable("Force Holograms", "Kashyyk", 0.00));
         ItemsAvailable.ItemsAvail.add(new ItemsAvailable("Force Holograms", "Kashyyk", 0.00));
@@ -114,13 +99,12 @@ public class GameControl {
                + trainR4.getDefence()
                + trainR4.getForceAffinity();
                 
-        Player actorOne = new Player();
-        actorOne.setHome("Kashyyk");
-        actorOne.setForceLevel(updateForceLevel);        
+                Player.setHome("Kashyyk");
+        Player.setForceLevel(updateForceLevel);        
         
         //intro text
         System.out.println("\n\nYou have just arrived on Kashyyk");
-        System.out.println("Your current force level is " + actorOne.getForceLevel());
+        System.out.println("Your current force level is " + Player.getForceLevel());
         System.out.println("What you you like to do?");
         System.out.println("\n");
     }

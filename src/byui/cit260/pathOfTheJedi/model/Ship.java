@@ -38,10 +38,7 @@ public class Ship implements Serializable{
             return false;
         }
         final Ship other = (Ship) obj;
-        if (!Objects.equals(this.description, other.description)) {
-            return false;
-        }
-        return true;
+        return Objects.equals(this.description, other.description);
     }
     
     

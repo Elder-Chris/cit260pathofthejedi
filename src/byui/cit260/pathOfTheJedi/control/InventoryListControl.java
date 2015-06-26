@@ -37,7 +37,7 @@ public class InventoryListControl {
     }
     
     public static void findMax() {
-        ArrayList<InventoryList> al = new ArrayList<InventoryList>();
+        ArrayList<InventoryList> al = new ArrayList<>();
         al.add(new InventoryList("blue", 4));
         al.add(new InventoryList("green", 3));
         al.add(new InventoryList("yellow", 1));

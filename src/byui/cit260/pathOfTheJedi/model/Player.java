@@ -24,6 +24,14 @@ public class Player implements Serializable{
     public Player() {
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public static String getHome() {
         return home;
     }
@@ -31,18 +39,24 @@ public class Player implements Serializable{
     public static void setHome(String home) {
         Player.home = home;
     }
-    
-    
+
+    public static double getForceLevel() {
+        return forceLevel;
+    }
+
+    public static void setForceLevel(double forceLevel) {
+        Player.forceLevel = forceLevel;
+    }
+
     @Override
     public String toString() {
-        return "Player{" + "name=" + name + ", forceLevel=" + forceLevel + '}';
+        return "Player{" + "name=" + name + '}';
     }
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 61 * hash + Objects.hashCode(this.name);
-        hash = 61 * hash + (int) (Double.doubleToLongBits(this.forceLevel) ^ (Double.doubleToLongBits(this.forceLevel) >>> 32));
+        int hash = 3;
+        hash = 41 * hash + Objects.hashCode(this.name);
         return hash;
     }
 
@@ -55,31 +69,7 @@ public class Player implements Serializable{
             return false;
         }
         final Player other = (Player) obj;
-        if (!Objects.equals(this.name, other.name)) {
-            return false;
-        }
-        if (Double.doubleToLongBits(this.forceLevel) != Double.doubleToLongBits(other.forceLevel)) {
-            return false;
-        }
-        return true;
+        return Objects.equals(this.name, other.name);
     }
 
-    
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public double getForceLevel() {
-        return forceLevel;
-    }
-
-    public void setForceLevel(double forceLevel) {
-        this.forceLevel = forceLevel;
-    }
-    
-    
 }

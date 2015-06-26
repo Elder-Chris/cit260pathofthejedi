@@ -126,10 +126,7 @@ public class Game implements Serializable {
         if (!Objects.equals(this.map, other.map)) {
             return false;
         }
-        if (!Arrays.deepEquals(this.itemsAvailable, other.itemsAvailable)) {
-            return false;
-        }
-        return true;
+        return Arrays.deepEquals(this.itemsAvailable, other.itemsAvailable);
     }
 
 

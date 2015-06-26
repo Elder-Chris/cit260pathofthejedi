@@ -84,9 +84,6 @@ public class ItemsAvailable implements Serializable{
         if (!Objects.equals(this.planet, other.planet)) {
             return false;
         }
-        if (Double.doubleToLongBits(this.power) != Double.doubleToLongBits(other.power)) {
-            return false;
-        }
-        return true;
+        return Double.doubleToLongBits(this.power) == Double.doubleToLongBits(other.power);
     }     
 }

@@ -5,7 +5,6 @@
  */
 package byui.cit260.pathOfTheJedi.view;
 
-import byui.cit260.pathOfTheJedi.model.Actor;
 import byui.cit260.pathOfTheJedi.model.Player;
 
 /**
@@ -26,6 +25,7 @@ public class ShipMenuView extends View {
                 + "\n(II:::::::::<[===============================================");
             }
    
+    @Override
     public boolean doAction(Object obj) {
         String value = (String) obj;
         value = value.toUpperCase(); // convert to all upper case
@@ -86,28 +86,28 @@ public class ShipMenuView extends View {
     private void nextPlanet() {
         System.out.println("travel");
         Player actorOne = new Player();
-        System.out.println("\n\nYou currently on " + actorOne.getHome() );
+        System.out.println("\n\nYou currently on " + Player.getHome() );
         
-        if (actorOne.getHome() == "New Super Star Destroyer"){
+        if ("New Super Star Destroyer".equals(Player.getHome())){
             System.out.println("\n\nYou are at you final destination");
         }else{
-              switch (actorOne.getHome()){
+              switch (Player.getHome()){
             case "Kashyyk":  
-                actorOne.setHome("Mandalore");
+                Player.setHome("Mandalore");
                 break;            
             case "Mandalore":  
-                actorOne.setHome("New Tatooine");
+                Player.setHome("New Tatooine");
                 break;
             case "New Tatooine":  
-                actorOne.setHome("Rantine Space Station");
+                Player.setHome("Rantine Space Station");
                 break;
             case "Rantine Space Station":  
-                actorOne.setHome("New Super Star Destroyer");
+                Player.setHome("New Super Star Destroyer");
                 break;
             case "New Super Star Destroyer":  
                 break;
         }
-        System.out.println("You have traveled to " + actorOne.getHome());
+        System.out.println("You have traveled to " + Player.getHome());
         }
     }
 

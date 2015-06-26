@@ -115,8 +115,8 @@ public class GameMenuView extends View {
         //InventoryList items1 = new InventoryList();
         InventoryList[] inventory = PathOfTheJedi.getCurrentGame().getInventory();
  
-        System.out.println("\n\nYou currently on " + actorOne.getHome() );
-        System.out.println("Your current force level is " + actorOne.getForceLevel());
+        System.out.println("\n\nYou currently on " + Player.getHome() );
+        System.out.println("Your current force level is " + Player.getForceLevel());
         System.out.println("You have " 
                 + inventory[GameControl.Item.Force_Hologram.ordinal()].getQuantity() 
                 + " Force Holograms");
