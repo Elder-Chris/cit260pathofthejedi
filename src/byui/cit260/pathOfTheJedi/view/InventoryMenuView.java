@@ -25,6 +25,7 @@ public class InventoryMenuView extends View {
             + "\n I - Veiw Inventory"
             + "\n R - Remove From Inventory"
             + "\n C - Calculate Crystal Power"
+            + "\n M - Max Crystal"       
             + "\n Q - Quit"
             + "\n(II:::::::::<[===============================================");
         }
@@ -51,7 +52,10 @@ public class InventoryMenuView extends View {
                 break;
             case 'C': case 'c': //Exit
                 this.calculateCrystalPower();
-                break;       
+                break;
+                case 'M': case 'm': //Exit
+                this.maxCrystal();
+                break; 
             case 'Q': case 'q': //Exit
                 this.quit();
                 break;         
@@ -95,5 +99,9 @@ public class InventoryMenuView extends View {
 
     private void removeFromInventory() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void maxCrystal() {
+        new InventoryListControl().findMax();
     }
 }
