@@ -25,7 +25,7 @@ public class MainMenuView extends View {
             + "\n(II:::::::::<[==============================================="
             + "\n                        Main Menu"
             + "\n(II:::::::::<[==============================================="
-            + "\n 1 - Load Game"
+            + "\n 1 - Back to Game"
             + "\n 2 - New Game"
             + "\n 3 - Help"
             + "\n 4 - Options"
@@ -61,7 +61,8 @@ public class MainMenuView extends View {
     }
 
     private void loadGame() {
-        System.out.println("****Load an existing game*******");
+        GameMenuView gameMenu = new GameMenuView();
+        gameMenu.display();
     }
 
     private void NewGame() {     

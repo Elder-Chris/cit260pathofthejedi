@@ -78,28 +78,61 @@ public class GameControl {
         game.setInventory(listA);     
 
         ItemsAvailable.ItemsAvail.add(new ItemsAvailable("Force Holograms", "Kashyyk", 0.00));
+        ItemsAvailable.ItemsAvail.add(new ItemsAvailable("Lightsaber_Shell", "Kashyyk", 0.00));
         ItemsAvailable.ItemsAvail.add(new ItemsAvailable("Force Holograms", "Kashyyk", 0.00));
+        ItemsAvailable.ItemsAvail.add(new ItemsAvailable("Force Holograms", "Kashyyk", 0.00));
+        ItemsAvailable.ItemsAvail.add(new ItemsAvailable("Raw_Lightsaber_Crystal", "Kashyyk", 1.00));
         ItemsAvailable.ItemsAvail.add(new ItemsAvailable("Force Holograms", "Kashyyk", 0.00));
         ItemsAvailable.ItemsAvail.add(new ItemsAvailable("Force Holograms", "Kashyyk", 0.00));
 
+        ItemsAvailable.ItemsAvail.add(new ItemsAvailable("Force Holograms", "Mandalore", 0.00));
+        ItemsAvailable.ItemsAvail.add(new ItemsAvailable("Lightsaber_Shell", "Mandalore", 0.25));
+        ItemsAvailable.ItemsAvail.add(new ItemsAvailable("Force Holograms", "Mandalore", 0.00));
+        ItemsAvailable.ItemsAvail.add(new ItemsAvailable("Force Holograms", "Mandalore", 0.00));
+        ItemsAvailable.ItemsAvail.add(new ItemsAvailable("Raw_Lightsaber_Crystal", "Mandalore", 2.00));
+        ItemsAvailable.ItemsAvail.add(new ItemsAvailable("Force Holograms", "Mandalore", 0.00));
+        ItemsAvailable.ItemsAvail.add(new ItemsAvailable("Force Holograms", "Mandalore", 0.00));
+        
+        ItemsAvailable.ItemsAvail.add(new ItemsAvailable("Force Holograms", "New Tatooine", 0.00));
+        ItemsAvailable.ItemsAvail.add(new ItemsAvailable("Lightsaber_Shell", "New Tatooine", 0.50));
+        ItemsAvailable.ItemsAvail.add(new ItemsAvailable("Force Holograms", "New Tatooine", 0.00));
+        ItemsAvailable.ItemsAvail.add(new ItemsAvailable("Force Holograms", "New Tatooine", 0.00));
+        ItemsAvailable.ItemsAvail.add(new ItemsAvailable("Raw_Lightsaber_Crystal", "New Tatooine", 3.00));
+        ItemsAvailable.ItemsAvail.add(new ItemsAvailable("Force Holograms", "New Tatooine", 0.00));
+        ItemsAvailable.ItemsAvail.add(new ItemsAvailable("Force Holograms", "New Tatooine", 0.00));
+        
+        ItemsAvailable.ItemsAvail.add(new ItemsAvailable("Force Holograms", "Rantine Space Station", 0.00));
+        ItemsAvailable.ItemsAvail.add(new ItemsAvailable("Lightsaber_Shell", "Rantine Space Station", 0.75));
+        ItemsAvailable.ItemsAvail.add(new ItemsAvailable("Force Holograms", "Rantine Space Station", 0.00));
+        ItemsAvailable.ItemsAvail.add(new ItemsAvailable("Force Holograms", "Rantine Space Station", 0.00));
+        ItemsAvailable.ItemsAvail.add(new ItemsAvailable("Raw_Lightsaber_Crystal", "Rantine Space Station", 5.00));
+        ItemsAvailable.ItemsAvail.add(new ItemsAvailable("Force Holograms", "Rantine Space Station", 0.00));
+        ItemsAvailable.ItemsAvail.add(new ItemsAvailable("Force Holograms", "Rantine Space Station", 0.00));
+        
+        ItemsAvailable.ItemsAvail.add(new ItemsAvailable("Force Holograms", "New Super Star Destroyer", 0.00));
+        ItemsAvailable.ItemsAvail.add(new ItemsAvailable("Lightsaber_Shell", "New Super Star Destroyer", 1.00));
+        ItemsAvailable.ItemsAvail.add(new ItemsAvailable("Force Holograms", "New Super Star Destroyer", 0.00));
+        ItemsAvailable.ItemsAvail.add(new ItemsAvailable("Force Holograms", "New Super Star Destroyer", 0.00));
+        ItemsAvailable.ItemsAvail.add(new ItemsAvailable("Raw_Lightsaber_Crystal", "New Super Star Destroyer", 8.00));
+        ItemsAvailable.ItemsAvail.add(new ItemsAvailable("Force Holograms", "New Super Star Destroyer", 0.00));
+        ItemsAvailable.ItemsAvail.add(new ItemsAvailable("Force Holograms", "New Super Star Destroyer", 0.00));
         
         Ship ship = new Ship();
-        game.setShip(ship);
-        
-        TrainR4 trainR4 = new TrainR4();        
-        trainR4.setLightSaberScore(0.00);
-        trainR4.setCombat(1.00);
-        trainR4.setPush(1.00);
-        trainR4.setDefence(1.00);
-        trainR4.setForceAffinity(1.00);        
+        game.setShip(ship);        
+             
+        TrainR4.setLightSaberScore(0.00);
+        TrainR4.setCombat(1.00);
+        TrainR4.setPush(1.00);
+        TrainR4.setDefence(1.00);
+        TrainR4.setForceAffinity(1.00);        
 
-       double updateForceLevel = trainR4.getLightSaberScore()
-               + trainR4.getCombat()
-               + trainR4.getPush()
-               + trainR4.getDefence()
-               + trainR4.getForceAffinity();
+       double updateForceLevel = TrainR4.getLightSaberScore()
+               + TrainR4.getCombat()
+               + TrainR4.getPush()
+               + TrainR4.getDefence()
+               + TrainR4.getForceAffinity();
                 
-                Player.setHome("Kashyyk");
+        Player.setHome("Kashyyk");
         Player.setForceLevel(updateForceLevel);        
         
         //intro text

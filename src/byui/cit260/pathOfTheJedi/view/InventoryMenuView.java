@@ -5,10 +5,8 @@
  */
 package byui.cit260.pathOfTheJedi.view;
 
-import byui.cit260.pathOfTheJedi.control.GameControl;
 import java.util.Scanner;
 import byui.cit260.pathOfTheJedi.control.InventoryListControl;
-import byui.cit260.pathOfTheJedi.model.InventoryList;
 import byui.cit260.pathOfTheJedi.model.ItemsAvailable;
 import java.util.ArrayList;
 
@@ -66,7 +64,7 @@ public class InventoryMenuView extends View {
         
     }
     public void viewInventory(){
-        System.out.println("\nList of Inventory Items");
+        System.out.println("\n\nList of Inventory Items");
                 
         ArrayList<ItemsAvailable> onhnd = ItemsAvailable.OnHand;
         for (ItemsAvailable itemsAvailable : onhnd){
@@ -76,32 +74,74 @@ public class InventoryMenuView extends View {
             System.out.println(type + "\t");
         }        
     }
+    
+    public void removeFromInventory(){
+        //TODO; create view crystal method
+        System.out.println("\n\nRemove From Inventory");
+        
+        int i = 1; 
+        System.out.println("[ 0 ] - None\t");
+        ArrayList<ItemsAvailable> onhnd = ItemsAvailable.OnHand;
+        for (ItemsAvailable itemsAvailable : onhnd){
+            String type = itemsAvailable.getType();
+            String planet = itemsAvailable.getPlanet();
+            double power = itemsAvailable.getPower();
+            System.out.println("[ " 
+                    + i 
+                    + " ] - " 
+                    + type + "\t");
+            i++;
+        }
+        System.out.println("What item do you want to remove?");
+        Scanner scanner = new Scanner(System.in);
+        int rnum = scanner.nextInt();
+        if (rnum != 0 ) {
+            onhnd.remove(rnum - 1);
+            System.out.println("\nItem was removed");
+        }
+    }
+    
     public void calculateCrystalPower(){
         //TODO; create view crystal method
-        InventoryListControl control = new InventoryListControl();
+        System.out.println("\n\nRefine Crystal");
+        
+        int i = 1; 
+        System.out.println("[ 0 ] - None\t");
+        ArrayList<ItemsAvailable> onhnd = ItemsAvailable.OnHand;
+        for (ItemsAvailable itemsAvailable : onhnd){
+            String type = itemsAvailable.getType();
+            String planet = itemsAvailable.getPlanet();
+            double power = itemsAvailable.getPower();
+            if ("Raw_Lightsaber_Crystal".equals(type)){
+            System.out.println("[ " 
+                    + i 
+                    + " ] - " 
+                    + type + "\t");
+            }
+            i++;
+        }
+        System.out.println("What crystal do you want to refine?");        
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter the diameter.(0-10)");
-        double diameter = scanner.nextDouble();
-        System.out.println("Enter the crystal level.(0-3)");
-        double crystalLv = scanner.nextDouble();
-        double totalPower = control.calcCrystalPower(diameter, crystalLv);
-        System.out.println("The power level of this crystal is " + totalPower);
+        int rnum = scanner.nextInt();
+        if (rnum != 0 ) {
+        double power = ItemsAvailable.OnHand.get(rnum -1).getPower();    
+        InventoryListControl control = new InventoryListControl();
+        System.out.println("\nEnter the diameter.(0-10)");
+        double diameter = scanner.nextDouble();        
+        double totalPower = control.calcCrystalPower(diameter, power);
+        ItemsAvailable.OnHand.get(rnum -1).setPower(totalPower);
+        ItemsAvailable.OnHand.get(rnum -1).setType("Lightsaber_Crystal");
+        System.out.println("\n\nThe crystal is now active with a power level of " + totalPower);
+        }
     }
-    public void removeFromInveRemoventory(){
-        //TODO; create view crystal method
-        System.out.println("Remove From Inventory");
-    }
+    
   
     private void quit() {
         GameMenuView gameMenu = new GameMenuView();
         gameMenu.display();
     }
 
-    private void removeFromInventory() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     private void maxCrystal() {
-        new InventoryListControl().findMax();
+        InventoryListControl.findMax();
     }
 }
