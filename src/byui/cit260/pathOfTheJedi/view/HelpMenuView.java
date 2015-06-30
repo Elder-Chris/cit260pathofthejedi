@@ -49,6 +49,7 @@ public class HelpMenuView extends View {
     }
 
     private void howToPlay() {
+        
         System.out.println("****How to Play game*******");
     }
 
