@@ -3,6 +3,7 @@
  */
 package byui.cit260.pathOfTheJedi.control;
 
+import byui.cit260.pathOfTheJedi.exceptions.GameControlException;
 import byui.cit260.pathOfTheJedi.model.Game;
 import byui.cit260.pathOfTheJedi.model.InventoryList;
 import byui.cit260.pathOfTheJedi.model.ItemsAvailable;
@@ -69,9 +70,9 @@ public class GameControl {
    
     public static void createNewGame(Player player) {   
         
-        Game game = new Game();
+        Game game = new Game();        
         PathOfTheJedi.setCurrentGame(game);
-        
+                
         game.setPlayer(player);
         
         InventoryList[] listA = GameControl.createInventoryList();
@@ -140,6 +141,7 @@ public class GameControl {
         System.out.println("Your current force level is " + Player.getForceLevel());
         System.out.println("What you you like to do?");
         System.out.println("\n");
+        
     }
     
 }

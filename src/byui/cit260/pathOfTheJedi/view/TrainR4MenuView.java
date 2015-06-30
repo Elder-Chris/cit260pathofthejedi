@@ -5,6 +5,7 @@ package byui.cit260.pathOfTheJedi.view;
 
 import byui.cit260.pathOfTheJedi.control.GameControl;
 import byui.cit260.pathOfTheJedi.control.TrainR4Control;
+import byui.cit260.pathOfTheJedi.exceptions.TrainR4ControlException;
 import byui.cit260.pathOfTheJedi.model.InventoryList;
 import byui.cit260.pathOfTheJedi.model.ItemsAvailable;
 import byui.cit260.pathOfTheJedi.model.Player;
@@ -55,49 +56,42 @@ public class TrainR4MenuView extends View {
         return false;
     }
 
-    private void combat() {
+    private void combat(){
+        
         TrainR4Control instance = new TrainR4Control();
         double diceRoll = instance.diceRoll();        
-        double result = instance.calcCombat(TrainR4.getCombat(), diceRoll);
-        if (result < 0 ){
-            if (TrainR4.getCombat()== 10){
-            System.out.println("\nYou are at max level");
-            }else{
-            System.out.println("\nYou Lost");}
-        }else{
-            TrainR4.setCombat(result);
-            System.out.println("\nYou increased your combat level to " + result);
-        }
-        double updateForceLevel = TrainR4.getLightSaberScore()
+        //double result = instance.calcCombat(TrainR4.getCombat(), diceRoll);
+        try {
+           double result = instance.calcCombat(TrainR4.getCombat(), diceRoll);
+           System.out.println("\nYou increased your combat level to " + result);
+           TrainR4.setCombat(result);
+           double updateForceLevel = TrainR4.getLightSaberScore()
                + TrainR4.getCombat()
                + TrainR4.getPush()
                + TrainR4.getDefence()
-               + TrainR4.getForceAffinity();
-        Player actorOne = new Player();
-        Player.setForceLevel(updateForceLevel);        
+               + TrainR4.getForceAffinity();        
+            Player.setForceLevel(updateForceLevel);
+        } catch (TrainR4ControlException me) {
+            System.out.println(me.getMessage());
+        }                
     }
 
     private void push() {
         TrainR4Control instance = new TrainR4Control();
-        double diceRoll = instance.diceRoll();
-        TrainR4 trainR4push = new TrainR4(); 
-        double result = instance.calcPush(TrainR4.getCombat(), TrainR4.getPush(), diceRoll);
-        if (result < 0 ){
-            if (TrainR4.getPush()== 10){
-            System.out.println("\nYou are at max level");
-            }else{
-            System.out.println("\nYou Lost");}
-        }else{
-            TrainR4.setPush(result);
-            System.out.println("\nYou increased your push level to " + result);
-        }
-        double updateForceLevel = TrainR4.getLightSaberScore()
-               + TrainR4.getCombat()
-               + TrainR4.getPush()
-               + TrainR4.getDefence()
-               + TrainR4.getForceAffinity();
+        double diceRoll = instance.diceRoll();       
+        
+           double result = instance.calcPush(TrainR4.getCombat(), TrainR4.getPush(), diceRoll);
+           TrainR4.setPush(result);
+           System.out.println("\nYou increased your push level to " + result);
+        
+            double updateForceLevel = TrainR4.getLightSaberScore()
+                   + TrainR4.getCombat()
+                   + TrainR4.getPush()
+                   + TrainR4.getDefence()
+                   + TrainR4.getForceAffinity();
         
         Player.setForceLevel(updateForceLevel);
+        
     }
 
     private void defenceQuestion() {
@@ -122,25 +116,19 @@ public class TrainR4MenuView extends View {
                 if (inventory[GameControl.Item.Force_Hologram.ordinal()].getQuantity()>0){                
                     TrainR4Control instance = new TrainR4Control();
                     double diceRoll = instance.diceRoll();
+                    
+                    try {
                     TrainR4 trainR4defence = new TrainR4(); 
-                    double result = instance.calcDefence(TrainR4.getDefence(), TrainR4.getCombat(), diceRoll);
-                    if (result < 0 ){
-                        if (TrainR4.getDefence()== 10){
-
-                        }else{
-                        System.out.println("\nYou Lost");}
-                    }else{
-                        TrainR4.setDefence(result);
-                        System.out.println("\nYou increased your push level to " + result);
-                    }
+                    double result = instance.calcDefence(TrainR4.getDefence(), TrainR4.getCombat(), diceRoll);                    
+                    TrainR4.setDefence(result);
+                    System.out.println("\nYou increased your push level to " + result);
                     double updateForceLevel = TrainR4.getLightSaberScore()
                            + TrainR4.getCombat()
                            + TrainR4.getPush()
                            + TrainR4.getDefence()
                            + TrainR4.getForceAffinity();
-                    Player actorOne = new Player();
                     Player.setForceLevel(updateForceLevel);
-                    //removes hologram from inventory and form quanity
+                    //removes hologram from invent and form quanity
                     ArrayList<ItemsAvailable> onhnd = ItemsAvailable.OnHand;
                     int i = 0;
                     for (ItemsAvailable itemsAvailable : onhnd){
@@ -152,11 +140,17 @@ public class TrainR4MenuView extends View {
                     }
                     inventory[GameControl.Item.Force_Hologram.ordinal()].setQuantity(inventory[GameControl.Item.Force_Hologram.ordinal()].getQuantity() - 1.00);
                     System.out.println("You have " + inventory[GameControl.Item.Force_Hologram.ordinal()].getQuantity() + " Force Holograms left");
+                    }catch(TrainR4ControlException me) {
+                        System.out.println(me.getMessage());
+                    }
+                        
+                    }
+                    
                 }else{
                     System.out.println("You are out of Force Holograms");
                 }
-        }
     }
+    
     
     private void affinityQuestion() {
         InventoryList[] inventory = PathOfTheJedi.getCurrentGame().getInventory();        
@@ -180,6 +174,8 @@ public class TrainR4MenuView extends View {
                 if (inventory[GameControl.Item.Force_Hologram.ordinal()].getQuantity()>0){ 
                 TrainR4Control instance = new TrainR4Control();
                 double diceRoll = instance.diceRoll();
+                
+                try{
                 TrainR4 trainR4forceAffinity = new TrainR4(); 
                 double result = instance.calcForceAffinity(TrainR4.getForceAffinity(), TrainR4.getCombat(), diceRoll);
                 if (result < 0 ){
@@ -210,11 +206,15 @@ public class TrainR4MenuView extends View {
                     }
                 inventory[GameControl.Item.Force_Hologram.ordinal()].setQuantity(inventory[GameControl.Item.Force_Hologram.ordinal()].getQuantity() - 1);
                 System.out.println("You have " + inventory[GameControl.Item.Force_Hologram.ordinal()].getQuantity() + " Force Holograms left");
+                }catch(TrainR4ControlException me) {
+                        System.out.println(me.getMessage());
+                    }
+                }
             }else{
                 System.out.println("You are out of Force Holograms");
             }
         }
-    } 
+     
 
     private void ship() {        
         // test script needs to be written for save game then main menu

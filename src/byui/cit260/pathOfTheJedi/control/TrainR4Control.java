@@ -1,15 +1,17 @@
 package byui.cit260.pathOfTheJedi.control;
 
+import byui.cit260.pathOfTheJedi.exceptions.TrainR4ControlException;
+
 public class TrainR4Control {
     
     //combat
-    public double calcCombat(double combatLv, double diceRoll) {
+    public double calcCombat(double combatLv, double diceRoll) throws TrainR4ControlException {
         double combatVar = (combatLv * 2) - diceRoll;
         if (combatLv >= 10) {
-        return -1;
+        throw new TrainR4ControlException("You are at max level");
         }        
         if (combatLv <= (combatVar/1.5)){
-        return -1;    
+        throw new TrainR4ControlException("You failed");    
         }        
         double newLv = combatLv + 1;        
         return newLv;
@@ -29,26 +31,26 @@ public class TrainR4Control {
     }
     
     //defense
-    public double calcDefence(double defenceLv, double combatLv, double diceRoll) {
+    public double calcDefence(double defenceLv, double combatLv, double diceRoll) throws TrainR4ControlException {
         double defenceVar = ((defenceLv / 2) * diceRoll) - combatLv;
         if (defenceLv >= 10) {
-            return -1;
+            throw new TrainR4ControlException("You are at max level");
         }        
         if (defenceLv <= (defenceVar)){
-            return -1;    
+            throw new TrainR4ControlException("You failed");    
         }        
         double newLv = defenceLv + 1;        
         return newLv;
     }
     
     //forceAffinity
-    public double calcForceAffinity(double forceAffinityLv, double combatLv, double diceRoll) {
+    public double calcForceAffinity(double forceAffinityLv, double combatLv, double diceRoll) throws TrainR4ControlException {
         double forceAffinityVar = ((forceAffinityLv / 2) * this.diceRoll()) - combatLv;
         if (forceAffinityLv >= 10) {
-            return -1;
+            throw new TrainR4ControlException("You are at max level");
         }        
         if (forceAffinityLv <= (forceAffinityVar)){
-            return -1;    
+            throw new TrainR4ControlException("You failed");    
         }        
         double newLv = forceAffinityLv + 1;        
         return newLv;

@@ -38,11 +38,17 @@ public class PathOfTheJedi {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        
+    public static void main(String[] args) {      
         
         StartProgramView startProgramView = new StartProgramView();
+        try {
         startProgramView.startProgram();
+        } catch (Throwable te){
+            System.out.println(te.getMessage());
+            te.printStackTrace();
+            startProgramView.startProgram();
+            
+        }
         
         /**
         //Player Class
