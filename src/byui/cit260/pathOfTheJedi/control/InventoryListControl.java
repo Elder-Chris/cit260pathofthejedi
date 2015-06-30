@@ -55,7 +55,7 @@ public class InventoryListControl {
     public static void sumList() {
         
         ArrayList<InventoryList> al = new ArrayList<>();
-        al.add(new InventoryList("blue", 5));
+        al.add(new InventoryList("blue", 6));
         al.add(new InventoryList("green", 2));
         al.add(new InventoryList("yellow", 1));
         al.add(new InventoryList("black", 4));
