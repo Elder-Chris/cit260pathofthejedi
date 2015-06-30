@@ -68,7 +68,7 @@ public class WorkShopView extends View {
             String type = itemsAvailable.getType();
             String planet = itemsAvailable.getPlanet();
             double power = itemsAvailable.getPower();
-            if (type == "Lightsaber_Crystal"){
+            if ("Lightsaber_Crystal".equals(type)){
             System.out.println(type + " | Power = " 
                     + power 
                     + " \t");
@@ -84,7 +84,7 @@ public class WorkShopView extends View {
             String type = itemsAvailable.getType();
             String planet = itemsAvailable.getPlanet();
             double power = itemsAvailable.getPower();
-            if (type == "Lightsaber_Shell"){
+            if ("Lightsaber_Shell".equals(type)){
             System.out.println(type + " | Power = " 
                     + power 
                     + " \t");

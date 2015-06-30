@@ -73,7 +73,7 @@ public class TrainR4MenuView extends View {
             Player.setForceLevel(updateForceLevel);
         } catch (TrainR4ControlException me) {
             System.out.println(me.getMessage());
-        }                
+        }               
     }
 
     private void push() {
@@ -113,42 +113,40 @@ public class TrainR4MenuView extends View {
     private void defence(char choice) {
         InventoryList[] inventory = PathOfTheJedi.getCurrentGame().getInventory();        
         if (choice == 'Y' || choice == 'y'){                         
-                if (inventory[GameControl.Item.Force_Hologram.ordinal()].getQuantity()>0){                
+            if (inventory[GameControl.Item.Force_Hologram.ordinal()].getQuantity()>0){                
                     TrainR4Control instance = new TrainR4Control();
                     double diceRoll = instance.diceRoll();
                     
                     try {
-                    TrainR4 trainR4defence = new TrainR4(); 
-                    double result = instance.calcDefence(TrainR4.getDefence(), TrainR4.getCombat(), diceRoll);                    
-                    TrainR4.setDefence(result);
-                    System.out.println("\nYou increased your push level to " + result);
-                    double updateForceLevel = TrainR4.getLightSaberScore()
-                           + TrainR4.getCombat()
-                           + TrainR4.getPush()
-                           + TrainR4.getDefence()
-                           + TrainR4.getForceAffinity();
-                    Player.setForceLevel(updateForceLevel);
-                    //removes hologram from invent and form quanity
-                    ArrayList<ItemsAvailable> onhnd = ItemsAvailable.OnHand;
-                    int i = 0;
-                    for (ItemsAvailable itemsAvailable : onhnd){
-                        if("Force Holograms".equals(itemsAvailable.getType())){
-                           onhnd.remove(i);
-                           break;
+                        TrainR4 trainR4defence = new TrainR4(); 
+                        double result = instance.calcDefence(TrainR4.getDefence(), TrainR4.getCombat(), diceRoll);                    
+                        TrainR4.setDefence(result);
+                        System.out.println("\nYou increased your push level to " + result);
+                        double updateForceLevel = TrainR4.getLightSaberScore()
+                               + TrainR4.getCombat()
+                               + TrainR4.getPush()
+                               + TrainR4.getDefence()
+                               + TrainR4.getForceAffinity();
+                        Player.setForceLevel(updateForceLevel);
+                        //removes hologram from invent and form quanity
+                        ArrayList<ItemsAvailable> onhnd = ItemsAvailable.OnHand;
+                        int i = 0;
+                        for (ItemsAvailable itemsAvailable : onhnd){
+                            if("Force Holograms".equals(itemsAvailable.getType())){
+                               onhnd.remove(i);
+                               break;
+                            }
+                        i++;
                         }
-                    i++;
-                    }
-                    inventory[GameControl.Item.Force_Hologram.ordinal()].setQuantity(inventory[GameControl.Item.Force_Hologram.ordinal()].getQuantity() - 1.00);
-                    System.out.println("You have " + inventory[GameControl.Item.Force_Hologram.ordinal()].getQuantity() + " Force Holograms left");
+                        inventory[GameControl.Item.Force_Hologram.ordinal()].setQuantity(inventory[GameControl.Item.Force_Hologram.ordinal()].getQuantity() - 1.00);
+                        System.out.println("You have " + inventory[GameControl.Item.Force_Hologram.ordinal()].getQuantity() + " Force Holograms left");
                     }catch(TrainR4ControlException me) {
                         System.out.println(me.getMessage());
-                    }
-                        
-                    }
-                    
-                }else{
-                    System.out.println("You are out of Force Holograms");
-                }
+                    }                  
+            }else{
+                System.out.println("\n\nYou could not train you are out of Force Holograms");
+            }
+        }
     }
     
     
@@ -171,30 +169,23 @@ public class TrainR4MenuView extends View {
     private void affinity(char choice) {
         InventoryList[] inventory = PathOfTheJedi.getCurrentGame().getInventory();        
         if (choice == 'Y' || choice == 'y'){
-                if (inventory[GameControl.Item.Force_Hologram.ordinal()].getQuantity()>0){ 
+            if (inventory[GameControl.Item.Force_Hologram.ordinal()].getQuantity()>0){ 
                 TrainR4Control instance = new TrainR4Control();
                 double diceRoll = instance.diceRoll();
                 
-                try{
-                TrainR4 trainR4forceAffinity = new TrainR4(); 
-                double result = instance.calcForceAffinity(TrainR4.getForceAffinity(), TrainR4.getCombat(), diceRoll);
-                if (result < 0 ){
-                    if (TrainR4.getCombat()== 10){
-                    System.out.println("\nYou are at max level");
-                    }else{
-                    System.out.println("\nYou Lost");}
-                }else{
-                    TrainR4.setForceAffinity(result);
-                    System.out.println("\nYou increased your forceAffinity level to " + result);
-                }
-                double updateForceLevel = TrainR4.getLightSaberScore()
-                       + TrainR4.getCombat()
-                       + TrainR4.getPush()
-                       + TrainR4.getDefence()
-                       + TrainR4.getForceAffinity();
-                Player actorOne = new Player();
-                Player.setForceLevel(updateForceLevel);
-                //removes hologram from inventory and form quanity
+                try {
+                    TrainR4 trainR4forceAffinity = new TrainR4(); 
+                    double result = instance.calcForceAffinity(TrainR4.getForceAffinity(), TrainR4.getCombat(), diceRoll);
+                        TrainR4.setForceAffinity(result);
+                        System.out.println("\nYou increased your Force Affinity level to " + result);
+
+                    double updateForceLevel = TrainR4.getLightSaberScore()
+                           + TrainR4.getCombat()
+                           + TrainR4.getPush()
+                           + TrainR4.getDefence()
+                           + TrainR4.getForceAffinity();
+                    Player.setForceLevel(updateForceLevel);
+                    //removes hologram from inventory and form quanity
                     ArrayList<ItemsAvailable> onhnd = ItemsAvailable.OnHand;
                     int i = 0;
                     for (ItemsAvailable itemsAvailable : onhnd){
@@ -211,7 +202,7 @@ public class TrainR4MenuView extends View {
                     }
                 }
             }else{
-                System.out.println("You are out of Force Holograms");
+                System.out.println("\n\nYou could not train you are out of Force Holograms");
             }
         }
      

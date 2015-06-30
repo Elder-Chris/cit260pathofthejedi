@@ -87,12 +87,12 @@ public class GameMenuView extends View {
                     System.out.println("and found a " + type);
                     break;
                 }
-                i = i++;
+                i++;
             }
-            if (i == itemavail.size()){
-                System.out.println("Nothing more to explore");
+            if (i != 0){
+                System.out.println("You will not find any useful items here.");  
             }
-            }
+        }
         
         double fh = 0.00;
         for (ItemsAvailable itemsAvailable : onhnd){
