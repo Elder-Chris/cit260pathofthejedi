@@ -7,6 +7,7 @@ package byui.cit260.pathOfTheJedi.view;
 
 import java.util.Scanner;
 import byui.cit260.pathOfTheJedi.control.InventoryListControl;
+import byui.cit260.pathOfTheJedi.exceptions.InventoryListControlException;
 import byui.cit260.pathOfTheJedi.model.ItemsAvailable;
 import java.util.ArrayList;
 
@@ -120,6 +121,7 @@ public class InventoryMenuView extends View {
             }
             i++;
         }
+        try{
         System.out.println("What crystal do you want to refine?");        
         Scanner scanner = new Scanner(System.in);
         int rnum = scanner.nextInt();
@@ -133,6 +135,11 @@ public class InventoryMenuView extends View {
         ItemsAvailable.OnHand.get(rnum -1).setType("Lightsaber_Crystal");
         System.out.println("\n\nThe crystal is now active with a power level of " + totalPower);
         }
+        }
+        catch(InventoryListControlException me) {
+                        System.out.println(me.getMessage());
+                    }
+        
     }
     
   

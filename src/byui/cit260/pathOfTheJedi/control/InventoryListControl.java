@@ -5,6 +5,7 @@
  */
 package byui.cit260.pathOfTheJedi.control;
 
+import byui.cit260.pathOfTheJedi.exceptions.InventoryListControlException;
 import byui.cit260.pathOfTheJedi.model.InventoryList;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -19,16 +20,19 @@ public class InventoryListControl {
     double power = 0;
     
     public InventoryListControl(){}
-    public double calcCrystalPower(double diameter, double crystalLv){
+    public double calcCrystalPower(double diameter, double crystalLv) throws InventoryListControlException{
         this.diameter = diameter;
         this.crystalLv = crystalLv;
         
     
         if (diameter < 0 || diameter > 10){
-        return -1;}
+            throw new InventoryListControlException("Learn to measure, there are"
+                    + "no crystals of that size.");
+        }
         
-        if (crystalLv < 0 || crystalLv > 3){
-        return -1;}
+        //if (crystalLv < 0 || crystalLv > 3){
+           // throw new InventoryListControlException("Fool, there are no crystals of that power.");
+        //
         
         power = (diameter / 2) + (crystalLv * 2);
         return power;
