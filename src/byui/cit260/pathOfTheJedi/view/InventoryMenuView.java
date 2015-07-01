@@ -26,7 +26,8 @@ public class InventoryMenuView extends View {
             + "\n I - Veiw Inventory"
             + "\n R - Remove From Inventory"
             + "\n C - Calculate Crystal Power"
-            + "\n M - Max Crystal"       
+            + "\n M - Max Crystal"  
+            + "\n S - Sum Crystal"          
             + "\n Q - Quit"
             + "\n(II:::::::::<[===============================================");
         }
@@ -57,7 +58,10 @@ public class InventoryMenuView extends View {
                 case 'M': case 'm': //Exit
                 this.maxCrystal();
                 break; 
-            case 'Q': case 'q': //Exit
+                case 'S': case 's': //Exit
+                this.sumCrystal();
+                break;     
+                case 'Q': case 'q': //Exit
                 this.quit();
                 break;         
         }
@@ -150,5 +154,9 @@ public class InventoryMenuView extends View {
 
     private void maxCrystal() {
         InventoryListControl.findMax();
+    }
+    
+    private void sumCrystal() {
+        InventoryListControl.sumList();
     }
 }

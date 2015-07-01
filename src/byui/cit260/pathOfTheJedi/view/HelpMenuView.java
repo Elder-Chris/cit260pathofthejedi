@@ -49,7 +49,19 @@ public class HelpMenuView extends View {
     }
 
     private void howToPlay() {
-        System.out.println("****How to Play game*******");
+        System.out.println("\n\n========================================================");
+        System.out.println("\nYou will be taking on the character of Cale Novastar.");
+        System.out.println("  As your home is being attacked by the Sith.");
+        System.out.println("  You will go through different scenarios where you");
+        System.out.println("  can collect lightsaber items, force holograms, and allies.");
+        System.out.println("  You will train on the Mandalorian ship where ");
+        System.out.println("  you will increase your force.");
+        System.out.println("  You can select on the Main Menu the New Game option");
+        System.out.println("  and you can visit the scenarios we have on it.");
+        System.out.println("  These are the different locations that you can ");
+        System.out.println("  travel to: Kashyyyk, Mandalore, New Tatooine, Rantine ");
+        System.out.println("  Space Station and the New Super Star Destroyer.");
+        System.out.println("  You will be able to find Allies on your way to find your revange.");
     }
 
     private void credits() {
