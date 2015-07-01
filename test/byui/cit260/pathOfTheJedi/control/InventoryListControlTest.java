@@ -5,9 +5,6 @@
  */
 package byui.cit260.pathOfTheJedi.control;
 
-import org.junit.Test;
-import static org.junit.Assert.*;
-
 /**
  *
  * @author David

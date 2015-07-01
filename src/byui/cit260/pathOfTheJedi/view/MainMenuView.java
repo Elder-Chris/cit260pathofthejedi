@@ -82,7 +82,7 @@ public class MainMenuView extends View {
         helpMenu.display();
     }
 
-    private void options() {
+    private void options () {
         System.out.println("****Options Menu*******");
     }
 
