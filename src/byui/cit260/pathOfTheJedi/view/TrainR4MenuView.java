@@ -77,21 +77,22 @@ public class TrainR4MenuView extends View {
     }
 
     private void push() {
+        
         TrainR4Control instance = new TrainR4Control();
         double diceRoll = instance.diceRoll();       
-        
+        try {
            double result = instance.calcPush(TrainR4.getCombat(), TrainR4.getPush(), diceRoll);
            TrainR4.setPush(result);
            System.out.println("\nYou increased your push level to " + result);
-        
-            double updateForceLevel = TrainR4.getLightSaberScore()
+           double updateForceLevel = TrainR4.getLightSaberScore()
                    + TrainR4.getCombat()
                    + TrainR4.getPush()
                    + TrainR4.getDefence()
                    + TrainR4.getForceAffinity();
-        
-        Player.setForceLevel(updateForceLevel);
-        
+            Player.setForceLevel(updateForceLevel);
+        } catch (TrainR4ControlException me) {
+            System.out.println(me.getMessage());
+        }
     }
 
     private void defenceQuestion() {

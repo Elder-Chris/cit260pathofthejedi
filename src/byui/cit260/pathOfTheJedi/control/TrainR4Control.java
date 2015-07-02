@@ -18,13 +18,13 @@ public class TrainR4Control {
     }
     
     //push    
-    public double calcPush(double combatLv, double pushLv, double diceRoll) {
+    public double calcPush(double combatLv, double pushLv, double diceRoll) throws TrainR4ControlException {
         double pullForceVar = ((pushLv / 2) * diceRoll) - combatLv;
         if (pushLv >=10) {
-            return -1;
+        throw new TrainR4ControlException("You are at max level");
         }
         if (pushLv <= pullForceVar) {
-            return -1;
+            throw new TrainR4ControlException("You failed"); 
         }    
         double newLv = pushLv + 1;        
         return newLv;

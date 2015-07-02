@@ -128,14 +128,4 @@ public class Game implements Serializable {
         }
         return Arrays.deepEquals(this.itemsAvailable, other.itemsAvailable);
     }
-
-
-
-
-
-
-    
-    
-    
-
 }
