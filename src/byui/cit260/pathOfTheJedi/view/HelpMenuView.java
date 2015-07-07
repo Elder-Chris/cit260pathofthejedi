@@ -49,9 +49,9 @@ public class HelpMenuView extends View {
     }
 
     private void howToPlay() {
-        System.out.println("\n\n========================================================");
-        System.out.println("\nYou will be taking on the character of Cale Novastar.");
-        System.out.println("  As your home is being attacked by the Sith.");
+        this.console.println("\n\n========================================================");
+        this.console.println("\nYou will be taking on the character of Cale Novastar.");
+        this.console.println("  As your home is being attacked by the Sith.");
         System.out.println("  You will go through different scenarios where you");
         System.out.println("  can collect lightsaber items, force holograms, and allies.");
         System.out.println("  You will train on the Mandalorian ship where ");

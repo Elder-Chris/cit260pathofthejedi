@@ -73,6 +73,7 @@ public class TrainR4MenuView extends View {
             Player.setForceLevel(updateForceLevel);
         } catch (TrainR4ControlException me) {
             System.out.println(me.getMessage());
+            //ErrorView.display(this.getClass().getName(), "Error reading input: " + me.getMessage());
         }               
     }
 

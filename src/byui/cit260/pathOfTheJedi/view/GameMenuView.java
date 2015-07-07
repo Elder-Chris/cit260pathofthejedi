@@ -157,6 +157,20 @@ public class GameMenuView extends View {
 
     private void mainMenu() {
         
+        
+        System.out.println("\n\nEnter the file path for file where the game"
+                + "is to be saved");
+        String filePath = this.getInput();
+        
+        try {
+            
+            GameControl.saveGame(PathOfTheJedi.getCurrentGame(), filePath);
+            
+        }catch (Exception ex) {
+            ErrorView.display("MainMenuView", ex.getMessage());
+        }
+        
+        
         // test script needs to be written for save game then main menu
         MainMenuView mainMenu = new MainMenuView();
         mainMenu.display();

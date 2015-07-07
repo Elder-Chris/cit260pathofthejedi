@@ -25,7 +25,7 @@ public class MainMenuView extends View {
             + "\n(II:::::::::<[==============================================="
             + "\n                        Main Menu"
             + "\n(II:::::::::<[==============================================="
-            + "\n 1 - Back to Game"
+            + "\n 1 - Load Game"
             + "\n 2 - New Game"
             + "\n 3 - Help"
             + "\n 4 - Options"
@@ -61,6 +61,18 @@ public class MainMenuView extends View {
     }
 
     private void loadGame() {
+        
+        System.out.println("\n\nEnter the file path for the file where the game"
+                + "is to be saved.");
+        
+        String filePath = this.getInput();
+        
+        try {
+        GameControl.getSavedGame(filePath);
+        }catch (Exception ex) {
+            ErrorView.display("MainMenuView", ex.getMessage());
+        }
+        
         GameMenuView gameMenu = new GameMenuView();
         gameMenu.display();
     }

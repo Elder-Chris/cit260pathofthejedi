@@ -7,7 +7,13 @@ package byui.cit260.pathOfTheJedi.view;
 
 import byui.cit260.pathOfTheJedi.control.ProgramControl;
 import byui.cit260.pathOfTheJedi.model.Player;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import pathofthejedi.PathOfTheJedi;
 
 /**
  *
@@ -86,7 +92,8 @@ public class StartProgramView {
     }
 
     private String getPlayersName() {
-        boolean valid = false; // idicates if the name has been retrieved
+        
+         boolean valid = false; // idicates if the name has been retrieved
         String playersName = null;
         Scanner keyboard = new Scanner(System.in); //keyboard input stream
         
@@ -108,7 +115,7 @@ public class StartProgramView {
         }
         
         return playersName; // return the name
-    }
+    } 
 
     private void displayWelcomeMessage(Player player) {
         System.out.println("\n\n°(((=((===°°°(((:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::");

@@ -8,6 +8,10 @@ package pathofthejedi;
 import byui.cit260.pathOfTheJedi.model.Game;
 import byui.cit260.pathOfTheJedi.model.Player;
 import byui.cit260.pathOfTheJedi.view.StartProgramView;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
 
 /**
  *
@@ -16,7 +20,12 @@ import byui.cit260.pathOfTheJedi.view.StartProgramView;
 public class PathOfTheJedi {
     
     private static Game currentGame = null;
-    private static Player player = null;  
+    private static Player player = null; 
+    
+    private static PrintWriter outFile = null;
+    private static BufferedReader inFile = null;
+    
+    private static PrintWriter logFile = null;
     
     public static Game getCurrentGame() {
         return currentGame;
@@ -33,6 +42,31 @@ public class PathOfTheJedi {
     public static void setPlayer(Player player) {
         PathOfTheJedi.player = player;
     }   
+
+    public static PrintWriter getOutFile() {
+        return outFile;
+    }
+
+    public static void setOutFile(PrintWriter outFile) {
+        PathOfTheJedi.outFile = outFile;
+    }
+
+    public static BufferedReader getInFile() {
+        return inFile;
+    }
+
+    public static void setInFile(BufferedReader inFile) {
+        PathOfTheJedi.inFile = inFile;
+    }
+
+    public static PrintWriter getLogFile() {
+        return logFile;
+    }
+
+    public static void setLogFile(PrintWriter logFile) {
+        PathOfTheJedi.logFile = logFile;
+    }
+    
     
     
     /**
@@ -42,6 +76,15 @@ public class PathOfTheJedi {
         
         StartProgramView startProgramView = new StartProgramView();
         try {
+            
+         PathOfTheJedi.inFile =
+                 new BufferedReader(new InputStreamReader(System.in));
+         PathOfTheJedi.outFile = new PrintWriter(System.out, true);
+         
+         //open log file
+         String filePath = "log.txt"; //add windows or mac folder structure here.
+         PathOfTheJedi.logFile = new PrintWriter(filePath);
+            
         startProgramView.startProgram();
         } catch (Throwable te){
             System.out.println(te.getMessage());
@@ -49,103 +92,24 @@ public class PathOfTheJedi {
             startProgramView.startProgram();
             
         }
+        finally{
+        try{
+            if(PathOfTheJedi.inFile != null)
+            PathOfTheJedi.inFile.close();
+            
+            if(PathOfTheJedi.outFile != null)
+            PathOfTheJedi.outFile.close();
+            
+            if(PathOfTheJedi.logFile != null)
+            PathOfTheJedi.logFile.close();
+        }
+        catch (IOException ex){
+            System.out.println("Error closing files.");
+            return;
+        }
+        }
         
-        /**
-        //Player Class
-        Player playerOne = new Player();
         
-        playerOne.setName("Chris Elder");
-        playerOne.setForceLevel(1.00);
-        
-        String playerInfo = playerOne.toString();
-        System.out.println(playerInfo);
-        
-        //Actor Class
-        Actor actorOne = new Actor();
-        
-        actorOne.setName("Yoda");
-        actorOne.setDescription("Jedi master who trained Count Dooku and Luke Skywalker.");
-        actorOne.setHome("Unknown");
-        actorOne.setType(1);
-        actorOne.setForceLevel(10);
-        
-        String actorInfo = actorOne.toString();
-        System.out.println(actorInfo);
-        
-        //InventoryList Class
-        InventoryList inventoryListOne = new InventoryList();
-        inventoryListOne.setType("Cristal");
-        inventoryListOne.setAmount(10);
-        inventoryListOne.setQuantity(1);
-        
-        String inventoryListInfo = inventoryListOne.toString();
-        System.out.println(inventoryListInfo);
-        
-        //Item Class
-        Items itemsOne = new Items();
-        
-        itemsOne.setDescription("Lightsaber");
-        itemsOne.setColor("blue");
-        
-        String itemsInfo = itemsOne.toString();
-        System.out.println(itemsInfo);
-        
-        //Game Class
-        Game gameOne = new Game();
-        
-        gameOne.setTotalTime(10.5);
-        
-        String timer = gameOne.toString();
-        System.out.println(timer);
-        
-        //Map Class
-        Map locationOne = new Map();
-        
-        locationOne.setCurrentLocation("dock one");
-        
-        String dock = locationOne.toString();
-        System.out.println(dock);
-        
-        //Location Class
-        Location locationInvintory = new Location();
-        
-        locationInvintory.setActorAvailable("Bob");
-        locationInvintory.setItemAvailable("boots, light sabre, food");
-        locationInvintory.setItemRemaining("boots");
-        
-        String scene = locationInvintory.toString();
-        System.out.println(scene);
-        
-        //Ship class
-        Ship theShip = new Ship();
-        
-        theShip.setDescription("The ship is long and round oval you could say");
-        
-        String shipInfo = theShip.toString();
-        System.out.println(shipInfo);
-        
-        //TrainR4
-        TrainR4 trainR4 = new TrainR4();
-        
-        trainR4.setLightSaberUse("Jedi silver saber");
-        trainR4.setLightSaberScore(1.00);
-        trainR4.setCombat(1.00);
-        trainR4.setPush(1.00);
-        trainR4.setDefence(1.00);
-        trainR4.setForceAffinity(1.00);
-        
-        String trainInfo = trainR4.toString();
-        System.out.println(trainInfo);
-        
-        //Workshop
-        Workshop workshop = new Workshop();
-        
-        workshop.setLightSaberCrystal("green");
-        workshop.setLightSaberShell("silver");
-        
-        String workshopInfo = workshop.toString();
-        System.out.println(workshopInfo);
-        */
     }
     
 }

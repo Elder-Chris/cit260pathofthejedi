@@ -3,15 +3,50 @@
  */
 package byui.cit260.pathOfTheJedi.control;
 
+import byui.cit260.pathOfTheJedi.exceptions.GameControlException;
 import byui.cit260.pathOfTheJedi.model.Game;
 import byui.cit260.pathOfTheJedi.model.InventoryList;
 import byui.cit260.pathOfTheJedi.model.ItemsAvailable;
 import byui.cit260.pathOfTheJedi.model.Player;
 import byui.cit260.pathOfTheJedi.model.Ship;
 import byui.cit260.pathOfTheJedi.model.TrainR4;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import pathofthejedi.PathOfTheJedi;
 
 public class GameControl {    
+
+    public static void saveGame(Game currentGame, String filePath) throws GameControlException {
+        try( FileOutputStream fops = new FileOutputStream(filePath)) {
+            ObjectOutputStream output = new ObjectOutputStream(fops);
+            
+            output.writeObject(currentGame); //write game objet out to file
+        }
+        catch(IOException e) {
+            throw new GameControlException(e.getMessage());
+        }
+    }
+
+    public static void getSavedGame(String filePath) throws GameControlException {
+        Game game = null;
+        
+        try ( FileInputStream fips = new FileInputStream(filePath)) {
+            ObjectInputStream output = new ObjectInputStream(fips);
+            
+            game = (Game) output.readObject();
+        }
+        catch (FileNotFoundException fnfe) {
+            throw new GameControlException (fnfe.getMessage());
+        }
+        catch (Exception e) {
+        throw new GameControlException(e.getMessage());
+        }
+        PathOfTheJedi.setCurrentGame(game);
+    }
     
     public enum Item{
         Force_Hologram,

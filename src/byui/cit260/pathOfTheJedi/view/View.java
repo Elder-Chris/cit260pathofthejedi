@@ -5,7 +5,13 @@
  */
 package byui.cit260.pathOfTheJedi.view;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import pathofthejedi.PathOfTheJedi;
 
 /**
  *
@@ -18,6 +24,9 @@ import java.util.Scanner;
     public abstract class View implements ViewInterface{  
 
         private String promptMessage;
+        
+        protected final BufferedReader keyboard = PathOfTheJedi.getInFile();
+        protected final PrintWriter console = PathOfTheJedi.getOutFile();
         
 
         public View(String promptMessage) {
@@ -39,7 +48,7 @@ import java.util.Scanner;
             boolean done = false;
         
         do {
-            System.out.println(this.promptMessage); // display the prompt message
+            this.console.println(this.promptMessage); // display the prompt message
             value = this.getInput(); // get value end user enter
             done = this.doAction(value); // do action base on value enter
         } while (!done); //  
@@ -48,12 +57,17 @@ import java.util.Scanner;
         public String getInput() {
         boolean valid = false; // idicates if the name has been retrieved
         String value = null;
-        Scanner keyboard = new Scanner(System.in); //keyboard input stream
+        
+        
         
         while(!valid){ 
             
-            // get the value entered from the keyboard 
-            value = keyboard.nextLine();
+            try {
+                // get the value entered from the keyboard
+                value = this.keyboard.readLine();
+            } catch (IOException ex) {
+                Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
+            }
             value = value.trim();            
         
             //if the value is invalid (less than one char in length)
