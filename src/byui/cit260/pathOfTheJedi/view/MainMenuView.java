@@ -62,7 +62,7 @@ public class MainMenuView extends View {
 
     private void loadGame() {
         
-        System.out.println("\n\nEnter the file path for the file where the game"
+        this.console.println("\n\nEnter the file path for the file where the game"
                 + "is to be saved.");
         
         String filePath = this.getInput();
@@ -95,11 +95,11 @@ public class MainMenuView extends View {
     }
 
     private void options () {
-        System.out.println("****Options Menu*******");
+        this.console.println("****Options Menu*******");
     }
 
     private void quit() {
-        System.out.println("****Exiting Game*******");
+        this.console.println("****Exiting Game*******");
     }
     
 }

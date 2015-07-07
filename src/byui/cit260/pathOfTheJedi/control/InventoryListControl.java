@@ -49,7 +49,7 @@ public class InventoryListControl {
                 max = itemsAvailable.getPower();
             }
         }
-        System.out.println("Max power is " + max);
+        
     }
     
     public static void sumList() {

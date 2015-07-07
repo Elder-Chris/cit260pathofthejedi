@@ -9,7 +9,10 @@ import java.util.Scanner;
 import byui.cit260.pathOfTheJedi.control.InventoryListControl;
 import byui.cit260.pathOfTheJedi.exceptions.InventoryListControlException;
 import byui.cit260.pathOfTheJedi.model.ItemsAvailable;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -69,29 +72,29 @@ public class InventoryMenuView extends View {
         
     }
     public void viewInventory(){
-        System.out.println("\n\nList of Inventory Items");
+        this.console.println("\n\nList of Inventory Items");
                 
         ArrayList<ItemsAvailable> onhnd = ItemsAvailable.OnHand;
         for (ItemsAvailable itemsAvailable : onhnd){
             String type = itemsAvailable.getType();
             String planet = itemsAvailable.getPlanet();
             double power = itemsAvailable.getPower();
-            System.out.println(type + "\t");
+            this.console.println(type + "\t");
         }        
     }
     
     public void removeFromInventory(){
         //TODO; create view crystal method
-        System.out.println("\n\nRemove From Inventory");
+        this.console.println("\n\nRemove From Inventory");
         
         int i = 1; 
-        System.out.println("[ 0 ] - None\t");
+        this.console.println("[ 0 ] - None\t");
         ArrayList<ItemsAvailable> onhnd = ItemsAvailable.OnHand;
         for (ItemsAvailable itemsAvailable : onhnd){
             String type = itemsAvailable.getType();
             String planet = itemsAvailable.getPlanet();
             double power = itemsAvailable.getPower();
-            System.out.println("[ " 
+            this.console.println("[ " 
                     + i 
                     + " ] - " 
                     + type + "\t");
@@ -102,13 +105,13 @@ public class InventoryMenuView extends View {
         int rnum = scanner.nextInt();
         if (rnum != 0 ) {
             onhnd.remove(rnum - 1);
-            System.out.println("\nItem was removed");
+            this.console.println("\nItem was removed");
         }
     }
     
     public void calculateCrystalPower(){
         //TODO; create view crystal method
-        System.out.println("\n\nRefine Crystal");
+        this.console.println("\n\nRefine Crystal");
         
         int i = 1; 
         System.out.println("[ 0 ] - None\t");
@@ -118,7 +121,7 @@ public class InventoryMenuView extends View {
             String planet = itemsAvailable.getPlanet();
             double power = itemsAvailable.getPower();
             if ("Raw_Lightsaber_Crystal".equals(type)){
-            System.out.println("[ " 
+            this.console.println("[ " 
                     + i 
                     + " ] - " 
                     + type + "\t");
@@ -126,22 +129,32 @@ public class InventoryMenuView extends View {
             i++;
         }
         try{
-        System.out.println("What crystal do you want to refine?");        
-        Scanner scanner = new Scanner(System.in);
-        int rnum = scanner.nextInt();
+        this.console.println("What crystal do you want to refine?");        
+        //Scanner scanner = new Scanner(System.in);
+        int rnum = 0;
+            try {
+                rnum = Integer.parseInt(this.keyboard.readLine());
+            } catch (IOException ex) {
+                Logger.getLogger(InventoryMenuView.class.getName()).log(Level.SEVERE, null, ex);
+            }
         if (rnum != 0 ) {
         double power = ItemsAvailable.OnHand.get(rnum -1).getPower();    
         InventoryListControl control = new InventoryListControl();
-        System.out.println("\nEnter the diameter.(0-10)");
-        double diameter = scanner.nextDouble();        
+        this.console.println("\nEnter the diameter.(0-10)");
+        double diameter = 0;
+            try {
+                diameter = Double.parseDouble(this.keyboard.readLine());
+            } catch (IOException ex) {
+                Logger.getLogger(InventoryMenuView.class.getName()).log(Level.SEVERE, null, ex);
+            }
         double totalPower = control.calcCrystalPower(diameter, power);
         ItemsAvailable.OnHand.get(rnum -1).setPower(totalPower);
         ItemsAvailable.OnHand.get(rnum -1).setType("Lightsaber_Crystal");
-        System.out.println("\n\nThe crystal is now active with a power level of " + totalPower);
+        this.console.println("\n\nThe crystal is now active with a power level of " + totalPower);
         }
         }
         catch(InventoryListControlException me) {
-                        System.out.println(me.getMessage());
+                        ErrorView.display(this.getClass().getName(), me.getMessage());
                     }
         
     }
