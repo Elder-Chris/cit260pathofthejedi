@@ -68,7 +68,6 @@ import pathofthejedi.PathOfTheJedi;
         
             //if the value is invalid (less than one char in length)
             if (value.length()<1) {
-                //System.out.println("valid value has not been entered");
                 ErrorView.display(this.getClass().getName(), "You Must enter a Value");
                 continue; // and repeat agian
             }
