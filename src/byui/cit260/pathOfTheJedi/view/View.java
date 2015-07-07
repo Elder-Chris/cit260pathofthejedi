@@ -8,7 +8,6 @@ package byui.cit260.pathOfTheJedi.view;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import pathofthejedi.PathOfTheJedi;
@@ -27,7 +26,6 @@ import pathofthejedi.PathOfTheJedi;
         
         protected final BufferedReader keyboard = PathOfTheJedi.getInFile();
         protected final PrintWriter console = PathOfTheJedi.getOutFile();
-        
 
         public View(String promptMessage) {
             this.promptMessage = promptMessage;
@@ -58,8 +56,6 @@ import pathofthejedi.PathOfTheJedi;
         boolean valid = false; // idicates if the name has been retrieved
         String value = null;
         
-        
-        
         while(!valid){ 
             
             try {
@@ -72,7 +68,8 @@ import pathofthejedi.PathOfTheJedi;
         
             //if the value is invalid (less than one char in length)
             if (value.length()<1) {
-                System.out.println("valid value has not been entered");
+                //System.out.println("valid value has not been entered");
+                ErrorView.display(this.getClass().getName(), "You Must enter a Value");
                 continue; // and repeat agian
             }
             break; // outof the (exit) the repetition

@@ -5,7 +5,6 @@
  */
 package byui.cit260.pathOfTheJedi.view;
 
-import byui.cit260.pathOfTheJedi.control.InventoryListControl;
 import byui.cit260.pathOfTheJedi.model.ItemsAvailable;
 import byui.cit260.pathOfTheJedi.model.Player;
 import byui.cit260.pathOfTheJedi.model.TrainR4;
@@ -61,7 +60,7 @@ public class WorkShopView extends View {
     }
     public void viewCrystals(){
         //TODO; create view crystals method
-        System.out.println("\nList of Crystals");
+        this.console.println("\nList of Crystals");
                 
         ArrayList<ItemsAvailable> onhnd = ItemsAvailable.OnHand;
         for (ItemsAvailable itemsAvailable : onhnd){
@@ -69,7 +68,7 @@ public class WorkShopView extends View {
             String planet = itemsAvailable.getPlanet();
             double power = itemsAvailable.getPower();
             if ("Lightsaber_Crystal".equals(type)){
-            System.out.println(type + " | Power = " 
+            this.console.println(type + " | Power = " 
                     + power 
                     + " \t");
             }
@@ -77,7 +76,7 @@ public class WorkShopView extends View {
     }
     public void viewShell(){
         //TODO; create view crystal method
-        System.out.println("\nList of Shells");
+        this.console.println("\nList of Shells");
                 
         ArrayList<ItemsAvailable> onhnd = ItemsAvailable.OnHand;
         for (ItemsAvailable itemsAvailable : onhnd){
@@ -85,7 +84,7 @@ public class WorkShopView extends View {
             String planet = itemsAvailable.getPlanet();
             double power = itemsAvailable.getPower();
             if ("Lightsaber_Shell".equals(type)){
-            System.out.println(type + " | Power = " 
+            this.console.println(type + " | Power = " 
                     + power 
                     + " \t");
             }
@@ -93,17 +92,17 @@ public class WorkShopView extends View {
     }
     public void buildLightSabre(){
         //TODO; creat build light sabre method
-        System.out.println("\n\nBuild Lightsaber");
-        System.out.println("\nSelect crystal:");
+        this.console.println("\n\nBuild Lightsaber");
+        this.console.println("\nSelect crystal:");
         int i = 1; 
-        System.out.println("[ 0 ] - None\t");
+        this.console.println("[ 0 ] - None\t");
         ArrayList<ItemsAvailable> onhnd = ItemsAvailable.OnHand;
         for (ItemsAvailable itemsAvailable : onhnd){
             String type = itemsAvailable.getType();
             String planet = itemsAvailable.getPlanet();
             double power = itemsAvailable.getPower();
             if ("Lightsaber_Crystal".equals(type)){
-            System.out.println("[ " 
+            this.console.println("[ " 
                     + i 
                     + " ] - " 
                     + type + " | Power = " 
@@ -112,20 +111,20 @@ public class WorkShopView extends View {
             }
             i++;
         }
-        System.out.println("What crystal do you want to equip?");        
+        this.console.println("What crystal do you want to equip?");        
         Scanner scanner = new Scanner(System.in);
         int rnum1 = scanner.nextInt();
         if (rnum1 != 0 ) {
             
-            System.out.println("\n\nSelect shell:");
+            this.console.println("\n\nSelect shell:");
         i = 1; 
-        System.out.println("[ 0 ] - None\t");
+        this.console.println("[ 0 ] - None\t");
         for (ItemsAvailable itemsAvailable : onhnd){
             String type = itemsAvailable.getType();
             String planet = itemsAvailable.getPlanet();
             double power = itemsAvailable.getPower();
             if ("Lightsaber_Shell".equals(type)){
-            System.out.println("[ " 
+            this.console.println("[ " 
                     + i 
                     + " ] - " 
                     + type + " | Power = " 
@@ -134,7 +133,7 @@ public class WorkShopView extends View {
             }
             i++;
         }
-        System.out.println("What shell do you want to equip?");        
+        this.console.println("What shell do you want to equip?");        
         int rnum2 = scanner.nextInt();
         if (rnum2 != 0 ) {
         double cPower = ItemsAvailable.OnHand.get(rnum1 -1).getPower();
@@ -148,8 +147,8 @@ public class WorkShopView extends View {
                + TrainR4.getForceAffinity();
                 
         Player.setForceLevel(updateForceLevel);
-        System.out.println("\n\nLighsaber has been built!"); 
-        System.out.println("You now have a force level of " + updateForceLevel);        
+        this.console.println("\n\nLighsaber has been built!"); 
+        this.console.println("You now have a force level of " + updateForceLevel);        
         }
       }
     }

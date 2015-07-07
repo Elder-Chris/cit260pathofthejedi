@@ -31,6 +31,7 @@ public class TrainR4MenuView extends View {
                 + "\n(II:::::::::<[==============================================="); 
             }
         
+    @Override
     public boolean doAction(Object obj) {
         String value = (String) obj;
         value = value.toUpperCase(); // convert to all upper case
@@ -63,7 +64,7 @@ public class TrainR4MenuView extends View {
         //double result = instance.calcCombat(TrainR4.getCombat(), diceRoll);
         try {
            double result = instance.calcCombat(TrainR4.getCombat(), diceRoll);
-           System.out.println("\nYou increased your combat level to " + result);
+           this.console.println("\nYou increased your combat level to " + result);
            TrainR4.setCombat(result);
            double updateForceLevel = TrainR4.getLightSaberScore()
                + TrainR4.getCombat()
@@ -72,7 +73,7 @@ public class TrainR4MenuView extends View {
                + TrainR4.getForceAffinity();        
             Player.setForceLevel(updateForceLevel);
         } catch (TrainR4ControlException me) {
-            System.out.println(me.getMessage());
+            ErrorView.display(this.getClass().getName(), me.getMessage());
             //ErrorView.display(this.getClass().getName(), "Error reading input: " + me.getMessage());
         }               
     }
@@ -84,7 +85,7 @@ public class TrainR4MenuView extends View {
         try {
            double result = instance.calcPush(TrainR4.getCombat(), TrainR4.getPush(), diceRoll);
            TrainR4.setPush(result);
-           System.out.println("\nYou increased your push level to " + result);
+           this.console.println("\nYou increased your push level to " + result);
            double updateForceLevel = TrainR4.getLightSaberScore()
                    + TrainR4.getCombat()
                    + TrainR4.getPush()
@@ -92,7 +93,7 @@ public class TrainR4MenuView extends View {
                    + TrainR4.getForceAffinity();
             Player.setForceLevel(updateForceLevel);
         } catch (TrainR4ControlException me) {
-            System.out.println(me.getMessage());
+            ErrorView.display(this.getClass().getName(), me.getMessage());
         }
     }
 
@@ -100,7 +101,7 @@ public class TrainR4MenuView extends View {
         InventoryList[] inventory = PathOfTheJedi.getCurrentGame().getInventory();        
         char selection;
         do {            
-            System.out.println("\n\nTraning costs 1 Force Hologram you currently have " 
+            this.console.println("\n\nTraning costs 1 Force Hologram you currently have " 
                     + inventory[GameControl.Item.Force_Hologram.ordinal()].getQuantity() 
                     + ". \nAre you sure you want to continue? \nEnter Y or N"); // display the main menu
             
@@ -123,7 +124,7 @@ public class TrainR4MenuView extends View {
                         TrainR4 trainR4defence = new TrainR4(); 
                         double result = instance.calcDefence(TrainR4.getDefence(), TrainR4.getCombat(), diceRoll);                    
                         TrainR4.setDefence(result);
-                        System.out.println("\nYou increased your push level to " + result);
+                        this.console.println("\nYou increased your push level to " + result);
                         double updateForceLevel = TrainR4.getLightSaberScore()
                                + TrainR4.getCombat()
                                + TrainR4.getPush()
@@ -141,12 +142,12 @@ public class TrainR4MenuView extends View {
                         i++;
                         }
                         inventory[GameControl.Item.Force_Hologram.ordinal()].setQuantity(inventory[GameControl.Item.Force_Hologram.ordinal()].getQuantity() - 1.00);
-                        System.out.println("You have " + inventory[GameControl.Item.Force_Hologram.ordinal()].getQuantity() + " Force Holograms left");
+                        this.console.println("You have " + inventory[GameControl.Item.Force_Hologram.ordinal()].getQuantity() + " Force Holograms left");
                     }catch(TrainR4ControlException me) {
-                        System.out.println(me.getMessage());
+                        ErrorView.display(this.getClass().getName(), me.getMessage());
                     }                  
             }else{
-                System.out.println("\n\nYou could not train you are out of Force Holograms");
+                this.console.println("\n\nYou could not train, you are out of Force Holograms");
             }
         }
     }
@@ -156,7 +157,7 @@ public class TrainR4MenuView extends View {
         InventoryList[] inventory = PathOfTheJedi.getCurrentGame().getInventory();        
         char selection = ' ';
         do {            
-            System.out.println("\n\nTraning costs 1 Force Hologram you currently have " 
+            this.console.println("\n\nTraning costs 1 Force Hologram you currently have " 
                     + inventory[GameControl.Item.Force_Hologram.ordinal()].getQuantity() 
                     + ". \nAre you sure you want to continue? \nEnter Y or N"); // display the main menu
             
@@ -179,7 +180,7 @@ public class TrainR4MenuView extends View {
                     TrainR4 trainR4forceAffinity = new TrainR4(); 
                     double result = instance.calcForceAffinity(TrainR4.getForceAffinity(), TrainR4.getCombat(), diceRoll);
                         TrainR4.setForceAffinity(result);
-                        System.out.println("\nYou increased your Force Affinity level to " + result);
+                        this.console.println("\nYou increased your Force Affinity level to " + result);
 
                     double updateForceLevel = TrainR4.getLightSaberScore()
                            + TrainR4.getCombat()
@@ -198,13 +199,13 @@ public class TrainR4MenuView extends View {
                     i++;
                     }
                 inventory[GameControl.Item.Force_Hologram.ordinal()].setQuantity(inventory[GameControl.Item.Force_Hologram.ordinal()].getQuantity() - 1);
-                System.out.println("You have " + inventory[GameControl.Item.Force_Hologram.ordinal()].getQuantity() + " Force Holograms left");
+                this.console.println("You have " + inventory[GameControl.Item.Force_Hologram.ordinal()].getQuantity() + " Force Holograms left");
                 }catch(TrainR4ControlException me) {
-                        System.out.println(me.getMessage());
+                        ErrorView.display(this.getClass().getName(), me.getMessage());
                     }
                 }
             }else{
-                System.out.println("\n\nYou could not train you are out of Force Holograms");
+                this.console.println("\n\nYou could not train, you are out of Force Holograms");
             }
         }
      

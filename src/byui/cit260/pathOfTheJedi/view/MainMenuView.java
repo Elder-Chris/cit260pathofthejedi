@@ -6,11 +6,6 @@
 package byui.cit260.pathOfTheJedi.view;
 
 import byui.cit260.pathOfTheJedi.control.GameControl;
-import byui.cit260.pathOfTheJedi.model.Actor;
-import byui.cit260.pathOfTheJedi.model.TrainR4;
-import byui.cit260.pathOfTheJedi.view.GameMenuView;
-import byui.cit260.pathOfTheJedi.view.View;
-import java.util.Scanner;
 import pathofthejedi.PathOfTheJedi;
 
 /**
