@@ -166,10 +166,14 @@ public class InventoryMenuView extends View {
     }
 
     private void maxCrystal() {
-        InventoryListControl.findMax();
+        InventoryListControl control = new InventoryListControl();
+        double max = control.findMax();
+        this.console.println("Max power is " + max);
     }
     
     private void sumCrystal() {
-        InventoryListControl.sumList();
+        InventoryListControl control = new InventoryListControl();
+        double sum = control.findMax();
+        this.console.println("Sum is " + sum);
     }
 }

@@ -65,16 +65,13 @@ public class PathOfTheJedi {
 
     public static void setLogFile(PrintWriter logFile) {
         PathOfTheJedi.logFile = logFile;
-    }
-    
-    
-    
+    }   
+        
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {      
-        
-        StartProgramView startProgramView = new StartProgramView();
+
         try {
             
          PathOfTheJedi.inFile =
@@ -83,33 +80,36 @@ public class PathOfTheJedi {
          
          //open log file
          String filePath = "log.txt"; //add windows or mac folder structure here.
-         PathOfTheJedi.logFile = new PrintWriter(filePath);
-            
+         PathOfTheJedi.logFile = new PrintWriter(filePath);         
+         
+         // create StartprogramView and start program
+        StartProgramView startProgramView = new StartProgramView();
         startProgramView.startProgram();
-        } catch (Throwable te){
-            System.out.println(te.getMessage());
-            te.printStackTrace();
-            startProgramView.startProgram();
-            
+        return;
+        
+        } catch (Throwable e){
+            //System.out.println(te.getMessage());
+            System.out.println("Exception: " + e.toString() + 
+                               "\nCause: " + e.getCause() +
+                               "\nMessage: " + e.getMessage());
+            e.printStackTrace();
+            //startProgramView.startProgram()            
         }
         finally{
-        try{
-            if(PathOfTheJedi.inFile != null)
-            PathOfTheJedi.inFile.close();
-            
-            if(PathOfTheJedi.outFile != null)
-            PathOfTheJedi.outFile.close();
-            
-            if(PathOfTheJedi.logFile != null)
-            PathOfTheJedi.logFile.close();
+            try{
+                if(PathOfTheJedi.inFile != null)
+                   PathOfTheJedi.inFile.close();
+
+                if(PathOfTheJedi.outFile != null)
+                   PathOfTheJedi.outFile.close();
+
+                if(PathOfTheJedi.logFile != null)
+                   PathOfTheJedi.logFile.close();
+            }
+            catch (IOException ex){
+                System.out.println("Error closing files.");
+                return;
+            }                  
         }
-        catch (IOException ex){
-            System.out.println("Error closing files.");
-            return;
-        }
-        }
-        
-        
-    }
-    
+    }   
 }

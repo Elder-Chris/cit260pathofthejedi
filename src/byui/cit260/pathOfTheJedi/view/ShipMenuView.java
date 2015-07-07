@@ -49,31 +49,31 @@ public class ShipMenuView extends View {
     }
 
     private void trainR4Menu() {
-            System.out.println("\n\n             ______             ");
-            System.out.println("          ,-'//__\\`-.          ");
-            System.out.println("        ,'  ____      `.        ");
-            System.out.println("       /   / ,-.-.      |       ");
-            System.out.println("      (/# /__`-'_| || || )      ");
-            System.out.println("      ||# []/()] O || || |      ");
-            System.out.println("    __`------------------'__    ");
-            System.out.println("   |--| |<=={_______}=|| |--|   ");
-            System.out.println("   |  | |-------------|| |  |   ");
-            System.out.println("   |  | |={_______}==>|| |  |   ");
-            System.out.println("   |  | |   |: _ :|   || |  |   ");
-            System.out.println("   > _| |___|:===:|   || |__<   ");
-            System.out.println("   :| | __| |: - :|   || | |:   ");
-            System.out.println("   :| | ==| |: _ :|   || | |:   ");
-            System.out.println("   :| | ==|_|:===:|___||_| |:   ");
-            System.out.println("   :| |___|_|:___:|___||_| |:   ");
-            System.out.println("   :| |||   ||/_||| ||| -| |:   ");
-            System.out.println("   ;I_|||[]_|||_||| ||| -|_I;   ");
-            System.out.println("   |_ |__________________| _|   ");
-            System.out.println("   | `|||___|____|____/_//' |   ");
-            System.out.println("   J : |     |____/     | : L   ");
-            System.out.println("  _|_: |      |__|      | :_|_  ");
-            System.out.println("-/ _-_.'    -/    |-    `.-_- |-");
-            System.out.println("/______|    /______|    /______|");
-            System.out.println("\n");
+            this.console.println("\n\n             ______             ");
+            this.console.println("          ,-'//__\\`-.          ");
+            this.console.println("        ,'  ____      `.        ");
+            this.console.println("       /   / ,-.-.      |       ");
+            this.console.println("      (/# /__`-'_| || || )      ");
+            this.console.println("      ||# []/()] O || || |      ");
+            this.console.println("    __`------------------'__    ");
+            this.console.println("   |--| |<=={_______}=|| |--|   ");
+            this.console.println("   |  | |-------------|| |  |   ");
+            this.console.println("   |  | |={_______}==>|| |  |   ");
+            this.console.println("   |  | |   |: _ :|   || |  |   ");
+            this.console.println("   > _| |___|:===:|   || |__<   ");
+            this.console.println("   :| | __| |: - :|   || | |:   ");
+            this.console.println("   :| | ==| |: _ :|   || | |:   ");
+            this.console.println("   :| | ==|_|:===:|___||_| |:   ");
+            this.console.println("   :| |___|_|:___:|___||_| |:   ");
+            this.console.println("   :| |||   ||/_||| ||| -| |:   ");
+            this.console.println("   ;I_|||[]_|||_||| ||| -|_I;   ");
+            this.console.println("   |_ |__________________| _|   ");
+            this.console.println("   | `|||___|____|____/_//' |   ");
+            this.console.println("   J : |     |____/     | : L   ");
+            this.console.println("  _|_: |      |__|      | :_|_  ");
+            this.console.println("-/ _-_.'    -/    |-    `.-_- |-");
+            this.console.println("/______|    /______|    /______|");
+            this.console.println("\n");
         TrainR4MenuView trainR4 = new TrainR4MenuView();
         trainR4.display();
     }
@@ -84,12 +84,12 @@ public class ShipMenuView extends View {
     }
     
     private void nextPlanet() {
-        System.out.println("travel");
+        this.console.println("travel");
         Player actorOne = new Player();
-        System.out.println("\n\nYou currently on " + Player.getHome() );
+        this.console.println("\n\nYou currently on " + Player.getHome() );
         
         if ("New Super Star Destroyer".equals(Player.getHome())){
-            System.out.println("\n\nYou are at you final destination");
+            this.console.println("\n\nYou are at you final destination");
         }else{
               switch (Player.getHome()){
             case "Kashyyk":  
@@ -107,7 +107,7 @@ public class ShipMenuView extends View {
             case "New Super Star Destroyer":  
                 break;
         }
-        System.out.println("You have traveled to " + Player.getHome());
+        this.console.println("You have traveled to " + Player.getHome());
         }
     }
 
