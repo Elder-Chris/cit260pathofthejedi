@@ -81,10 +81,10 @@ public class MainMenuView extends View {
         Player.setHome("Kashyyk");               
         
         //intro text
-        System.out.println("\n\nYou have just arrived on Kashyyk");
-        System.out.println("Your current force level is " + Player.getForceLevel());
-        System.out.println("What you you like to do?");
-        System.out.println("\n");
+        this.console.println("\n\nYou have just arrived on Kashyyk");
+        this.console.println("Your current force level is " + Player.getForceLevel());
+        this.console.println("What you you like to do?");
+        this.console.println("\n");
         
         //Display the game menu
         GameMenuView gameMenu = new GameMenuView();

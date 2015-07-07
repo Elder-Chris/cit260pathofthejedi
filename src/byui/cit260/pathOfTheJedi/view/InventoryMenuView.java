@@ -84,29 +84,32 @@ public class InventoryMenuView extends View {
     }
     
     public void removeFromInventory(){
-        //TODO; create view crystal method
-        this.console.println("\n\nRemove From Inventory");
-        
-        int i = 1; 
-        this.console.println("[ 0 ] - None\t");
-        ArrayList<ItemsAvailable> onhnd = ItemsAvailable.OnHand;
-        for (ItemsAvailable itemsAvailable : onhnd){
-            String type = itemsAvailable.getType();
-            String planet = itemsAvailable.getPlanet();
-            double power = itemsAvailable.getPower();
-            this.console.println("[ " 
-                    + i 
-                    + " ] - " 
-                    + type + "\t");
-            i++;
-        }
-        System.out.println("What item do you want to remove?");
-        Scanner scanner = new Scanner(System.in);
-        int rnum = scanner.nextInt();
-        if (rnum != 0 ) {
-            onhnd.remove(rnum - 1);
-            this.console.println("\nItem was removed");
-        }
+            try {
+                //TODO; create view crystal method
+                this.console.println("\n\nRemove From Inventory");
+                
+                int i = 1;
+                this.console.println("[ 0 ] - None\t");
+                ArrayList<ItemsAvailable> onhnd = ItemsAvailable.OnHand;
+                for (ItemsAvailable itemsAvailable : onhnd){
+                    String type = itemsAvailable.getType();
+                    String planet = itemsAvailable.getPlanet();
+                    double power = itemsAvailable.getPower();
+                    this.console.println("[ "
+                            + i
+                            + " ] - "
+                            + type + "\t");
+                    i++;
+                }
+                this.console.println("What item do you want to remove?");
+                Scanner scanner = new Scanner(System.in);
+                int rnum = Integer.parseInt(this.keyboard.readLine());
+                if (rnum != 0 ) {
+                    onhnd.remove(rnum - 1);
+                    this.console.println("\nItem was removed");
+                }   } catch (IOException ex) {
+                Logger.getLogger(InventoryMenuView.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }
     
     public void calculateCrystalPower(){
@@ -114,7 +117,7 @@ public class InventoryMenuView extends View {
         this.console.println("\n\nRefine Crystal");
         
         int i = 1; 
-        System.out.println("[ 0 ] - None\t");
+        this.console.println("[ 0 ] - None\t");
         ArrayList<ItemsAvailable> onhnd = ItemsAvailable.OnHand;
         for (ItemsAvailable itemsAvailable : onhnd){
             String type = itemsAvailable.getType();

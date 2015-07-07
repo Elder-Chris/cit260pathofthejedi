@@ -26,7 +26,11 @@ import pathofthejedi.PathOfTheJedi;
         
         protected final BufferedReader keyboard = PathOfTheJedi.getInFile();
         protected final PrintWriter console = PathOfTheJedi.getOutFile();
-
+            
+        public View(){
+        
+        }
+        
         public View(String promptMessage) {
             this.promptMessage = promptMessage;
         }
