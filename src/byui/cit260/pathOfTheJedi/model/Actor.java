@@ -13,6 +13,29 @@ import java.io.Serializable;
  */
 public enum Actor implements Serializable{
     
+    /*public static void findSomeone(int direction){
+        
+    String goodGuy[] = new String[5];
+    goodGuy[0] = "Lando Carlissian";
+    goodGuy[1] = "Mace Windu";
+    goodGuy[2] = "Bail Organa";
+    goodGuy[3] = "Wedge Antilles";
+    goodGuy[4] = "Captain Typho";
+    
+    String badGuy[] = new String[5];
+    badGuy[0] = "Darth Zannah";
+    badGuy[1] = "Darth Plagueis";
+    badGuy[2] = "Darth Sidious";
+    badGuy[3] = "Darth Bane";
+    badGuy[4] = "Darth Lumiya";
+    
+    String planet = Player.getHome();
+    
+    
+    
+    }
+    */
+    
     //Kashyyk
     lando("Lando Carlissian"),
     zannah("Darth Zannah"),//first sith
@@ -28,6 +51,8 @@ public enum Actor implements Serializable{
     //New Super Star Destroyer
     typho("Captain Typho"),
     lumiya("Darth Lumiya");//final sith
+
+
     
     // class instance variables
    

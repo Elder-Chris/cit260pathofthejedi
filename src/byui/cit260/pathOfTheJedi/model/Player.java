@@ -13,6 +13,10 @@ import java.util.Objects;
  * @author Kika
  */
 public class Player implements Serializable{
+
+    public static int gethome() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     //class instance variables
     private String name;

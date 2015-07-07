@@ -5,11 +5,14 @@ package byui.cit260.pathOfTheJedi.view;
 
 import byui.cit260.pathOfTheJedi.control.GameControl;
 import byui.cit260.pathOfTheJedi.control.TrainR4Control;
+import byui.cit260.pathOfTheJedi.model.Actor;
 import byui.cit260.pathOfTheJedi.model.InventoryList;
 import byui.cit260.pathOfTheJedi.model.ItemsAvailable;
 import byui.cit260.pathOfTheJedi.model.Player;
 import java.util.ArrayList;
+import java.util.Scanner;
 import pathofthejedi.PathOfTheJedi;
+
 
 public class GameMenuView extends View {
     
@@ -105,8 +108,28 @@ public class GameMenuView extends View {
     }
 
     private void findSomeone() {
-        System.out.println("find someone");
-    }
+        Scanner input = new Scanner(System.in);
+        
+        System.out.println("You see two people, do you want to approch"
+                + "the one on the left or the one on the right? (enter L or R)");
+        int rightLeft = input.nextInt();
+        
+        
+        
+            if (rightLeft == 'L'){
+                switch (Player.getHome()){
+                    case "Kashyyk":
+                       //System.out.println(Actor.lando)
+                }
+            }
+            
+        }
+        
+        
+        
+        
+        
+    
     
     private void viewStatus() {
         Player actorOne = new Player();
