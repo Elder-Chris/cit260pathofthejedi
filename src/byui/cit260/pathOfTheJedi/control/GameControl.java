@@ -3,7 +3,6 @@
  */
 package byui.cit260.pathOfTheJedi.control;
 
-import byui.cit260.pathOfTheJedi.exceptions.GameControlException;
 import byui.cit260.pathOfTheJedi.model.Game;
 import byui.cit260.pathOfTheJedi.model.InventoryList;
 import byui.cit260.pathOfTheJedi.model.ItemsAvailable;
