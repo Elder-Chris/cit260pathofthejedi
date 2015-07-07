@@ -26,7 +26,7 @@ public class InventoryMenuView extends View {
             + "\n I - Veiw Inventory"
             + "\n R - Remove From Inventory"
             + "\n C - Calculate Crystal Power"
-            + "\n M - Max Crystal"  
+            + "\n M - Max Power"  
             + "\n S - Sum Crystal"          
             + "\n Q - Quit"
             + "\n(II:::::::::<[===============================================");

@@ -7,6 +7,7 @@ package byui.cit260.pathOfTheJedi.control;
 
 import byui.cit260.pathOfTheJedi.exceptions.InventoryListControlException;
 import byui.cit260.pathOfTheJedi.model.InventoryList;
+import byui.cit260.pathOfTheJedi.model.ItemsAvailable;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -41,20 +42,15 @@ public class InventoryListControl {
     }
     
     public static void findMax() {
-        ArrayList<InventoryList> al = new ArrayList<>();
-        al.add(new InventoryList("blue", 4));
-        al.add(new InventoryList("green", 3));
-        al.add(new InventoryList("yellow", 1));
-        al.add(new InventoryList("black", 2));
-        
+        ArrayList<ItemsAvailable> onhnd = ItemsAvailable.OnHand;
         double max = 0;
-        
-        for (InventoryList inventoryList : al){
-            if(max < inventoryList.getQuantity()){
-                max = inventoryList.getQuantity();
+        for (ItemsAvailable itemsAvailable : onhnd){
+            if(max < itemsAvailable.getPower()){
+                max = itemsAvailable.getPower();
             }
         }
-        }
+        System.out.println("Max power is " + max);
+    }
     
     public static void sumList() {
         
