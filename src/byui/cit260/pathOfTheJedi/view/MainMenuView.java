@@ -6,6 +6,7 @@
 package byui.cit260.pathOfTheJedi.view;
 
 import byui.cit260.pathOfTheJedi.control.GameControl;
+import byui.cit260.pathOfTheJedi.model.Player;
 import pathofthejedi.PathOfTheJedi;
 
 /**
@@ -76,6 +77,14 @@ public class MainMenuView extends View {
                 
         //load the menu
         GameControl.createNewGame(PathOfTheJedi.getPlayer());
+        
+        Player.setHome("Kashyyk");               
+        
+        //intro text
+        System.out.println("\n\nYou have just arrived on Kashyyk");
+        System.out.println("Your current force level is " + Player.getForceLevel());
+        System.out.println("What you you like to do?");
+        System.out.println("\n");
         
         //Display the game menu
         GameMenuView gameMenu = new GameMenuView();

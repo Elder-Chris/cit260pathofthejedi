@@ -19,8 +19,10 @@ public class InventoryListControl {
     double diameter = 0;
     double crystalLv = 0;
     double power = 0;
+    double max = 0;
     
     public InventoryListControl(){}
+    
     public double calcCrystalPower(double diameter, double crystalLv) throws InventoryListControlException{
         this.diameter = diameter;
         this.crystalLv = crystalLv;
@@ -41,7 +43,7 @@ public class InventoryListControl {
         
     }
     
-    public static void findMax() {
+    public double findMax() {
         ArrayList<ItemsAvailable> onhnd = ItemsAvailable.OnHand;
         double max = 0;
         for (ItemsAvailable itemsAvailable : onhnd){
@@ -49,11 +51,10 @@ public class InventoryListControl {
                 max = itemsAvailable.getPower();
             }
         }
-        System.out.println("Max power is " + max);
+        return max;        
     }
     
-    public static void sumList() {
-        
+    public double sumList() {        
         ArrayList<InventoryList> al = new ArrayList<>();
         al.add(new InventoryList("blue", 6));
         al.add(new InventoryList("green", 2));
@@ -65,8 +66,8 @@ public class InventoryListControl {
         for (InventoryList inventoryList : al){
             sum += inventoryList.getQuantity();
         }
-        System.out.println("Sum is " + sum);
-}
+        return sum;
+    }
 }
 
 
