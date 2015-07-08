@@ -7,13 +7,9 @@ package byui.cit260.pathOfTheJedi.view;
 
 import byui.cit260.pathOfTheJedi.control.ProgramControl;
 import byui.cit260.pathOfTheJedi.model.Player;
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import pathofthejedi.PathOfTheJedi;
 
 /**
  *

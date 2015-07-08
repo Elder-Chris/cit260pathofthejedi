@@ -9,6 +9,7 @@ import java.util.Scanner;
 import byui.cit260.pathOfTheJedi.control.InventoryListControl;
 import byui.cit260.pathOfTheJedi.exceptions.InventoryListControlException;
 import byui.cit260.pathOfTheJedi.model.ItemsAvailable;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -49,8 +50,14 @@ public class InventoryMenuView extends View {
         char choice = value.charAt(0); // get first character entered {
         
         switch (choice){
-            case 'I': case 'i': //View Inventory
+            case 'I': case 'i': {
+            try {
+                //View Inventory
                 this.viewInventory();
+            } catch (IOException ex) {
+                Logger.getLogger(InventoryMenuView.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
                 break;
             case 'R': case 'r': //Remove From Inventory
                 this.removeFromInventory();
@@ -71,7 +78,7 @@ public class InventoryMenuView extends View {
                 return false;
         
     }
-    public void viewInventory(){
+    public void viewInventory() throws IOException{
         this.console.println("\n\nList of Inventory Items");
                 
         ArrayList<ItemsAvailable> onhnd = ItemsAvailable.OnHand;
@@ -80,7 +87,35 @@ public class InventoryMenuView extends View {
             String planet = itemsAvailable.getPlanet();
             double power = itemsAvailable.getPower();
             this.console.println(type + "\t");
-        }        
+        } 
+        
+        this.console.println("\n\nDo you want to Export a more detailed list?");
+        this.console.println("[ 0 ] - No\t");
+        this.console.println("[ 1 ] - Yes\t");
+        int exprt = Integer.parseInt(this.keyboard.readLine());
+        if (exprt == 1 ){
+           this.console.println("\n\nEnter a file name?");
+           String fileLocation = this.keyboard.readLine();
+           
+           try (FileWriter expFile =  new FileWriter(fileLocation + ".txt")){
+            
+            expFile.write("\n\n                 Detailed Inventory Report                    \r");
+            expFile.write("\n\n°(((=((===°°°(((::::::::::::::::::::::::::::::::::::::::::::::\r");
+            expFile.write("\nPower Level \tPlanet Aquired \t\tType\r");
+            for (ItemsAvailable itemsAvailable : onhnd){
+                String type = itemsAvailable.getType();
+                String planet = itemsAvailable.getPlanet();
+                double power = itemsAvailable.getPower();
+                expFile.write("\n" + power + "\t\t" + planet + "\t\t\t" + type + "\r");
+            }
+               expFile.write("");               
+               expFile.flush();
+               
+               this.console.println("\n\nFile Exported");
+           } catch (IOException ex) {
+               ErrorView.display(this.getClass().getName(), "Could not create file!");
+           }
+        }
     }
     
     public void removeFromInventory(){
@@ -102,7 +137,6 @@ public class InventoryMenuView extends View {
                     i++;
                 }
                 this.console.println("What item do you want to remove?");
-                Scanner scanner = new Scanner(System.in);
                 int rnum = Integer.parseInt(this.keyboard.readLine());
                 if (rnum != 0 ) {
                     onhnd.remove(rnum - 1);
