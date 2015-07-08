@@ -50,14 +50,17 @@ public class InventoryMenuView extends View {
         char choice = value.charAt(0); // get first character entered {
         
         switch (choice){
-            case 'I': case 'i': {
-            try {
+            case 'I': case 'i': 
+        {
+            try {            
                 //View Inventory
                 this.viewInventory();
             } catch (IOException ex) {
                 Logger.getLogger(InventoryMenuView.class.getName()).log(Level.SEVERE, null, ex);
-                }
+            } catch (InventoryListControlException ex) {
+                Logger.getLogger(InventoryMenuView.class.getName()).log(Level.SEVERE, null, ex);
             }
+        }
                 break;
             case 'R': case 'r': //Remove From Inventory
                 this.removeFromInventory();
@@ -78,7 +81,7 @@ public class InventoryMenuView extends View {
                 return false;
         
     }
-    public void viewInventory() throws IOException{
+    public void viewInventory() throws IOException, InventoryListControlException{
         this.console.println("\n\nList of Inventory Items");
                 
         ArrayList<ItemsAvailable> onhnd = ItemsAvailable.OnHand;
@@ -97,23 +100,12 @@ public class InventoryMenuView extends View {
            this.console.println("\n\nEnter a file name?");
            String fileLocation = this.keyboard.readLine();
            
-           try (FileWriter expFile =  new FileWriter(fileLocation + ".txt")){
-            
-            expFile.write("\n\n                 Detailed Inventory Report                    \r");
-            expFile.write("\n\n°(((=((===°°°(((::::::::::::::::::::::::::::::::::::::::::::::\r");
-            expFile.write("\nPower Level \tPlanet Aquired \t\tType\r");
-            for (ItemsAvailable itemsAvailable : onhnd){
-                String type = itemsAvailable.getType();
-                String planet = itemsAvailable.getPlanet();
-                double power = itemsAvailable.getPower();
-                expFile.write("\n" + power + "\t\t" + planet + "\t\t\t" + type + "\r");
-            }
-               expFile.write("");               
-               expFile.flush();
-               
-               this.console.println("\n\nFile Exported");
-           } catch (IOException ex) {
-               ErrorView.display(this.getClass().getName(), "Could not create file!");
+           try {
+               InventoryListControl control = new InventoryListControl();
+               String message = control.exportInventory (fileLocation);
+               this.console.println(message);
+           }catch(InventoryListControlException me){
+               ErrorView.display(this.getClass().getName(), me.getMessage());
            }
         }
     }

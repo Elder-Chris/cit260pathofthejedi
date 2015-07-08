@@ -8,6 +8,9 @@ package byui.cit260.pathOfTheJedi.control;
 import byui.cit260.pathOfTheJedi.exceptions.InventoryListControlException;
 import byui.cit260.pathOfTheJedi.model.InventoryList;
 import byui.cit260.pathOfTheJedi.model.ItemsAvailable;
+import byui.cit260.pathOfTheJedi.view.ErrorView;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -53,7 +56,7 @@ public class InventoryListControl {
         }
         return max;        
     }
-    
+       
     public double sumList() {        
         ArrayList<InventoryList> al = new ArrayList<>();
         al.add(new InventoryList("blue", 6));
@@ -67,6 +70,29 @@ public class InventoryListControl {
             sum += inventoryList.getQuantity();
         }
         return sum;
+    }
+    
+    public String exportInventory (String fileLocation) throws InventoryListControlException{
+        String message = "";
+        try (FileWriter expFile =  new FileWriter(fileLocation + ".txt")){
+            ArrayList<ItemsAvailable> onhnd = ItemsAvailable.OnHand;            
+            expFile.write("\n\n                 Detailed Inventory Report                    \r");
+            expFile.write("\n\n°(((=((===°°°(((::::::::::::::::::::::::::::::::::::::::::::::\r");
+            expFile.write("\nPower Level \tPlanet Aquired \t\tType\r");
+            for (ItemsAvailable itemsAvailable : onhnd){
+                String type = itemsAvailable.getType();
+                String planet = itemsAvailable.getPlanet();
+                double power = itemsAvailable.getPower();
+                expFile.write("\n" + power + "\t\t" + planet + "\t\t\t" + type + "\r");
+            }
+               expFile.write("");               
+               expFile.flush();
+               
+               message = ("\n\nFile Exported");
+           } catch (IOException ex) {
+               throw new InventoryListControlException("Could not create file!");
+           }
+       return message;
     }
 }
 
