@@ -65,8 +65,9 @@ public class PathOfTheJedi {
 
     public static void setLogFile(PrintWriter logFile) {
         PathOfTheJedi.logFile = logFile;
-    }   
-        
+    } 
+    
+            
     /**
      * @param args the command line arguments
      */
@@ -80,7 +81,9 @@ public class PathOfTheJedi {
          
          //open log file
          String filePath = "log.txt"; //add windows or mac folder structure here.
-         PathOfTheJedi.logFile = new PrintWriter(filePath);         
+         PathOfTheJedi.logFile = new PrintWriter(filePath); 
+         logFile.println("***********Opened***********");
+         
          
          // create StartprogramView and start program
         StartProgramView startProgramView = new StartProgramView();
@@ -112,4 +115,9 @@ public class PathOfTheJedi {
             }                  
         }
     }   
+
+    public static void closeLogFile() {
+        logFile.println("********Log Complete********");
+        logFile.close();
+    }
 }

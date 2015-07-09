@@ -104,6 +104,8 @@ public class MainMenuView extends View {
 
     private void quit() {
         this.console.println("****Exiting Game*******");
+        PathOfTheJedi.closeLogFile();
+        System.exit(0);
     }
     
 }
