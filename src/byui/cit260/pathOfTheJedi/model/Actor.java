@@ -37,20 +37,39 @@ public enum Actor implements Serializable{
     */
     
     //Kashyyk
-    lando("Lando Carlissian"),
-    zannah("Darth Zannah"),//first sith
+    lando("\nLando Carlissian: You look like your freash out of Jedi school. "
+            + "\nBe careful, there are reports of a Sith somewhere in the area. "
+            + "\nYou dont look ready to handle something like that. Go train firts."),
+    zannah("\nDarth Zannah: Fool you dare to approch me? I eat Jedis for breakfast."
+            + "\nNo like literaly, I'm a canabal. Prepare to die, I'm hungry."),//first sith
     //Mandalore
-    mace("Mace Windu"),
-    plagueis("Darth Plagueis"),//second sith
+    mace("\nMace Windu: Hello there, fancy meeting another good guy on Mandalore. "
+            + "\nGo find some trianing holograms, and get your skills up, maybe you"
+            + "\ncan help me kill the Sith thats been lurking around here."),
+    plagueis("\nDarth Plagueis: You dare to challenge me, do you see how increadibly fancy"
+            + "\nmy glow sticks are."),//second sith
     //New Tatooine
-    bail("Bail Organa"),
-    sidious("Darth Sidious"),//third sith
+    bail("\nBail Organa: Isn't it increadibly convinient that the league of really good guys"
+            + "\n sent one high ranking good guy to each place you have visited. Go train, "
+            + "\nkill sith, bla, bla, bla."),
+    sidious("\nDarth Sidious: YOU JEDI!!!!"
+            + "\nME SMASH!!!"),//third sith
     //Rantine Space Station
-    wedge("Wedge Antilles"),
-    bane("Darth Bane"),//fourth sith
+    wedge("\nWedge Antilles: Welcome to Rantine Space Station. I heard you killed Darth Sidious."
+            + "\nWell congratulations on taking down a half wit. We never bothered, we figured "
+            + "\neventually he would eat enough glue that things would handle themselves..."
+            + "\nbut your way works too."),
+    bane("\nDarth Bane: You will never make to the destroyer. My name is Darth Bane, and bane "
+            + "\nmeans the end of, get it. I have the coolest name ever, it makes me scary."
+            + "\nYou will die now!"),//fourth sith
     //New Super Star Destroyer
-    typho("Captain Typho"),
-    lumiya("Darth Lumiya");//final sith
+    typho("\nCaptain Typho: Hey you made it. Ok stay with me here, we're on a giant space ship"
+            + "\nbuilt by the Sith, yes it is a sphere...which makes no sense, like how do they"
+            + "\neven steer this thing. Anyway the Queen Sith is on board, as big as this thing"
+            + "\n is you would think you wouldn't run into her, but hey, who knows."),
+    lumiya("\nDarth Lumiya: I'm the Queen Sith...What you think girls can't be Sith. I'll have"
+            + "\nyou know that girls can be just as good at Sithing as boys, better even."
+            + "\nI still get paid less though. prepare to die.");//final sith
 
 
     

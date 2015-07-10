@@ -134,7 +134,42 @@ public class GameMenuView extends View {
                     case "Kashyyk":
                         System.out.println(Actor.lando.getDescription());
                         break;
+                    case "Mandalore":
+                        System.out.println(Actor.plagueis.getDescription());
+                        break;
+                    case "New Tatooine":
+                        System.out.println(Actor.bail.getDescription());
+                        break;
+                    case "Rantine Space Station":
+                        System.out.println(Actor.bane.getDescription());
+                        break;
+                    case "New Super Star Destroyer":
+                        System.out.println(Actor.typho.getDescription());
+                        break;
                 }
+            }
+            if (rightLeft == 'R') {
+                switch (Player.getHome()) {
+                    case "Kashyyk":
+                        System.out.println(Actor.zannah.getDescription());
+                        break;
+                    case "Mandalore":
+                        System.out.println(Actor.mace.getDescription());
+                        break;
+                    case "New Tatooine":
+                        System.out.println(Actor.sidious.getDescription());
+                        break;
+                    case "Rantine Space Station":
+                        System.out.println(Actor.wedge.getDescription());
+                        break;
+                    case "New Super Star Destroyer":
+                        System.out.println(Actor.lumiya.getDescription());
+                        break;
+                }
+            }
+            else{
+            System.out.println("Give up on being a Jedi, you dont even know what right and left is.");
+            
             }
         } catch (IOException e) {
             System.err.println("Error reading data.");
