@@ -52,23 +52,23 @@ public class HelpMenuView extends View {
         this.console.println("\n\n========================================================");
         this.console.println("\nYou will be taking on the character of Cale Novastar.");
         this.console.println("  As your home is being attacked by the Sith.");
-        System.out.println("  You will go through different scenarios where you");
-        System.out.println("  can collect lightsaber items, force holograms, and allies.");
-        System.out.println("  You will train on the Mandalorian ship where ");
-        System.out.println("  you will increase your force.");
-        System.out.println("  You can select on the Main Menu the New Game option");
-        System.out.println("  and you can visit the scenarios we have on it.");
-        System.out.println("  These are the different locations that you can ");
-        System.out.println("  travel to: Kashyyyk, Mandalore, New Tatooine, Rantine ");
-        System.out.println("  Space Station and the New Super Star Destroyer.");
-        System.out.println("  You will be able to find Allies on your way to find your revange.");
+        this.console.println("  You will go through different scenarios where you");
+        this.console.println("  can collect lightsaber items, force holograms, and allies.");
+        this.console.println("  You will train on the Mandalorian ship where ");
+        this.console.println("  you will increase your force.");
+        this.console.println("  You can select on the Main Menu the New Game option");
+        this.console.println("  and you can visit the scenarios we have on it.");
+        this.console.println("  These are the different locations that you can ");
+        this.console.println("  travel to: Kashyyyk, Mandalore, New Tatooine, Rantine ");
+        this.console.println("  Space Station and the New Super Star Destroyer.");
+        this.console.println("  You will be able to find Allies on your way to find your revange.");
     }
 
     private void credits() {
-        System.out.println("\n\nThis game was created at ");
-        System.out.println("BYU Idaho in the CIT260 class.");
-        System.out.println("By Chris Elder, David and Erica");
-        System.out.println("May the force be with you. ");
+        this.console.println("\n\nThis game was created at ");
+        this.console.println("BYU Idaho in the CIT260 class.");
+        this.console.println("By Chris Elder, David and Erica");
+        this.console.println("May the force be with you. ");
     }
 
     private void mainMenu() {

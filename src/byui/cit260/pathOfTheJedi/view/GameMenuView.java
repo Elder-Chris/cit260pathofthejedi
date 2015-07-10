@@ -79,7 +79,7 @@ public class GameMenuView extends View {
     }
 
     private void explore() {
-        System.out.println("\n\nYou have just explored " + Player.getHome());
+        this.console.println("\n\nYou have just explored " + Player.getHome());
 
         TrainR4Control instance = new TrainR4Control();
         double diceRoll = instance.diceRoll();
@@ -90,10 +90,10 @@ public class GameMenuView extends View {
         int i = 0;
         if (diceRoll == 2) {
             onhnd.add(new ItemsAvailable("Trash", Player.getHome(), 0.00));
-            System.out.println("and found some Trash.");
+            this.console.println("and found some Trash.");
         } else if (diceRoll == 4) {
             onhnd.add(new ItemsAvailable("Trash", Player.getHome(), 0.00));
-            System.out.println("and found some Trash.");
+            this.console.println("and found some Trash.");
         } else {
             for (ItemsAvailable itemsAvailable : itemavail) {
                 if (itemsAvailable.getPlanet() == Player.getHome()) {
@@ -102,13 +102,13 @@ public class GameMenuView extends View {
                     double power = itemsAvailable.getPower();
                     onhnd.add(new ItemsAvailable(type, planet, power));
                     itemavail.remove(i);
-                    System.out.println("and found a " + type);
+                    this.console.println("and found a " + type);
                     break;
                 }
                 i++;
             }
             if (i != 0) {
-                System.out.println("You will not find any useful items here.");
+                this.console.println("You will not find any useful items here.");
             }
         }
 
@@ -125,54 +125,54 @@ public class GameMenuView extends View {
     private void findSomeone() {
 
         try {
-            System.out.println("You see two people, do you want to approch"
+            this.console.println("You see two people, do you want to approch"
                     + "the one on the left or the one on the right? (enter L or R)");
             char rightLeft = keyboard.readLine().trim().toUpperCase().charAt(0);
 
             if (rightLeft == 'L') {
                 switch (Player.getHome()) {
                     case "Kashyyk":
-                        System.out.println(Actor.lando.getDescription());
+                        this.console.println(Actor.lando.getDescription());
                         break;
                     case "Mandalore":
-                        System.out.println(Actor.plagueis.getDescription());
+                        this.console.println(Actor.plagueis.getDescription());
                         break;
                     case "New Tatooine":
-                        System.out.println(Actor.bail.getDescription());
+                        this.console.println(Actor.bail.getDescription());
                         break;
                     case "Rantine Space Station":
-                        System.out.println(Actor.bane.getDescription());
+                        this.console.println(Actor.bane.getDescription());
                         break;
                     case "New Super Star Destroyer":
-                        System.out.println(Actor.typho.getDescription());
+                        this.console.println(Actor.typho.getDescription());
                         break;
                 }
             }
             if (rightLeft == 'R') {
                 switch (Player.getHome()) {
                     case "Kashyyk":
-                        System.out.println(Actor.zannah.getDescription());
+                        this.console.println(Actor.zannah.getDescription());
                         break;
                     case "Mandalore":
-                        System.out.println(Actor.mace.getDescription());
+                        this.console.println(Actor.mace.getDescription());
                         break;
                     case "New Tatooine":
-                        System.out.println(Actor.sidious.getDescription());
+                        this.console.println(Actor.sidious.getDescription());
                         break;
                     case "Rantine Space Station":
-                        System.out.println(Actor.wedge.getDescription());
+                        this.console.println(Actor.wedge.getDescription());
                         break;
                     case "New Super Star Destroyer":
-                        System.out.println(Actor.lumiya.getDescription());
+                        this.console.println(Actor.lumiya.getDescription());
                         break;
                 }
             }
             else{
-            System.out.println("Give up on being a Jedi, you dont even know what right and left is.");
+            this.console.println("Give up on being a Jedi, you dont even know what right and left is.");
             
             }
-        } catch (IOException e) {
-            System.err.println("Error reading data.");
+        } catch (Exception e) {
+            ErrorView.display(this.getClass().getName(),"Error reading data:" + e.getMessage());
         }
     }
 
@@ -195,7 +195,7 @@ public class GameMenuView extends View {
         out.println("You have "
                 + inventory[GameControl.Item.Force_Hologram.ordinal()].getQuantity()
                 + " Force Holograms");
-        //System.out.println("You have " + items1.getQuantity() + " Force Holograms");
+        //this.console.println("You have " + items1.getQuantity() + " Force Holograms");
         out.println("\n");
     }
 
@@ -211,7 +211,7 @@ public class GameMenuView extends View {
 
     private void mainMenu() {
 
-        System.out.println("\n\nEnter the file path for file where the game"
+        this.console.println("\n\nEnter the file path for file where the game"
                 + "is to be saved");
         String filePath = this.getInput();
 
@@ -219,8 +219,8 @@ public class GameMenuView extends View {
 
             GameControl.saveGame(PathOfTheJedi.getCurrentGame(), filePath);
 
-        } catch (Exception ex) {
-            ErrorView.display("MainMenuView", ex.getMessage());
+        } catch (Exception e) {
+            ErrorView.display(this.getClass().getName(), "MainMenuView" + e.getMessage());
         }
 
         // test script needs to be written for save game then main menu
@@ -235,7 +235,7 @@ public class GameMenuView extends View {
             outFile = new PrintWriter(filePath);
             viewStatus(outFile);
         } catch (Exception e) {
-            this.console.println("Esception: " + e.toString()
+            ErrorView.display(this.getClass().getName(), "Exception: " + e.toString()
                     + "\nCause: " + e.getCause()
                     + "\nMessage: " + e.getMessage());
             e.printStackTrace();;
