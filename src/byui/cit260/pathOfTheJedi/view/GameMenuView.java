@@ -10,6 +10,7 @@ import byui.cit260.pathOfTheJedi.model.InventoryList;
 import byui.cit260.pathOfTheJedi.model.ItemsAvailable;
 import byui.cit260.pathOfTheJedi.model.Player;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -28,6 +29,7 @@ public class GameMenuView extends View {
                 + "\n(II:::::::::<[==============================================="
                 + "\n E - Explore"
                 + "\n F - Find Someone"
+                + "\n A - Print Actor names"
                 + "\n S - Status"
                 + "\n P - Print Status"
                 + "\n V - Inventory"
@@ -53,6 +55,16 @@ public class GameMenuView extends View {
             case 'f': //Find Someone
                 this.findSomeone();
                 break;
+            case 'A':
+            case 'a': {
+            try {
+                //Prin Actor's names
+                this.printActorNames();
+            } catch (IOException ex) {
+                Logger.getLogger(GameMenuView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+                break;        
             case 'S':
             case 's': //Get staus
                 this.viewStatus();
@@ -175,7 +187,7 @@ public class GameMenuView extends View {
             ErrorView.display(this.getClass().getName(),"Error reading data:" + e.getMessage());
         }
     }
-
+    
     private void viewStatus() {
         viewStatus(console);
     }
@@ -239,6 +251,36 @@ public class GameMenuView extends View {
                     + "\nCause: " + e.getCause()
                     + "\nMessage: " + e.getMessage());
             e.printStackTrace();;
+        } finally {
+            if (outFile != null) {
+                outFile.close();
+            }
+        }
+
+    }
+
+    public void printActorNames() throws IOException {
+        FileWriter outFile = null;
+        String fileLocation = "actors.txt";
+        
+        try {
+            outFile = new FileWriter(fileLocation);
+            
+            outFile.write("Lando Carlissian\n");
+            outFile.write("Mace Windu\n");
+            outFile.write("Bail Organa\n");
+            outFile.write("Wedge Antilles\n");
+            outFile.write("Captain Typho\n");
+            outFile.write("Darth Zannah\n");
+            outFile.write("Darth Plagueis\n");
+            outFile.write("Darth Sidious\n");
+            outFile.write("Darth Bane\n");
+            outFile.write("Darth Lumiya\n");
+
+            outFile.flush();
+            
+        } catch (IOException ex) {
+            ErrorView.display(this.getClass().getName(), "Error displaying Actor names: " + ex.toString());
         } finally {
             if (outFile != null) {
                 outFile.close();
