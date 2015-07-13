@@ -32,7 +32,7 @@ public class GameMenuView extends View {
                 + "\n A - Print Actor names"
                 + "\n S - Status"
                 + "\n P - Print Status"
-                + "\n V - Inventory"
+                + "\n I - Inventory"
                 + "\n G - Go to Ship"
                 + "\n Q - Exit and Save"
                 + "\n(II:::::::::<[===============================================");
@@ -73,8 +73,8 @@ public class GameMenuView extends View {
             case 'p': //print status
                 this.printStatus();
                 break;
-            case 'V':
-            case 'v': //View Inventory
+            case 'I':
+            case 'i': //View Inventory
                 this.viewInventory();
                 break;
             case 'G':
