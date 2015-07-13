@@ -137,48 +137,48 @@ public class GameMenuView extends View {
     private void findSomeone() {
 
         try {
-            this.console.println("You see two people, do you want to approch"
-                    + "the one on the left or the one on the right? (enter L or R)");
-            char rightLeft = keyboard.readLine().trim().toUpperCase().charAt(0);
+            this.console.println("Do you want to approch the Sith or the good guy."
+                    + "(choose S for sith or G for good guy)");
+            char goodBad = keyboard.readLine().trim().toUpperCase().charAt(0);
 
-            if (rightLeft == 'L') {
+            if (goodBad == 'G') {
                 switch (Player.getHome()) {
                     case "Kashyyk":
                         this.console.println(Actor.lando.getDescription());
                         break;
                     case "Mandalore":
-                        this.console.println(Actor.plagueis.getDescription());
+                        this.console.println(Actor.mace.getDescription());
                         break;
                     case "New Tatooine":
                         this.console.println(Actor.bail.getDescription());
                         break;
                     case "Rantine Space Station":
-                        this.console.println(Actor.bane.getDescription());
+                        this.console.println(Actor.wedge.getDescription());
                         break;
                     case "New Super Star Destroyer":
                         this.console.println(Actor.typho.getDescription());
                         break;
                 }
-            }else if (rightLeft == 'R') {
+            }else if (goodBad == 'S') {
                 switch (Player.getHome()) {
                     case "Kashyyk":
                         this.console.println(Actor.zannah.getDescription());
                         break;
                     case "Mandalore":
-                        this.console.println(Actor.mace.getDescription());
+                        this.console.println(Actor.plagueis.getDescription());
                         break;
                     case "New Tatooine":
                         this.console.println(Actor.sidious.getDescription());
                         break;
                     case "Rantine Space Station":
-                        this.console.println(Actor.wedge.getDescription());
+                        this.console.println(Actor.sidious.getDescription());
                         break;
                     case "New Super Star Destroyer":
                         this.console.println(Actor.lumiya.getDescription());
                         break;
                 }
             }else{
-            this.console.println("Give up on being a Jedi, you dont even know what right and left is.");
+            this.console.println("Thats not a person.");
             
             }
         } catch (Exception e) {
