@@ -199,9 +199,8 @@ public class GameMenuView extends View {
                     this.console.println("\nDo you want to battle this Sith? (Y or N)"); 
                     char battle = keyboard.readLine().trim().toUpperCase().charAt(0);
 
-                    if (battle == 'Y'){
-                                               
-                        this.console.println("battle code");
+                    if (battle == 'Y'){                                               
+                        
                         TrainR4Control instance = new TrainR4Control();
                         double diceRoll = instance.diceRoll();
                         double battlePlayerLv = Player.getForceLevel();
@@ -215,6 +214,15 @@ public class GameMenuView extends View {
                                 this.console.println("You lost, train some more and come back to fight another day.");
                                 break;
                             }else if (tempSithLv < 0){
+                                if (Player.getHome() == "New Super Star Destroyer"){
+                                    this.console.println("\n\n\n____    ____  ______    __    __     ____    __    ____  __  .__   __.");
+                                    this.console.println("\\   \\  /   / /  __  \\  |  |  |  |    \\   \\  /  \\  /   / |  | |  \\ |  |");
+                                    this.console.println(" \\   \\/   / |  |  |  | |  |  |  |     \\   \\/    \\/   /  |  | |   \\|  | ");
+                                    this.console.println("  \\_    _/  |  |  |  | |  |  |  |      \\            /   |  | |  . `  |");
+                                    this.console.println("    |  |    |  `--'  | |  `--'  |       \\    /\\    /    |  | |  |\\   |");
+                                    this.console.println("    |__|     \\______/   \\______/         \\__/  \\__/     |__| |__| \\__| ");
+                                    this.console.println("\n\nCongratulations you have finished the game");
+                                }else{
                                 this.console.println("You have defeted the Sith");
                                 Player.setSithDefeted(Player.getSithDefeted() + 1);
                                 break;                                
