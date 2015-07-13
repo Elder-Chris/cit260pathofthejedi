@@ -159,8 +159,7 @@ public class GameMenuView extends View {
                         this.console.println(Actor.typho.getDescription());
                         break;
                 }
-            }
-            if (rightLeft == 'R') {
+            }else if (rightLeft == 'R') {
                 switch (Player.getHome()) {
                     case "Kashyyk":
                         this.console.println(Actor.zannah.getDescription());
@@ -178,8 +177,7 @@ public class GameMenuView extends View {
                         this.console.println(Actor.lumiya.getDescription());
                         break;
                 }
-            }
-            else{
+            }else{
             this.console.println("Give up on being a Jedi, you dont even know what right and left is.");
             
             }

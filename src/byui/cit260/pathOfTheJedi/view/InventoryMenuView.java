@@ -27,7 +27,7 @@ public class InventoryMenuView extends View {
             + "\n(II:::::::::<[==============================================="
             + "\n                        Inventory Menu"
             + "\n(II:::::::::<[==============================================="
-            + "\n I - Veiw Inventory"
+            + "\n V - Veiw Inventory"
             + "\n R - Remove From Inventory"
             + "\n C - Calculate Crystal Power"
             + "\n M - Max Power"  
@@ -50,7 +50,7 @@ public class InventoryMenuView extends View {
         char choice = value.charAt(0); // get first character entered {
         
         switch (choice){
-            case 'I': case 'i': 
+            case 'V': case 'v': 
         {
             try {            
                 //View Inventory
