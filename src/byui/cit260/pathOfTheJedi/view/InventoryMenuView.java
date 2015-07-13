@@ -5,11 +5,9 @@
  */
 package byui.cit260.pathOfTheJedi.view;
 
-import java.util.Scanner;
 import byui.cit260.pathOfTheJedi.control.InventoryListControl;
 import byui.cit260.pathOfTheJedi.exceptions.InventoryListControlException;
 import byui.cit260.pathOfTheJedi.model.ItemsAvailable;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -56,9 +54,9 @@ public class InventoryMenuView extends View {
                 //View Inventory
                 this.viewInventory();
             } catch (IOException ex) {
-                Logger.getLogger(InventoryMenuView.class.getName()).log(Level.SEVERE, null, ex);
+                ErrorView.display(this.getClass().getName(), ex.getMessage());
             } catch (InventoryListControlException ex) {
-                Logger.getLogger(InventoryMenuView.class.getName()).log(Level.SEVERE, null, ex);
+                ErrorView.display(this.getClass().getName(), ex.getMessage());
             }
         }
                 break;
@@ -95,8 +93,11 @@ public class InventoryMenuView extends View {
         this.console.println("\n\nDo you want to Export a more detailed list?");
         this.console.println("[ 0 ] - No\t");
         this.console.println("[ 1 ] - Yes\t");
-        int exprt = Integer.parseInt(this.keyboard.readLine());
-        if (exprt == 1 ){
+              
+        char exprt = keyboard.readLine().trim().toUpperCase().charAt(0);
+        
+        
+        if (exprt == '1' ){
            this.console.println("\n\nEnter a file name?");
            String fileLocation = this.keyboard.readLine();
            
@@ -107,6 +108,9 @@ public class InventoryMenuView extends View {
            }catch(InventoryListControlException me){
                ErrorView.display(this.getClass().getName(), me.getMessage());
            }
+        }else if (exprt == '0' ){
+        }else{
+            this.console.println("\n\nInvalid entry?");
         }
     }
     
@@ -129,12 +133,23 @@ public class InventoryMenuView extends View {
                     i++;
                 }
                 this.console.println("What item do you want to remove?");
-                int rnum = Integer.parseInt(this.keyboard.readLine());
-                if (rnum != 0 ) {
+                String entry = this.keyboard.readLine().trim();
+                int rnum = 0;
+                String centry = "";
+                for(i = 0; i <= entry.length() -1 ; i++){
+                  char ch = entry.charAt(i);
+                  if (Character.isDigit(ch)){                
+                   centry = centry + ch;
+                   rnum = Integer.parseInt(centry);
+                  }                  
+                }
+                 
+                if (rnum > 0 ) {
                     onhnd.remove(rnum - 1);
                     this.console.println("\nItem was removed");
-                }   } catch (IOException ex) {
-                Logger.getLogger(InventoryMenuView.class.getName()).log(Level.SEVERE, null, ex);
+                }   
+            } catch (IOException ex) {
+                ErrorView.display(this.getClass().getName(), ex.getMessage());
             }
     }
     
@@ -159,22 +174,39 @@ public class InventoryMenuView extends View {
         }
         try{
         this.console.println("What crystal do you want to refine?");        
-        //Scanner scanner = new Scanner(System.in);
         int rnum = 0;
+        String entry;
             try {
-                rnum = Integer.parseInt(this.keyboard.readLine());
+                entry = this.keyboard.readLine().trim();
+                String centry = "";
+                for(i = 0; i <= entry.length() -1 ; i++){
+                  char ch = entry.charAt(i);
+                  if (Character.isDigit(ch)){                
+                   centry = centry + ch;
+                   rnum = Integer.parseInt(centry);
+                  }                  
+                }
             } catch (IOException ex) {
-                Logger.getLogger(InventoryMenuView.class.getName()).log(Level.SEVERE, null, ex);
+                ErrorView.display(this.getClass().getName(), ex.getMessage());
             }
+                
         if (rnum != 0 ) {
         double power = ItemsAvailable.OnHand.get(rnum -1).getPower();    
         InventoryListControl control = new InventoryListControl();
         this.console.println("\nEnter the diameter.(0-10)");
         double diameter = 0;
             try {
-                diameter = Double.parseDouble(this.keyboard.readLine());
+                entry = this.keyboard.readLine().trim();
+                String centry = "";
+                for(i = 0; i <= entry.length() -1 ; i++){
+                  char ch = entry.charAt(i);
+                  if (Character.isDigit(ch)){                
+                   centry = centry + ch;
+                   diameter = Double.parseDouble(centry);
+                  }                  
+                }
             } catch (IOException ex) {
-                Logger.getLogger(InventoryMenuView.class.getName()).log(Level.SEVERE, null, ex);
+                ErrorView.display(this.getClass().getName(), ex.getMessage());
             }
         double totalPower = control.calcCrystalPower(diameter, power);
         ItemsAvailable.OnHand.get(rnum -1).setPower(totalPower);

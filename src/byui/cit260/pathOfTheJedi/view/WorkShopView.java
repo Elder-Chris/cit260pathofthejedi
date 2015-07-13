@@ -8,8 +8,11 @@ package byui.cit260.pathOfTheJedi.view;
 import byui.cit260.pathOfTheJedi.model.ItemsAvailable;
 import byui.cit260.pathOfTheJedi.model.Player;
 import byui.cit260.pathOfTheJedi.model.TrainR4;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -91,66 +94,86 @@ public class WorkShopView extends View {
         }
     }
     public void buildLightSabre(){
-        //TODO; creat build light sabre method
-        this.console.println("\n\nBuild Lightsaber");
-        this.console.println("\nSelect crystal:");
-        int i = 1; 
-        this.console.println("[ 0 ] - None\t");
-        ArrayList<ItemsAvailable> onhnd = ItemsAvailable.OnHand;
-        for (ItemsAvailable itemsAvailable : onhnd){
-            String type = itemsAvailable.getType();
-            String planet = itemsAvailable.getPlanet();
-            double power = itemsAvailable.getPower();
-            if ("Lightsaber_Crystal".equals(type)){
-            this.console.println("[ " 
-                    + i 
-                    + " ] - " 
-                    + type + " | Power = " 
-                    + power 
-                    + " \t");
+        try {
+            //TODO; creat build light sabre method
+            this.console.println("\n\nBuild Lightsaber");
+            this.console.println("\nSelect crystal:");
+            int i = 1;
+            this.console.println("[ 0 ] - None\t");
+            ArrayList<ItemsAvailable> onhnd = ItemsAvailable.OnHand;
+            for (ItemsAvailable itemsAvailable : onhnd){
+                String type = itemsAvailable.getType();
+                String planet = itemsAvailable.getPlanet();
+                double power = itemsAvailable.getPower();
+                if ("Lightsaber_Crystal".equals(type)){
+                    this.console.println("[ "
+                            + i
+                            + " ] - "
+                            + type + " | Power = "
+                            + power
+                            + " \t");
+                }
+                i++;
             }
-            i++;
-        }
-        this.console.println("What crystal do you want to equip?");        
-        Scanner scanner = new Scanner(System.in);
-        int rnum1 = scanner.nextInt();
-        if (rnum1 != 0 ) {
-            
-            this.console.println("\n\nSelect shell:");
-        i = 1; 
-        this.console.println("[ 0 ] - None\t");
-        for (ItemsAvailable itemsAvailable : onhnd){
-            String type = itemsAvailable.getType();
-            String planet = itemsAvailable.getPlanet();
-            double power = itemsAvailable.getPower();
-            if ("Lightsaber_Shell".equals(type)){
-            this.console.println("[ " 
-                    + i 
-                    + " ] - " 
-                    + type + " | Power = " 
-                    + power 
-                    + " \t");
+            this.console.println("What crystal do you want to equip?");
+            String entry = this.keyboard.readLine().trim();
+            int rnum1 = 0;
+            String centry = "";
+            for(i = 0; i <= entry.length() -1 ; i++){
+                char ch = entry.charAt(i);
+                if (Character.isDigit(ch)){
+                    centry = centry + ch;
+                    rnum1 = Integer.parseInt(centry);                  
+                }
             }
-            i++;
-        }
-        this.console.println("What shell do you want to equip?");        
-        int rnum2 = scanner.nextInt();
-        if (rnum2 != 0 ) {
-        double cPower = ItemsAvailable.OnHand.get(rnum1 -1).getPower();
-        double sPower = ItemsAvailable.OnHand.get(rnum2 -1).getPower();        
-
-        TrainR4.setLightSaberScore(cPower + sPower);
-        double updateForceLevel = TrainR4.getLightSaberScore()
-               + TrainR4.getCombat()
-               + TrainR4.getPush()
-               + TrainR4.getDefence()
-               + TrainR4.getForceAffinity();
+            if (rnum1 > 0 ) {
                 
-        Player.setForceLevel(updateForceLevel);
-        this.console.println("\n\nLighsaber has been built!"); 
-        this.console.println("You now have a force level of " + updateForceLevel);        
+                this.console.println("\n\nSelect shell:");
+                i = 1;
+                this.console.println("[ 0 ] - None\t");        
+                for (ItemsAvailable itemsAvailable : onhnd){
+                    String type = itemsAvailable.getType();
+                    String planet = itemsAvailable.getPlanet();
+                    double power = itemsAvailable.getPower();
+                    if ("Lightsaber_Shell".equals(type)){
+                        this.console.println("[ "
+                                + i
+                                + " ] - "
+                                + type + " | Power = "
+                                + power
+                                + " \t");
+                    }
+                    i++;
+                }
+                this.console.println("What shell do you want to equip?");
+                entry = this.keyboard.readLine().trim();
+                int rnum2 = 0;
+                centry = "";
+                for(i = 0; i <= entry.length() -1 ; i++){
+                    char ch = entry.charAt(i);
+                    if (Character.isDigit(ch)){
+                        centry = centry + ch;
+                        rnum2 = Integer.parseInt(centry);                  
+                    }
+                }
+                if (rnum2 != 0 ) {
+                    double cPower = ItemsAvailable.OnHand.get(rnum1 -1).getPower();
+                    double sPower = ItemsAvailable.OnHand.get(rnum2 -1).getPower();
+                    
+                    TrainR4.setLightSaberScore(cPower + sPower);
+                    double updateForceLevel = TrainR4.getLightSaberScore()
+                            + TrainR4.getCombat()
+                            + TrainR4.getPush()
+                            + TrainR4.getDefence()
+                            + TrainR4.getForceAffinity();
+                    
+                    Player.setForceLevel(updateForceLevel);
+                    this.console.println("\n\nLighsaber has been built!");
+                    this.console.println("You now have a force level of " + updateForceLevel);
+                }
+            } } catch (IOException ex) {
+            ErrorView.display(this.getClass().getName(), ex.getMessage());
         }
-      }
     }
     
     public void exitWorkshop(){

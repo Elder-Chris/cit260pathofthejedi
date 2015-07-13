@@ -9,12 +9,10 @@ import byui.cit260.pathOfTheJedi.model.Actor;
 import byui.cit260.pathOfTheJedi.model.InventoryList;
 import byui.cit260.pathOfTheJedi.model.ItemsAvailable;
 import byui.cit260.pathOfTheJedi.model.Player;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import pathofthejedi.PathOfTheJedi;
@@ -28,12 +26,12 @@ public class GameMenuView extends View {
                 + "\n                        Game Menu"
                 + "\n(II:::::::::<[==============================================="
                 + "\n E - Explore"
-                + "\n F - Find Someone"
-                + "\n A - Print Actor names"
-                + "\n S - Status"
-                + "\n P - Print Status"
+                + "\n F - Find Someone"                
+                + "\n S - Status"                
                 + "\n I - Inventory"
-                + "\n G - Go to Ship"
+                + "\n G - Go to Ship"                
+                + "\n A - Print Actor names"
+                + "\n P - Print Status"
                 + "\n Q - Exit and Save"
                 + "\n(II:::::::::<[===============================================");
     }
@@ -61,7 +59,7 @@ public class GameMenuView extends View {
                 //Prin Actor's names
                 this.printActorNames();
             } catch (IOException ex) {
-                Logger.getLogger(GameMenuView.class.getName()).log(Level.SEVERE, null, ex);
+                ErrorView.display(this.getClass().getName(), ex.getMessage());
             }
         }
                 break;        
@@ -108,7 +106,8 @@ public class GameMenuView extends View {
             this.console.println("and found some Trash.");
         } else {
             for (ItemsAvailable itemsAvailable : itemavail) {
-                if (itemsAvailable.getPlanet() == Player.getHome()) {
+                if (itemsAvailable.getPlanet() == null ? Player.getHome() == null 
+                        : itemsAvailable.getPlanet().equals(Player.getHome())) {
                     String type = itemsAvailable.getType();
                     String planet = itemsAvailable.getPlanet();
                     double power = itemsAvailable.getPower();
@@ -137,53 +136,122 @@ public class GameMenuView extends View {
     private void findSomeone() {
 
         try {
-            this.console.println("Do you want to approch the Sith or the good guy."
-                    + "(choose S for sith or G for good guy)");
-            char goodBad = keyboard.readLine().trim().toUpperCase().charAt(0);
-
-            if (goodBad == 'G') {
-                switch (Player.getHome()) {
+            int maxSithNum = 0;
+            switch (Player.getHome()){
                     case "Kashyyk":
-                        this.console.println(Actor.lando.getDescription());
+                        maxSithNum = 1;
                         break;
                     case "Mandalore":
-                        this.console.println(Actor.mace.getDescription());
+                        maxSithNum = 2;
                         break;
                     case "New Tatooine":
-                        this.console.println(Actor.bail.getDescription());
+                        maxSithNum = 3;
                         break;
                     case "Rantine Space Station":
-                        this.console.println(Actor.wedge.getDescription());
+                        maxSithNum = 4;
                         break;
                     case "New Super Star Destroyer":
-                        this.console.println(Actor.typho.getDescription());
+                        maxSithNum = 5;
                         break;
-                }
-            }else if (goodBad == 'S') {
-                switch (Player.getHome()) {
-                    case "Kashyyk":
-                        this.console.println(Actor.zannah.getDescription());
-                        break;
-                    case "Mandalore":
-                        this.console.println(Actor.plagueis.getDescription());
-                        break;
-                    case "New Tatooine":
-                        this.console.println(Actor.sidious.getDescription());
-                        break;
-                    case "Rantine Space Station":
-                        this.console.println(Actor.sidious.getDescription());
-                        break;
-                    case "New Super Star Destroyer":
-                        this.console.println(Actor.lumiya.getDescription());
-                        break;
-                }
-            }else{
-            this.console.println("Thats not a person.");
-            
             }
+            if (Player.getSithDefeted() < maxSithNum){                
+                this.console.println("Do you want to approch the Sith or the good guy."
+                        + "(choose S for sith or G for good guy)");
+                char goodBad = keyboard.readLine().trim().toUpperCase().charAt(0);
+
+                if (goodBad == 'G') {
+                    switch (Player.getHome()) {
+                        case "Kashyyk":
+                            this.console.println(Actor.lando.getDescription());
+                            break;
+                        case "Mandalore":
+                            this.console.println(Actor.mace.getDescription());
+                            break;
+                        case "New Tatooine":
+                            this.console.println(Actor.bail.getDescription());
+                            break;
+                        case "Rantine Space Station":
+                            this.console.println(Actor.wedge.getDescription());
+                            break;
+                        case "New Super Star Destroyer":
+                            this.console.println(Actor.typho.getDescription());
+                            break;
+                    }                
+                }else if (goodBad == 'S') {
+                    switch (Player.getHome()) {
+                        case "Kashyyk":
+                            this.console.println(Actor.zannah.getDescription());
+                            break;
+                        case "Mandalore":
+                            this.console.println(Actor.plagueis.getDescription());
+                            break;
+                        case "New Tatooine":
+                            this.console.println(Actor.sidious.getDescription());
+                            break;
+                        case "Rantine Space Station":
+                            this.console.println(Actor.sidious.getDescription());
+                            break;
+                        case "New Super Star Destroyer":
+                            this.console.println(Actor.lumiya.getDescription());
+                            break;
+                    }
+
+                    this.console.println("\nDo you want to battle this Sith? (Y or N)"); 
+                    char battle = keyboard.readLine().trim().toUpperCase().charAt(0);
+
+                    if (battle == 'Y'){
+                                               
+                        this.console.println("battle code");
+                        TrainR4Control instance = new TrainR4Control();
+                        double diceRoll = instance.diceRoll();
+                        double battlePlayerLv = Player.getForceLevel();
+                        double battleSithLv = (maxSithNum * 10) + diceRoll;
+                        double tempPlayerLv = battlePlayerLv;
+                        double tempSithLv = battleSithLv;
+                        
+                                                                        
+                        for(int i = 0; i<100; i++){
+                            if (tempPlayerLv < 0){
+                                this.console.println("You lost, train some more and come back to fight another day.");
+                                break;
+                            }else if (tempSithLv < 0){
+                                this.console.println("You have defeted the Sith");
+                                Player.setSithDefeted(Player.getSithDefeted() + 1);
+                                break;                                
+                            }
+                            
+                            this.console.println("Your Health Level [ " 
+                                + Math.round((tempPlayerLv / battlePlayerLv) * 100)  
+                                + "% ] --------- Sith Health Level [ " 
+                                + Math.round((tempSithLv / battleSithLv) * 100)
+                                + "% ] ");
+                            this.console.println("\nDo you want attack the Sith? (Y or N)"); 
+                            char attack = keyboard.readLine().trim().toUpperCase().charAt(0);
+                            
+                             if (attack == 'Y'){
+                                 diceRoll = instance.diceRoll();
+                                 tempPlayerLv = tempPlayerLv - diceRoll;
+                                 diceRoll = instance.diceRoll();
+                                 tempSithLv = tempSithLv - diceRoll;                                                                  
+                             }else{
+                                 break;
+                             }                            
+                        }
+                        
+                    }
+
+                    }else{
+                        this.console.println("Thats not a person.");           
+
+                    }
+            }else{
+                this.console.println("\n\nGreat job you have defeted the sith on"
+                        + " this planet goto your ship and tavel to your next location.");
+                }
         } catch (Exception e) {
             ErrorView.display(this.getClass().getName(),"Error reading data:" + e.getMessage());
         }
+        
     }
     
     private void viewStatus() {

@@ -23,6 +23,7 @@ public class Player implements Serializable{
     //private double forceLevel;
     private static String home;
     private static double forceLevel;
+    private static int sithDefeted;
     
 
     public Player() {
@@ -52,6 +53,14 @@ public class Player implements Serializable{
         Player.forceLevel = forceLevel;
     }
 
+    public static int getSithDefeted() {
+        return sithDefeted;
+    }
+
+    public static void setSithDefeted(int sithDefeted) {
+        Player.sithDefeted = sithDefeted;
+    }
+
     @Override
     public String toString() {
         return "Player{" + "name=" + name + '}';
@@ -60,7 +69,7 @@ public class Player implements Serializable{
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 41 * hash + Objects.hashCode(this.name);
+        hash = 89 * hash + Objects.hashCode(this.name);
         return hash;
     }
 
@@ -73,7 +82,12 @@ public class Player implements Serializable{
             return false;
         }
         final Player other = (Player) obj;
-        return Objects.equals(this.name, other.name);
+        if (!Objects.equals(this.name, other.name)) {
+            return false;
+        }
+        return true;
     }
+
+
 
 }

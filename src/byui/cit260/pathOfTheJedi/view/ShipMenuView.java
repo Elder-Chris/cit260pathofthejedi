@@ -87,27 +87,63 @@ public class ShipMenuView extends View {
         this.console.println("travel");
         Player actorOne = new Player();
         this.console.println("\n\nYou currently on " + Player.getHome() );
+        int maxSithNum = 0;
+            switch (Player.getHome()){
+                    case "Kashyyk":
+                        maxSithNum = 1;
+                        break;
+                    case "Mandalore":
+                        maxSithNum = 2;
+                        break;
+                    case "New Tatooine":
+                        maxSithNum = 3;
+                        break;
+                    case "Rantine Space Station":
+                        maxSithNum = 4;
+                        break;
+                    case "New Super Star Destroyer":
+                        maxSithNum = 5;
+                        break;
+            }
+        
         
         if ("New Super Star Destroyer".equals(Player.getHome())){
-            this.console.println("\n\nYou are at you final destination");
+            this.console.println("\nYou are at you final destination");
         }else{
               switch (Player.getHome()){
-            case "Kashyyk":  
-                Player.setHome("Mandalore");
+            case "Kashyyk":
+                if(Player.getSithDefeted() == 1){
+                    Player.setHome("Mandalore");
+                    this.console.println("You have traveled to " + Player.getHome());
+                }else{
+                   this.console.println("\nYou must defeat the Sith on each planet"); 
+                }
                 break;            
-            case "Mandalore":  
-                Player.setHome("New Tatooine");
+            case "Mandalore":                  
+                if(Player.getSithDefeted() == 2){
+                    Player.setHome("New Tatooine");
+                    this.console.println("You have traveled to " + Player.getHome());
+                }else{
+                   this.console.println("\nYou must defeat the Sith on each planet"); 
+                }
                 break;
-            case "New Tatooine":  
-                Player.setHome("Rantine Space Station");
+            case "New Tatooine":                
+                if(Player.getSithDefeted() == 3){
+                    Player.setHome("Rantine Space Station");
+                    this.console.println("You have traveled to " + Player.getHome());
+                }else{
+                   this.console.println("\nYou must defeat the Sith on each planet"); 
+                }
                 break;
-            case "Rantine Space Station":  
-                Player.setHome("New Super Star Destroyer");
+            case "Rantine Space Station":                  
+                if(Player.getSithDefeted() == 4){
+                    Player.setHome("New Super Star Destroyer");
+                    this.console.println("You have traveled to " + Player.getHome());
+                }else{
+                   this.console.println("\nYou must defeat the Sith on each planet"); 
+                }
                 break;
-            case "New Super Star Destroyer":  
-                break;
-        }
-        this.console.println("You have traveled to " + Player.getHome());
+            }
         }
     }
 

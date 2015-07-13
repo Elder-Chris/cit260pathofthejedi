@@ -167,7 +167,8 @@ public class GameControl {
                + TrainR4.getDefence()
                + TrainR4.getForceAffinity();           
         
-        Player.setForceLevel(updateForceLevel); 
+        Player.setForceLevel(updateForceLevel);
+        Player.setSithDefeted(0);
     }
     
 }

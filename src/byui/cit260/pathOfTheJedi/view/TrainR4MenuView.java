@@ -39,10 +39,10 @@ public class TrainR4MenuView extends View {
         
         switch (choice){
             case '1':  //Phisical combat train
-                this.combat();
+                this.combatQuestion();
                 break;            
             case '2':  //Jedi Force push Train
-                this.push();
+                this.pushQuestion();
                 break;
             case '3':  //Defence train
                 this.defenceQuestion();
@@ -56,47 +56,117 @@ public class TrainR4MenuView extends View {
         }
         return false;
     }
-
-    private void combat(){
-        
-        TrainR4Control instance = new TrainR4Control();
-        double diceRoll = instance.diceRoll();        
-        //double result = instance.calcCombat(TrainR4.getCombat(), diceRoll);
-        try {
-           double result = instance.calcCombat(TrainR4.getCombat(), diceRoll);
-           this.console.println("\nYou increased your combat level to " + result);
-           TrainR4.setCombat(result);
-           double updateForceLevel = TrainR4.getLightSaberScore()
-               + TrainR4.getCombat()
-               + TrainR4.getPush()
-               + TrainR4.getDefence()
-               + TrainR4.getForceAffinity();        
-            Player.setForceLevel(updateForceLevel);
-        } catch (TrainR4ControlException me) {
-            ErrorView.display(this.getClass().getName(), me.getMessage());
-            //ErrorView.display(this.getClass().getName(), "Error reading input: " + me.getMessage());
-        }               
+  
+    private void combatQuestion() {
+        InventoryList[] inventory = PathOfTheJedi.getCurrentGame().getInventory();        
+        char selection;
+        do {            
+            this.console.println("\n\nTraning costs 1 Force Hologram you currently have " 
+                    + inventory[GameControl.Item.Force_Hologram.ordinal()].getQuantity() 
+                    + ". \nAre you sure you want to continue? \nEnter Y or N"); // display the main menu
+            
+            String input = this.getInput(); // get the user's selection
+            selection = input.charAt(0); // get first char of string
+            
+            this.combat(selection);        
+            break; // do action based on selection
+        } while (selection != 'Q'); // an selection is not "Exit"
     }
 
-    private void push() {
-        
-        TrainR4Control instance = new TrainR4Control();
-        double diceRoll = instance.diceRoll();       
-        try {
-           double result = instance.calcPush(TrainR4.getCombat(), TrainR4.getPush(), diceRoll);
-           TrainR4.setPush(result);
-           this.console.println("\nYou increased your push level to " + result);
-           double updateForceLevel = TrainR4.getLightSaberScore()
-                   + TrainR4.getCombat()
-                   + TrainR4.getPush()
-                   + TrainR4.getDefence()
-                   + TrainR4.getForceAffinity();
-            Player.setForceLevel(updateForceLevel);
-        } catch (TrainR4ControlException me) {
-            ErrorView.display(this.getClass().getName(), me.getMessage());
+    private void combat(char choice) {
+        InventoryList[] inventory = PathOfTheJedi.getCurrentGame().getInventory();        
+        if (choice == 'Y' || choice == 'y'){                         
+            if (inventory[GameControl.Item.Force_Hologram.ordinal()].getQuantity()>0){                
+                    TrainR4Control instance = new TrainR4Control();
+                    double diceRoll = instance.diceRoll();
+                    
+                    try {
+                        TrainR4 trainR4defence = new TrainR4(); 
+                        double result = instance.calcCombat(TrainR4.getCombat(), diceRoll);                    
+                        TrainR4.setCombat(result);
+                        this.console.println("\nYou increased your combat level to " + result);
+                        double updateForceLevel = TrainR4.getLightSaberScore()
+                               + TrainR4.getCombat()
+                               + TrainR4.getPush()
+                               + TrainR4.getDefence()
+                               + TrainR4.getForceAffinity();
+                        Player.setForceLevel(updateForceLevel);
+                        //removes hologram from invent and form quanity
+                        ArrayList<ItemsAvailable> onhnd = ItemsAvailable.OnHand;
+                        int i = 0;
+                        for (ItemsAvailable itemsAvailable : onhnd){
+                            if("Force Holograms".equals(itemsAvailable.getType())){
+                               onhnd.remove(i);
+                               break;
+                            }
+                        i++;
+                        }
+                        inventory[GameControl.Item.Force_Hologram.ordinal()].setQuantity(inventory[GameControl.Item.Force_Hologram.ordinal()].getQuantity() - 1.00);
+                        this.console.println("You have " + inventory[GameControl.Item.Force_Hologram.ordinal()].getQuantity() + " Force Holograms left");
+                    }catch(TrainR4ControlException me) {
+                        ErrorView.display(this.getClass().getName(), me.getMessage());
+                    }                  
+            }else{
+                this.console.println("\n\nYou could not train, you are out of Force Holograms");
+            }
         }
     }
 
+    private void pushQuestion() {
+        InventoryList[] inventory = PathOfTheJedi.getCurrentGame().getInventory();        
+        char selection;
+        do {            
+            this.console.println("\n\nTraning costs 1 Force Hologram you currently have " 
+                    + inventory[GameControl.Item.Force_Hologram.ordinal()].getQuantity() 
+                    + ". \nAre you sure you want to continue? \nEnter Y or N"); // display the main menu
+            
+            String input = this.getInput(); // get the user's selection
+            selection = input.charAt(0); // get first char of string
+            
+            this.push(selection);        
+            break; // do action based on selection
+        } while (selection != 'Q'); // an selection is not "Exit"
+    }
+
+    private void push(char choice) {
+        InventoryList[] inventory = PathOfTheJedi.getCurrentGame().getInventory();        
+        if (choice == 'Y' || choice == 'y'){                         
+            if (inventory[GameControl.Item.Force_Hologram.ordinal()].getQuantity()>0){                
+                    TrainR4Control instance = new TrainR4Control();
+                    double diceRoll = instance.diceRoll();
+                    
+                    try {
+                        TrainR4 trainR4defence = new TrainR4(); 
+                        double result = instance.calcPush(TrainR4.getCombat(), TrainR4.getPush(), diceRoll);                    
+                        TrainR4.setPush(result);
+                        this.console.println("\nYou increased your push level to " + result);
+                        double updateForceLevel = TrainR4.getLightSaberScore()
+                               + TrainR4.getCombat()
+                               + TrainR4.getPush()
+                               + TrainR4.getDefence()
+                               + TrainR4.getForceAffinity();
+                        Player.setForceLevel(updateForceLevel);
+                        //removes hologram from invent and form quanity
+                        ArrayList<ItemsAvailable> onhnd = ItemsAvailable.OnHand;
+                        int i = 0;
+                        for (ItemsAvailable itemsAvailable : onhnd){
+                            if("Force Holograms".equals(itemsAvailable.getType())){
+                               onhnd.remove(i);
+                               break;
+                            }
+                        i++;
+                        }
+                        inventory[GameControl.Item.Force_Hologram.ordinal()].setQuantity(inventory[GameControl.Item.Force_Hologram.ordinal()].getQuantity() - 1.00);
+                        this.console.println("You have " + inventory[GameControl.Item.Force_Hologram.ordinal()].getQuantity() + " Force Holograms left");
+                    }catch(TrainR4ControlException me) {
+                        ErrorView.display(this.getClass().getName(), me.getMessage());
+                    }                  
+            }else{
+                this.console.println("\n\nYou could not train, you are out of Force Holograms");
+            }
+        }
+    }
+    
     private void defenceQuestion() {
         InventoryList[] inventory = PathOfTheJedi.getCurrentGame().getInventory();        
         char selection;
@@ -124,7 +194,7 @@ public class TrainR4MenuView extends View {
                         TrainR4 trainR4defence = new TrainR4(); 
                         double result = instance.calcDefence(TrainR4.getDefence(), TrainR4.getCombat(), diceRoll);                    
                         TrainR4.setDefence(result);
-                        this.console.println("\nYou increased your push level to " + result);
+                        this.console.println("\nYou increased your defence level to " + result);
                         double updateForceLevel = TrainR4.getLightSaberScore()
                                + TrainR4.getCombat()
                                + TrainR4.getPush()
