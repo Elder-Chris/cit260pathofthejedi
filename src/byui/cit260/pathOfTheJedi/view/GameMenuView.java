@@ -225,7 +225,8 @@ public class GameMenuView extends View {
                                 }else{
                                 this.console.println("You have defeted the Sith");
                                 Player.setSithDefeted(Player.getSithDefeted() + 1);
-                                break;                                
+                                break;
+                                }
                             }
                             
                             this.console.println("Your Health Level [ " 
@@ -234,7 +235,7 @@ public class GameMenuView extends View {
                                 + Math.round((tempSithLv / battleSithLv) * 100)
                                 + "% ] ");
                             this.console.println("\nDo you want attack the Sith? (Y or N)"); 
-                            char attack = keyboard.readLine().trim().toUpperCase().charAt(0);
+                            char attack = this.keyboard.readLine().trim().toUpperCase().charAt(0);
                             
                              if (attack == 'Y'){
                                  diceRoll = instance.diceRoll();
