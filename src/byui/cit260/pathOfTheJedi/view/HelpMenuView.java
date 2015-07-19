@@ -5,8 +5,6 @@
  */
 package byui.cit260.pathOfTheJedi.view;
 
-import java.util.Scanner;
-
 /**
  *
  * @author Kika

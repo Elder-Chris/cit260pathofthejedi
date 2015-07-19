@@ -24,8 +24,7 @@ public class MainMenuView extends View {
             + "\n 1 - Load Game"
             + "\n 2 - New Game"
             + "\n 3 - Help"
-            + "\n 4 - Options"
-            + "\n 5 - Quit"
+            + "\n 4 - Quit"
             + "\n(II:::::::::<[===============================================");            
             }
             
@@ -45,12 +44,8 @@ public class MainMenuView extends View {
                 this.help();
                 break;
             case '4': //options menu  
-                this.options();
-                break;
-            case '5': //Quit the game
                 this.quit();
-                break;
-                    
+                break;                    
         }
                 return false;
         
@@ -96,10 +91,6 @@ public class MainMenuView extends View {
         //Display the help menu
         HelpMenuView helpMenu = new HelpMenuView();
         helpMenu.display();
-    }
-
-    private void options () {
-        this.console.println("****Options Menu*******");
     }
 
     private void quit() {
